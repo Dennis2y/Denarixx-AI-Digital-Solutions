@@ -2,25 +2,25 @@
 
 ## Overview
 
-This is the official company website for **Denarixx AI & Digital Solutions**, a luxury AI and digital agency. The site is a single-page React application with a premium black-and-gold dark aesthetic. It showcases services, company vision, client testimonials, and includes a functional contact form that persists submissions to a PostgreSQL database.
+This is the official company website for **Denarixx AI & Digital Solutions**, a premium AI and digital solutions company. The site is a single-page React application with a luxury black-and-gold dark aesthetic. It showcases services, company vision, focus areas, and includes a functional contact form that persists submissions to a PostgreSQL database.
 
 ### Page Sections (in scroll order)
 1. **Hero** — Full-screen video background, headline, CTA buttons, animated scroll indicator
-2. **Stats** — 4 animated count-up numbers (150+ projects, 99.9% uptime, 5x ROI, 100% satisfaction)
-3. **About** — Company story, values, image panel
-4. **Services** — 6 service cards with tags (AI Integration, Web Design, Automation, Brand Identity, Digital Strategy, Digital Ecosystem)
-5. **Process** — 4-step "How We Work" process with icons
-6. **Innovation/Vision** — Full-bleed image banner with vision statement
-7. **Testimonials** — 3 client testimonial cards with star ratings
-8. **Why Us** — Value highlights + 4 differentiator metric cards
-9. **CTA Banner** — Conversion section before Contact
-10. **Contact** — Contact form (name, email, message) + response time info
-11. **Footer** — Logo, nav links, services list, social icons, legal links
+2. **About** — Company overview, AI-first approach, premium quality pillars
+3. **Services** — 5 service cards: AI Solutions, Web Design & Development, Automation & Digital Transformation, Branding & Creative Design, Digital Strategy & Product Consulting
+4. **Process** — 5-step process: Discover, Design, Build, Launch, Scale
+5. **Vision** — Full-bleed banner + 5 innovation cards (AI Systems, Smart Platforms, Intelligent Automation, Future Products, Scalable Infrastructure)
+6. **Projects / Focus Areas** — 6 project type cards showing what Denarixx builds
+7. **Why Choose Denarixx** — 6 credibility points + side panel with differentiators
+8. **CTA Banner** — Conversion section before Contact
+9. **Contact** — Contact form (name, email, message) + branding block + response time info
+10. **Footer** — Logo, nav links, services list, social icons, legal links (Privacy Policy, Terms & Conditions, Impressum, Cookie Policy)
 
 ### Global Features
 - **Scroll progress bar** — Gold gradient line at bottom of fixed navbar
 - **Scroll-to-top button** — Appears after scrolling 600px
-- **Dark luxury
+- **Dark luxury theme** — Black-and-gold design system with cyan accents
+- **Smooth scroll** — All navigation uses smooth anchor scrolling
 
 The app is a full-stack TypeScript monorepo:
 - **Frontend**: React + Vite served from `client/`
@@ -41,27 +41,26 @@ Preferred communication style: Simple, everyday language.
 ### Frontend Architecture
 
 - **Framework**: React 18 with TypeScript, bundled by Vite
-- **Routing**: Single-page app; navigation uses anchor-based smooth scrolling within the `Home.tsx` page. Additional standalone pages (`About`, `Services`, `Vision`, `Contact`, `Landing`) exist but the primary experience is the single `Home` page.
-- **Styling**: Tailwind CSS with CSS variables for theming. Forced dark/gold luxury theme via `index.css`. Custom fonts: `Outfit` (display) and `Plus Jakarta Sans` (body).
+- **Routing**: Single-page app; navigation uses anchor-based smooth scrolling within the `Home.tsx` page
+- **Styling**: Tailwind CSS with CSS variables for theming. Dark/gold luxury theme via `index.css`. Custom fonts: `Outfit` (display) and `Plus Jakarta Sans` (body).
 - **UI Components**: shadcn/ui component library (Radix UI primitives) with custom premium variants (`PremiumButton`, `premium-input`, `premium-textarea`) that apply gold glow effects.
-- **Animations**: Framer Motion for scroll-triggered fade-ins, parallax hero effects, and page transitions. A `FadeIn` helper component is used throughout pages.
+- **Animations**: Framer Motion for scroll-triggered fade-ins, parallax hero effects, and hover interactions. A `FadeIn` helper component is used throughout.
 - **Data Fetching**: TanStack React Query for server state. A custom `useSubmitContact` hook wraps the contact form mutation.
 - **Forms**: React Hook Form + Zod resolver, sharing the same schema as the server for validation consistency.
-- **Theme**: Dark mode only enforced via CSS variables. A `useTheme` hook exists for potential light/dark toggle.
+- **Theme**: Dark mode enforced via CSS variables. A `ThemeProvider` wraps the app for potential light/dark toggle.
 
 ### Backend Architecture
 
 - **Framework**: Express.js v5 (TypeScript) running as an HTTP server
 - **Entry point**: `server/index.ts` creates the Express app and HTTP server, registers routes, and in development serves via Vite middleware; in production serves the built static files.
 - **Routes**: Defined in `server/routes.ts`. Currently one endpoint: `POST /api/contact` — validates input with Zod, stores to the database, and returns the created contact.
-- **Storage layer**: `server/storage.ts` exposes an `IStorage` interface and `DatabaseStorage` implementation using Drizzle ORM. This pattern makes swapping storage backends easy.
+- **Storage layer**: `server/storage.ts` exposes an `IStorage` interface and `DatabaseStorage` implementation using Drizzle ORM.
 - **Static serving**: `server/static.ts` serves the Vite-built frontend with SPA fallback for client-side routing.
-- **Build**: `script/build.ts` runs Vite for the client and esbuild for the server, bundling a curated allowlist of dependencies for faster cold starts.
 
 ### Shared Layer
 
 - **Schema** (`shared/schema.ts`): Single `contacts` table defined with Drizzle's pg-core, plus Zod insert schema via `drizzle-zod`.
-- **Routes** (`shared/routes.ts`): Typed API contract object (`api`) shared between frontend and backend — includes path, method, input schema, and response schemas. This ensures the frontend and backend stay in sync without code duplication.
+- **Routes** (`shared/routes.ts`): Typed API contract object (`api`) shared between frontend and backend.
 
 ### Data Storage
 
@@ -70,7 +69,6 @@ Preferred communication style: Simple, everyday language.
 - **Schema location**: `shared/schema.ts`
 - **Current tables**:
   - `contacts`: id (serial PK), name (text), email (text), message (text), created_at (timestamp)
-- **Migrations**: Output to `./migrations/`, applied with `drizzle-kit push`
 
 ### Path Aliases
 
@@ -96,21 +94,10 @@ Preferred communication style: Simple, everyday language.
 
 ### UI
 - **shadcn/ui (new-york style)** — Base UI component library built on Radix UI primitives
-- **Radix UI** — Accessible, headless component primitives
 - **Tailwind CSS** — Utility-first CSS framework
 - **Lucide React** — Icon library
 - **react-icons (SiLinkedin, SiX, etc.)** — Social media brand icons
 - **class-variance-authority + clsx + tailwind-merge** — Class name management utilities
-- **Embla Carousel** — Carousel/slider component
-- **vaul** — Drawer component
-- **cmdk** — Command palette component
-- **date-fns** — Date formatting utilities
-- **recharts** — Chart components (available, not yet heavily used)
-
-### Replit-Specific Plugins (dev only)
-- `@replit/vite-plugin-runtime-error-modal` — Shows runtime errors in an overlay
-- `@replit/vite-plugin-cartographer` — Replit code mapping
-- `@replit/vite-plugin-dev-banner` — Dev environment banner
 
 ### Environment Variables Required
 | Variable | Purpose |
@@ -119,4 +106,4 @@ Preferred communication style: Simple, everyday language.
 
 ### Assets
 - Company logo: `attached_assets/Denarixx_1772975867904.png` (imported directly in React via `@assets/` alias)
-- Media files (video, background images) expected at `/media/` in the public directory (e.g., `hero_video.mp4`, `tech-abstract-bg.png`, `ai-network-bg.png`, `innovation-bg.png`)
+- Media files in `client/public/media/`: `hero_video.mp4`, `tech-abstract-bg.png`, `ai-network-bg.png`, `innovation-bg.png`

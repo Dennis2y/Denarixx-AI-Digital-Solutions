@@ -12,21 +12,25 @@ import {
   Zap, 
   ArrowRight,
   Mail,
-  MapPin,
   ChevronRight,
-  Award,
-  Rocket,
   ChevronDown,
   ArrowUp,
   Search,
   Lightbulb,
   Code2,
   BarChart3,
-  Star,
-  Phone,
-  ExternalLink,
+  Globe,
   CheckCircle2,
-  Globe
+  Palette,
+  Rocket,
+  Shield,
+  Target,
+  Building2,
+  Smartphone,
+  BrainCircuit,
+  Workflow,
+  Server,
+  PenTool
 } from "lucide-react";
 import { SiLinkedin, SiX, SiInstagram, SiGithub } from "react-icons/si";
 
@@ -50,27 +54,6 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
   </motion.div>
 );
 
-function useCountUp(target: number, duration = 2000) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-    let startTimestamp: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [isInView, target, duration]);
-
-  return { count, ref };
-}
-
 function ScrollToTop() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -86,6 +69,7 @@ function ScrollToTop() {
       animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20, pointerEvents: visible ? "auto" : "none" }}
       transition={{ duration: 0.3 }}
       data-testid="button-scroll-to-top"
+      aria-label="Scroll to top"
       className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center shadow-[0_0_20px_rgba(191,149,63,0.4)] hover:bg-primary hover:shadow-[0_0_30px_rgba(191,149,63,0.6)] transition-all duration-300 hover:-translate-y-1"
     >
       <ArrowUp size={20} />
@@ -111,14 +95,14 @@ function HeroSection() {
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <video
         autoPlay muted loop playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-30"
       >
         <source src="/media/hero_video.mp4" type="video/mp4" />
       </video>
 
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[150px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-cyan-500/5 rounded-full blur-[180px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
       </motion.div>
@@ -137,7 +121,7 @@ function HeroSection() {
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <Sparkles size={14} />
-            <span>The New Era of Digital Excellence</span>
+            <span>AI-Powered Digital Excellence</span>
           </motion.div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.1]">
@@ -146,8 +130,8 @@ function HeroSection() {
             Digital Solutions
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-            We architect cutting-edge AI-driven digital ecosystems that redefine how brands operate, innovate, and scale in the modern economy.
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+            Denarixx AI & Digital Solutions helps businesses, startups, and brands build powerful digital products, AI systems, automation workflows, and premium online experiences.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -156,7 +140,7 @@ function HeroSection() {
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </PremiumButton>
             <PremiumButton size="lg" variant="outline" onClick={() => scrollTo("#contact")} className="w-full sm:w-auto" data-testid="button-contact-hero">
-              Start a Project
+              Contact Us
             </PremiumButton>
           </div>
         </motion.div>
@@ -167,7 +151,7 @@ function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer"
-        onClick={() => scrollTo("#stats")}
+        onClick={() => scrollTo("#about")}
       >
         <span className="text-xs text-muted-foreground uppercase tracking-widest font-medium">Scroll</span>
         <motion.div
@@ -181,48 +165,11 @@ function HeroSection() {
   );
 }
 
-function StatsSection() {
-  const stats = [
-    { target: 150, suffix: "+", label: "Projects Delivered", icon: "🚀" },
-    { target: 99, suffix: ".9%", label: "System Uptime", icon: "⚡" },
-    { target: 5, suffix: "x", label: "Average ROI Growth", icon: "📈" },
-    { target: 100, suffix: "%", label: "Client Satisfaction", icon: "⭐" },
-  ];
-
-  return (
-    <section id="stats" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-primary/3 to-background" />
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      
-      <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, i) => {
-            const { count, ref } = useCountUp(stat.target);
-            return (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="text-center group">
-                  <div className="text-3xl mb-3">{stat.icon}</div>
-                  <div className="text-4xl md:text-5xl font-bold text-gradient-gold mb-2">
-                    <span ref={ref}>{count}</span>
-                    <span>{stat.suffix}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">{stat.label}</p>
-                </div>
-              </FadeIn>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function AboutSection() {
   return (
     <section id="about" className="py-32 md:py-40 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 z-0">
-        <img src="/media/tech-abstract-bg.png" alt="Background" className="w-full h-full object-cover" />
+        <img src="/media/tech-abstract-bg.png" alt="" className="w-full h-full object-cover" aria-hidden="true" />
       </div>
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -233,16 +180,16 @@ function AboutSection() {
                   About Denarixx
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Engineering the <span className="text-gradient-cyan">Unimaginable</span>.
+                  Where <span className="text-gradient-cyan">Intelligence</span> Meets Design
                 </h2>
               </div>
               
               <div className="space-y-6">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  We are architects of tomorrow's digital future. By merging artificial intelligence with human-centric design philosophy, we create transformative digital ecosystems that don't just exist—they evolve, perform, and dominate their markets.
+                  Denarixx AI & Digital Solutions is a technology company focused on building intelligent digital products for modern businesses. We combine artificial intelligence, premium design, and scalable software engineering to help our clients grow, automate, and lead in their industries.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Our approach dismantles complexity, obsessing over precision at every level. From the pixel to the algorithm, we engineer solutions that command respect and deliver measurable impact.
+                  From AI-powered business systems to beautifully crafted websites and digital platforms, we deliver solutions that are both technically robust and visually exceptional. Every project is built with long-term scalability, performance, and real business impact in mind.
                 </p>
               </div>
 
@@ -250,23 +197,23 @@ function AboutSection() {
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center">
-                      <Rocket className="text-cyan-400" size={24} />
+                      <BrainCircuit className="text-cyan-400" size={24} />
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">Innovation First</h4>
-                    <p className="text-sm text-muted-foreground">AI-driven strategies that keep you years ahead of competition.</p>
+                    <h4 className="text-lg font-bold text-foreground mb-2">AI-First Approach</h4>
+                    <p className="text-sm text-muted-foreground">We integrate artificial intelligence into every solution to deliver smarter, faster results.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                      <Award className="text-amber-400" size={24} />
+                      <Palette className="text-amber-400" size={24} />
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">Precision Excellence</h4>
-                    <p className="text-sm text-muted-foreground">Flawless execution across design, engineering, and strategy.</p>
+                    <h4 className="text-lg font-bold text-foreground mb-2">Premium Quality</h4>
+                    <p className="text-sm text-muted-foreground">Every detail — from design to deployment — is crafted to the highest standard.</p>
                   </div>
                 </div>
               </div>
@@ -278,12 +225,12 @@ function AboutSection() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl" />
               <img 
                 src="/media/tech-abstract-bg.png" 
-                alt="Innovation" 
+                alt="Abstract technology visualization" 
                 className="relative rounded-3xl border border-border/50 object-cover w-full shadow-2xl filter grayscale-[50%] contrast-[1.2] group-hover:grayscale-[30%] transition-all duration-500"
               />
               <div className="absolute -bottom-8 -right-8 p-8 bg-card border border-border rounded-2xl shadow-2xl hidden md:block backdrop-blur-sm">
-                <p className="text-5xl font-bold text-gradient-gold mb-2">10x</p>
-                <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">Performance Uplift</p>
+                <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">Built for</p>
+                <p className="text-2xl font-bold text-gradient-gold mt-1">The Future</p>
               </div>
             </div>
           </FadeIn>
@@ -297,70 +244,62 @@ function ServicesSection() {
   const services = [
     { 
       icon: Bot, 
-      title: "AI Integration", 
-      desc: "Embed intelligent models into your digital infrastructure to automate complex workflows, generate insights, and unlock new revenue streams.",
+      title: "AI Solutions", 
+      desc: "Custom AI systems, machine learning models, and intelligent automation that help your business make smarter decisions, streamline operations, and unlock new opportunities.",
       color: "from-cyan-500/10 to-blue-500/5",
       accent: true,
-      tags: ["Machine Learning", "NLP", "Automation"]
+      tags: ["Machine Learning", "NLP", "Predictive Analytics"]
     },
     { 
       icon: Layers, 
-      title: "Premium Web Design", 
-      desc: "Award-winning, conversion-optimized interfaces crafted with obsessive attention to typography, interaction design, and visual hierarchy.",
+      title: "Web Design & Development", 
+      desc: "High-performance websites and web applications built with modern frameworks, responsive design, and conversion-focused user experiences that represent your brand at its best.",
       color: "from-amber-500/10 to-orange-500/5",
       accent: false,
-      tags: ["UI/UX", "Motion", "Responsive"]
+      tags: ["UI/UX", "Full-Stack", "Responsive"]
     },
     { 
       icon: Cpu, 
-      title: "System Automation", 
-      desc: "Transform disparate tools and processes into seamless, intelligent systems that reduce friction and multiply operational efficiency.",
+      title: "Automation & Digital Transformation", 
+      desc: "Streamline your business operations with intelligent workflows, system integrations, and process automation that reduce manual effort and increase efficiency at scale.",
       color: "from-cyan-500/10 to-teal-500/5",
       accent: true,
       tags: ["Workflow", "APIs", "Integration"]
     },
     { 
-      icon: Sparkles, 
-      title: "Brand Identity", 
-      desc: "Establish market dominance through cohesive, luxury-tier identity systems that command respect and resonate with premium audiences.",
+      icon: PenTool, 
+      title: "Branding & Creative Design", 
+      desc: "Comprehensive brand identity systems, visual design, and creative direction that position your company as a premium, trustworthy presence in your market.",
       color: "from-amber-500/10 to-yellow-500/5",
       accent: false,
-      tags: ["Logo", "Visual System", "Strategy"]
+      tags: ["Brand Identity", "Visual Design", "Strategy"]
     },
     { 
       icon: TrendingUp, 
-      title: "Digital Strategy", 
-      desc: "Data-driven roadmaps engineered to scale operations, maximize ROI, and position your brand as an industry innovator.",
+      title: "Digital Strategy & Product Consulting", 
+      desc: "Data-driven strategic planning, product roadmaps, and technology consulting that align your digital investments with real business outcomes and long-term growth.",
       color: "from-cyan-500/10 to-blue-500/5",
       accent: true,
-      tags: ["Growth", "Analytics", "ROI"]
+      tags: ["Growth", "Analytics", "Roadmapping"]
     },
-    {
-      icon: Globe,
-      title: "Digital Ecosystem",
-      desc: "Full-spectrum digital infrastructure from cloud architecture to multi-platform presence — engineered for dominance at scale.",
-      color: "from-amber-500/10 to-orange-500/5",
-      accent: false,
-      tags: ["Cloud", "Scalability", "Multi-platform"]
-    }
   ];
 
   return (
     <section id="services" className="py-32 md:py-40 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 z-0">
-        <img src="/media/innovation-bg.png" alt="Background" className="w-full h-full object-cover" />
+        <img src="/media/innovation-bg.png" alt="" className="w-full h-full object-cover" aria-hidden="true" />
       </div>
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-24">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">
-              Core Capabilities
+              Our Services
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Services that <span className="text-gradient-gold">Drive Growth</span>
+              Solutions that <span className="text-gradient-gold">Drive Growth</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Comprehensive digital solutions engineered for ambitious brands that refuse to compete on price.
+              End-to-end digital services designed for businesses that want to lead, not follow.
             </p>
           </FadeIn>
         </div>
@@ -370,7 +309,7 @@ function ServicesSection() {
             <FadeIn key={i} delay={i * 0.08}>
               <div
                 data-testid={`card-service-${i}`}
-                className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${service.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden cursor-pointer`}
+                className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${service.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden cursor-default`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0`} />
                 
@@ -393,10 +332,6 @@ function ServicesSection() {
                       </span>
                     ))}
                   </div>
-                  
-                  <div className={`mt-6 flex items-center text-sm font-medium opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 ${service.accent ? "text-cyan-400" : "text-amber-400"}`}>
-                    Learn more <ChevronRight size={16} className="ml-1" />
-                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -412,8 +347,8 @@ function ProcessSection() {
     {
       number: "01",
       icon: Search,
-      title: "Discovery & Analysis",
-      desc: "We deep-dive into your business, goals, and competitive landscape to uncover transformative opportunities others miss.",
+      title: "Discover",
+      desc: "We learn about your business, goals, audience, and challenges to define the right scope and strategy for your project.",
       color: "text-cyan-400",
       bg: "bg-cyan-500/10",
       border: "border-cyan-500/20"
@@ -421,8 +356,8 @@ function ProcessSection() {
     {
       number: "02",
       icon: Lightbulb,
-      title: "Strategy & Design",
-      desc: "Our team architects a precision-crafted roadmap and visual identity designed for maximum impact and market dominance.",
+      title: "Design",
+      desc: "Our team creates wireframes, visual designs, and detailed plans that bring your vision to life before a single line of code is written.",
       color: "text-amber-400",
       bg: "bg-amber-500/10",
       border: "border-amber-500/20"
@@ -430,20 +365,29 @@ function ProcessSection() {
     {
       number: "03",
       icon: Code2,
-      title: "Build & Integrate",
-      desc: "We engineer your solution with AI-native architecture, cutting-edge technology, and relentless attention to performance.",
+      title: "Build",
+      desc: "We develop your solution using modern, scalable technology — with regular updates, clean code, and a focus on performance.",
       color: "text-cyan-400",
       bg: "bg-cyan-500/10",
       border: "border-cyan-500/20"
     },
     {
       number: "04",
-      icon: BarChart3,
-      title: "Launch & Optimize",
-      desc: "We deploy, monitor, and continuously optimize to ensure your digital ecosystem scales with your ambitions.",
+      icon: Rocket,
+      title: "Launch",
+      desc: "After thorough testing and quality assurance, we deploy your product and ensure a smooth, reliable launch.",
       color: "text-amber-400",
       bg: "bg-amber-500/10",
       border: "border-amber-500/20"
+    },
+    {
+      number: "05",
+      icon: BarChart3,
+      title: "Scale",
+      desc: "Post-launch, we monitor performance, gather insights, and continuously optimize to help your product grow with your business.",
+      color: "text-cyan-400",
+      bg: "bg-cyan-500/10",
+      border: "border-cyan-500/20"
     },
   ];
 
@@ -461,22 +405,22 @@ function ProcessSection() {
               How We <span className="text-gradient-cyan">Work</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              A battle-tested methodology that transforms vision into measurable digital excellence.
+              A structured, transparent process from first conversation to long-term growth.
             </p>
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-          <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-[1px] bg-gradient-to-r from-cyan-500/20 via-amber-500/20 to-cyan-500/20" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative">
+          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-cyan-500/20 via-amber-500/20 to-cyan-500/20" />
           
           {steps.map((step, i) => (
-            <FadeIn key={i} delay={i * 0.12}>
+            <FadeIn key={i} delay={i * 0.1}>
               <div data-testid={`card-process-${i}`} className="relative flex flex-col items-start group">
-                <div className={`relative z-10 w-24 h-24 rounded-2xl ${step.bg} border ${step.border} flex flex-col items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300`}>
-                  <step.icon size={32} className={step.color} />
+                <div className={`relative z-10 w-20 h-20 rounded-2xl ${step.bg} border ${step.border} flex flex-col items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <step.icon size={28} className={step.color} />
                   <span className={`text-xs font-bold ${step.color} mt-1 opacity-60`}>{step.number}</span>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">{step.title}</h3>
+                <h3 className="text-lg font-bold text-foreground mb-3">{step.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
               </div>
             </FadeIn>
@@ -487,16 +431,24 @@ function ProcessSection() {
   );
 }
 
-function InnovationSection() {
+function VisionSection() {
+  const cards = [
+    { icon: BrainCircuit, title: "AI Systems", desc: "Intelligent platforms that learn, adapt, and deliver actionable insights for your business.", accent: true },
+    { icon: Globe, title: "Smart Platforms", desc: "Connected digital ecosystems that unify data, users, and processes in one seamless experience.", accent: false },
+    { icon: Workflow, title: "Intelligent Automation", desc: "Self-optimizing workflows that reduce manual effort and scale with your operations.", accent: true },
+    { icon: Smartphone, title: "Future Products", desc: "Innovative digital products designed to meet tomorrow's market demands today.", accent: false },
+    { icon: Server, title: "Scalable Infrastructure", desc: "Cloud-native architecture built for reliability, performance, and growth at any scale.", accent: true },
+  ];
+
   return (
-    <section id="innovation" className="py-32 md:py-40 relative overflow-hidden">
+    <section id="vision" className="py-32 md:py-40 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <FadeIn>
-          <div className="relative rounded-3xl overflow-hidden bg-card border border-border/50 group">
+          <div className="relative rounded-3xl overflow-hidden bg-card border border-border/50 group mb-20">
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10 group-hover:via-background/70 transition-all duration-500" />
             <img 
               src="/media/ai-network-bg.png" 
-              alt="Vision Background" 
+              alt="Technology network visualization" 
               className="absolute inset-0 w-full h-full object-cover object-right opacity-30 filter grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-500"
             />
             
@@ -507,11 +459,11 @@ function InnovationSection() {
               </div>
               
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-                Pioneering <span className="text-gradient-gold">Digital Sovereignty</span>.
+                Shaping the <span className="text-gradient-gold">Digital Future</span>
               </h2>
               
               <p className="text-lg md:text-xl text-muted-foreground mb-8 font-light leading-relaxed">
-                We believe the future belongs to organizations that seamlessly merge uncompromising design with profound technical intelligence. Our mission: elevate ambitious brands into industry-defining digital powerhouses.
+                We believe the most successful companies of tomorrow will be those that fully embrace intelligent technology today. Our mission is to equip ambitious businesses with the AI-driven tools, platforms, and strategies they need to lead their industries.
               </p>
               
               <div className="flex items-center gap-6">
@@ -519,95 +471,105 @@ function InnovationSection() {
                   <Zap size={24} />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-foreground mb-1">Relentless Pursuit of Perfection</p>
-                  <p className="text-xs text-muted-foreground">In every design decision, every line of code, every strategic choice.</p>
+                  <p className="text-sm font-bold text-foreground mb-1">Innovation at Every Level</p>
+                  <p className="text-xs text-muted-foreground">From strategy and design to engineering and deployment.</p>
                 </div>
               </div>
             </div>
           </div>
         </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {cards.map((card, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div
+                data-testid={`card-vision-${i}`}
+                className={`p-6 rounded-2xl bg-card border border-border/50 group hover:-translate-y-2 transition-all duration-300 ${card.accent ? "hover-glow-cyan" : "hover-glow"}`}
+              >
+                <div className={`p-3 rounded-xl mb-4 w-fit ${card.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
+                  <card.icon size={24} className={card.accent ? "text-cyan-400" : "text-amber-400"} />
+                </div>
+                <h3 className="text-base font-bold text-foreground mb-2">{card.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{card.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function TestimonialsSection() {
-  const testimonials = [
-    {
-      quote: "Denarixx transformed our entire digital presence. The AI integration they built reduced our operational overhead by 60% within three months. Absolutely world-class.",
-      name: "Marcus J. Reynolds",
-      title: "CEO & Founder",
-      company: "Apex Ventures",
-      initials: "MR",
-      rating: 5,
-      accent: true
+function ProjectsSection() {
+  const projects = [
+    { 
+      icon: BrainCircuit, 
+      title: "AI Business Systems", 
+      desc: "Custom AI models and decision engines for enterprise workflows, customer insights, and operational intelligence.",
+      accent: true 
     },
-    {
-      quote: "The level of design craftsmanship is unmatched. Our new platform has generated a 3x increase in qualified leads, and every stakeholder who sees it is blown away.",
-      name: "Priya Nair",
-      title: "Chief Marketing Officer",
-      company: "Novara Group",
-      initials: "PN",
-      rating: 5,
-      accent: false
+    { 
+      icon: Building2, 
+      title: "Company Websites", 
+      desc: "Premium, high-converting corporate websites that establish credibility and drive business results.",
+      accent: false 
     },
-    {
-      quote: "Working with Denarixx feels like working with the future. They don't just build software — they build competitive advantages. Our ROI has been extraordinary.",
-      name: "Elias Voss",
-      title: "VP of Technology",
-      company: "Stratify Corp",
-      initials: "EV",
-      rating: 5,
-      accent: true
+    { 
+      icon: Smartphone, 
+      title: "Digital Product Design", 
+      desc: "End-to-end product design for web and mobile apps — from user research and wireframing to polished, pixel-perfect interfaces.",
+      accent: true 
+    },
+    { 
+      icon: Workflow, 
+      title: "Automation Systems", 
+      desc: "Intelligent workflow automation connecting your tools, APIs, and processes into efficient, self-running systems.",
+      accent: false 
+    },
+    { 
+      icon: Rocket, 
+      title: "Startup Technology Ecosystems", 
+      desc: "Full-stack technology foundations for startups — from MVP to scalable production systems, built for speed and growth.",
+      accent: true 
+    },
+    { 
+      icon: Globe, 
+      title: "Digital Platforms", 
+      desc: "Multi-user platforms, marketplaces, and SaaS products engineered for performance, security, and scale.",
+      accent: false 
     },
   ];
 
   return (
-    <section id="testimonials" className="py-32 md:py-40 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5 z-0">
-        <img src="/media/ai-network-bg.png" alt="Background" className="w-full h-full object-cover" />
-      </div>
-
+    <section id="projects" className="py-32 md:py-40 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-24">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
-              Client Stories
+              What We Build
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Trusted by <span className="text-gradient-gold">Industry Leaders</span>
+              Focus <span className="text-gradient-gold">Areas</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Real results from the brands that bet on excellence.
+              From AI-powered systems to startup ecosystems, here are the types of projects we specialize in.
             </p>
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <FadeIn key={i} delay={i * 0.12}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
               <div
-                data-testid={`card-testimonial-${i}`}
-                className={`h-full p-8 rounded-2xl bg-card border border-border/50 flex flex-col group hover:-translate-y-2 transition-all duration-300 ${t.accent ? "hover-glow-cyan" : "hover-glow"}`}
+                data-testid={`card-project-${i}`}
+                className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${project.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}
               >
-                <div className="flex gap-1 mb-6">
-                  {Array.from({ length: t.rating }).map((_, si) => (
-                    <Star key={si} size={16} className="text-amber-400 fill-amber-400" />
-                  ))}
-                </div>
-                
-                <blockquote className="text-foreground/80 leading-relaxed italic flex-grow mb-8 text-sm md:text-base">
-                  "{t.quote}"
-                </blockquote>
-                
-                <div className="flex items-center gap-4 pt-6 border-t border-border/50">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${t.accent ? "bg-cyan-500/15 text-cyan-400 border border-cyan-500/30" : "bg-amber-500/15 text-amber-400 border border-amber-500/30"}`}>
-                    {t.initials}
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className={`p-3 rounded-xl mb-6 w-fit ${project.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
+                    <project.icon size={28} className={project.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <div>
-                    <p className="font-bold text-foreground text-sm">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.title} · {t.company}</p>
-                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-foreground">{project.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-grow">{project.desc}</p>
                 </div>
               </div>
             </FadeIn>
@@ -620,19 +582,12 @@ function TestimonialsSection() {
 
 function WhyUsSection() {
   const highlights = [
-    { icon: CheckCircle2, text: "Luxury-tier design language & brand positioning", color: "text-amber-400" },
-    { icon: CheckCircle2, text: "AI-native architecture & intelligent automation", color: "text-cyan-400" },
-    { icon: CheckCircle2, text: "Performance-optimized at every level", color: "text-amber-400" },
-    { icon: CheckCircle2, text: "Dedicated partnership & ongoing support model", color: "text-cyan-400" },
-    { icon: CheckCircle2, text: "Transparent process with weekly deliverables", color: "text-amber-400" },
-    { icon: CheckCircle2, text: "Proven track record across 6+ industries", color: "text-cyan-400" },
-  ];
-
-  const differentiators = [
-    { value: "99.9%", label: "System Uptime", desc: "Enterprise-grade reliability" },
-    { value: "< 0.5s", label: "Load Times", desc: "Lightning-fast performance" },
-    { value: "5x", label: "Avg ROI Increase", desc: "Measurable business impact" },
-    { value: "24/7", label: "Support Access", desc: "Always-on partnership" },
+    { icon: BrainCircuit, text: "AI-first thinking across every solution we deliver", color: "text-cyan-400" },
+    { icon: Palette, text: "Premium design quality that builds brand trust", color: "text-amber-400" },
+    { icon: Server, text: "Scalable, modern architecture built for growth", color: "text-cyan-400" },
+    { icon: Target, text: "Strategic business focus with measurable outcomes", color: "text-amber-400" },
+    { icon: Zap, text: "Innovation-driven execution and fast delivery", color: "text-cyan-400" },
+    { icon: Shield, text: "Future-ready systems designed for long-term value", color: "text-amber-400" },
   ];
 
   return (
@@ -646,15 +601,15 @@ function WhyUsSection() {
                   Why Choose Denarixx
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  The <span className="text-gradient-gold">Competitive Advantage</span>
+                  Your <span className="text-gradient-gold">Competitive Edge</span>
                 </h2>
               </div>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We don't build commodities. We engineer bespoke digital ecosystems built for market dominance. Choosing Denarixx means betting on relentless excellence.
+                We combine deep technical expertise with premium design sensibility to deliver digital solutions that don't just work — they set you apart. Choosing Denarixx means investing in quality, innovation, and results.
               </p>
               
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {highlights.map((item, i) => (
                   <motion.div 
                     key={i} 
@@ -664,7 +619,9 @@ function WhyUsSection() {
                     viewport={{ once: true }}
                     className="flex items-center gap-4"
                   >
-                    <item.icon size={20} className={`${item.color} flex-shrink-0`} />
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${item.color === "text-cyan-400" ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
+                      <item.icon size={20} className={`${item.color} flex-shrink-0`} />
+                    </div>
                     <p className="text-foreground font-medium">{item.text}</p>
                   </motion.div>
                 ))}
@@ -672,24 +629,34 @@ function WhyUsSection() {
             </div>
           </FadeIn>
           
-          <div className="grid grid-cols-2 gap-6">
-            {differentiators.map((d, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <motion.div 
-                  whileHover={{ y: -8 }}
-                  data-testid={`card-differentiator-${i}`}
-                  className="p-8 rounded-2xl border border-border/50 bg-card text-center hover-glow transition-all duration-300 relative overflow-hidden group"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative z-10">
-                    <p className="text-4xl md:text-5xl font-bold text-gradient-gold mb-2">{d.value}</p>
-                    <p className="text-sm text-primary uppercase tracking-wider font-semibold mb-1">{d.label}</p>
-                    <p className="text-xs text-muted-foreground">{d.desc}</p>
-                  </div>
-                </motion.div>
-              </FadeIn>
-            ))}
-          </div>
+          <FadeIn delay={0.2}>
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/15 to-cyan-500/10 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl" />
+              <div className="relative p-10 rounded-3xl bg-card border border-border/50 space-y-8">
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold text-foreground">What sets us apart</h3>
+                  <p className="text-sm text-muted-foreground">Built on principles that deliver real results.</p>
+                </div>
+                <div className="grid grid-cols-1 gap-6">
+                  {[
+                    { label: "Tailored Solutions", desc: "Every project is custom-built for your specific needs", icon: Target },
+                    { label: "Modern Technology", desc: "We use the latest frameworks, tools, and AI capabilities", icon: Code2 },
+                    { label: "Long-Term Partnership", desc: "We support your growth well beyond the initial launch", icon: Shield },
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-4 items-start">
+                      <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
+                        <item.icon size={18} className="text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>
@@ -716,33 +683,21 @@ function CTABannerSection() {
         <FadeIn>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-8">
             <Sparkles size={14} />
-            <span>Ready to Elevate Your Brand?</span>
+            <span>Ready to Get Started?</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Your Next Chapter Starts <span className="text-gradient-gold">Today</span>.
+            Let's Build Something <span className="text-gradient-gold">Remarkable</span>
           </h2>
           
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-            Join the elite brands that chose to dominate their industries. Let's build something extraordinary together.
+            Whether you need an AI system, a new website, or a complete digital transformation — we're ready to help you take the next step.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <PremiumButton size="lg" onClick={() => scrollTo("#contact")} data-testid="button-cta-banner">
-              Start Your Project
-              <ArrowRight size={18} className="ml-2" />
-            </PremiumButton>
-            <div className="flex items-center gap-3 text-muted-foreground text-sm">
-              <div className="flex -space-x-2">
-                {["MR", "PN", "EV"].map((initials, i) => (
-                  <div key={i} className="w-8 h-8 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center text-xs font-bold text-primary">
-                    {initials}
-                  </div>
-                ))}
-              </div>
-              <span>Joined by 150+ satisfied clients</span>
-            </div>
-          </div>
+          <PremiumButton size="lg" onClick={() => scrollTo("#contact")} data-testid="button-cta-banner">
+            Start Your Project
+            <ArrowRight size={18} className="ml-2" />
+          </PremiumButton>
         </FadeIn>
       </div>
     </section>
@@ -778,12 +733,12 @@ function ContactSection() {
                   Get In Touch
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Let's Create <span className="text-gradient-gold">Together</span>.
+                  Let's Create <span className="text-gradient-gold">Together</span>
                 </h2>
               </div>
               
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Ready to transform your digital presence? Let's discuss how our AI-driven solutions and premium design can elevate your brand.
+                Have a project in mind? Tell us about your goals and we'll get back to you with a plan. We work with businesses of all sizes — from startups to established enterprises.
               </p>
 
               <div data-testid="text-response-time" className="p-6 rounded-2xl border border-primary/20 bg-primary/5 relative overflow-hidden">
@@ -803,24 +758,13 @@ function ContactSection() {
                     <p className="text-muted-foreground text-sm">hello@denarixx.com</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-card border border-border rounded-lg flex-shrink-0">
-                    <Phone className="text-primary" size={22} />
-                  </div>
-                  <div>
-                    <h4 className="text-foreground font-bold mb-1">Schedule a Call</h4>
-                    <p className="text-muted-foreground text-sm">Book a discovery call at your convenience</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-card border border-border rounded-lg flex-shrink-0">
-                    <MapPin className="text-primary" size={22} />
-                  </div>
-                  <div>
-                    <h4 className="text-foreground font-bold mb-1">Location</h4>
-                    <p className="text-muted-foreground text-sm">Silicon Valley, California<br/>Global Remote Operations</p>
-                  </div>
-                </div>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-border/50 bg-card">
+                <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-8 mb-4 opacity-80" />
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Denarixx AI & Digital Solutions — Building intelligent digital solutions for businesses, startups, and brands worldwide.
+                </p>
               </div>
             </div>
           </FadeIn>
@@ -839,7 +783,7 @@ function ContactSection() {
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-foreground uppercase tracking-wide">Full Name</label>
                 <Input 
-                  placeholder="John Doe" 
+                  placeholder="Your name" 
                   data-testid="input-name"
                   {...form.register("name")}
                   className={`text-base ${form.formState.errors.name ? "border-destructive/50 focus-visible:border-destructive" : ""}`}
@@ -853,7 +797,7 @@ function ContactSection() {
                 <label className="text-sm font-semibold text-foreground uppercase tracking-wide">Email Address</label>
                 <Input 
                   type="email" 
-                  placeholder="john@example.com" 
+                  placeholder="you@company.com" 
                   data-testid="input-email"
                   {...form.register("email")}
                   className={`text-base ${form.formState.errors.email ? "border-destructive/50 focus-visible:border-destructive" : ""}`}
@@ -866,7 +810,7 @@ function ContactSection() {
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-foreground uppercase tracking-wide">Project Brief</label>
                 <Textarea 
-                  placeholder="Tell us about your vision, goals, and timeline..." 
+                  placeholder="Tell us about your project, goals, and timeline..." 
                   data-testid="input-message"
                   {...form.register("message")}
                   className={`text-base min-h-[140px] ${form.formState.errors.message ? "border-destructive/50 focus-visible:border-destructive" : ""}`}
@@ -898,22 +842,29 @@ function ContactSection() {
 function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
+  const scrollTo = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    }
+  };
+
   const navLinks = [
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
+    { label: "Vision", href: "#vision" },
+    { label: "Projects", href: "#projects" },
     { label: "Process", href: "#process" },
-    { label: "Innovation", href: "#innovation" },
-    { label: "Testimonials", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
   ];
 
   const services = [
-    "AI Integration",
-    "Premium Web Design",
-    "System Automation",
-    "Brand Identity",
-    "Digital Strategy",
-    "Digital Ecosystem",
+    "AI Solutions",
+    "Web Design & Development",
+    "Automation & Digital Transformation",
+    "Branding & Creative Design",
+    "Digital Strategy & Consulting",
   ];
 
   return (
@@ -925,12 +876,12 @@ function Footer() {
           <div className="lg:col-span-1">
             <img
               src={logoUrl}
-              alt="Denarixx Logo"
+              alt="Denarixx AI & Digital Solutions"
               className="h-9 mb-6 opacity-90 hover:opacity-100 transition-opacity cursor-pointer"
               onClick={scrollToTop}
             />
             <p className="text-sm text-muted-foreground leading-relaxed mb-8">
-              Engineering the future through AI, innovation, and relentless digital excellence.
+              Denarixx AI & Digital Solutions builds intelligent digital products, AI systems, and premium online experiences for ambitious businesses worldwide.
             </p>
             <div className="flex gap-4">
               {[
@@ -957,13 +908,13 @@ function Footer() {
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <button
+                    onClick={() => scrollTo(link.href)}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group"
                   >
                     <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200" />
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -974,30 +925,26 @@ function Footer() {
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <a
-                    href="#services"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group"
+                  <button
+                    onClick={() => scrollTo("#services")}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group text-left"
                   >
-                    <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200" />
+                    <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200 flex-shrink-0" />
                     {service}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">Company</h4>
+            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">Legal</h4>
             <ul className="space-y-3 mb-8">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Cookie Policy</a></li>
+              <li><a href="#" data-testid="link-privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
+              <li><a href="#" data-testid="link-terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms & Conditions</a></li>
+              <li><a href="#" data-testid="link-impressum" className="text-sm text-muted-foreground hover:text-primary transition-colors">Impressum</a></li>
+              <li><a href="#" data-testid="link-cookie-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Cookie Policy</a></li>
             </ul>
-            <div className="p-4 rounded-xl border border-primary/20 bg-primary/5">
-              <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-1">Based in</p>
-              <p className="text-sm font-bold text-foreground">Silicon Valley, CA</p>
-              <p className="text-xs text-muted-foreground">Global Remote Operations</p>
-            </div>
           </div>
         </div>
         
@@ -1006,12 +953,10 @@ function Footer() {
             © {new Date().getFullYear()} Denarixx AI & Digital Solutions. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <p className="text-xs text-muted-foreground">
-              Crafted with precision · Powered by innovation
-            </p>
             <button
               onClick={scrollToTop}
               className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors group"
+              data-testid="button-back-to-top"
             >
               Back to top
               <ArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
@@ -1030,12 +975,11 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <StatsSection />
         <AboutSection />
         <ServicesSection />
         <ProcessSection />
-        <InnovationSection />
-        <TestimonialsSection />
+        <VisionSection />
+        <ProjectsSection />
         <WhyUsSection />
         <CTABannerSection />
         <ContactSection />

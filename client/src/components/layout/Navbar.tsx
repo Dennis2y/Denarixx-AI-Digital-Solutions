@@ -6,9 +6,9 @@ import logoUrl from "@assets/Denarixx_1772975867904.png";
 const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Innovation", href: "#innovation" },
-  { label: "Why Us", href: "#why-us" },
+  { label: "Vision", href: "#vision" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -60,12 +60,12 @@ export function Navbar() {
           >
             <img 
               src={logoUrl} 
-              alt="Denarixx Logo" 
+              alt="Denarixx AI & Digital Solutions" 
               className="h-8 md:h-10 object-contain transition-transform duration-500 group-hover:scale-105" 
             />
           </div>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.label}
@@ -81,7 +81,7 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-4">
             <PremiumButton onClick={() => scrollTo("#contact")} size="sm" data-testid="button-nav-cta">
-              Start Project
+              Start a Project
             </PremiumButton>
           </div>
 
@@ -89,6 +89,7 @@ export function Navbar() {
             className="md:hidden text-foreground p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="button-mobile-menu"
+            aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -111,7 +112,7 @@ export function Navbar() {
             </button>
           ))}
           <PremiumButton onClick={() => scrollTo("#contact")} className="w-full mt-2">
-            Start Project
+            Start a Project
           </PremiumButton>
         </div>
       </div>
