@@ -120,7 +120,7 @@ function HeroSection() {
             </div>
           </div>
           
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light dark:font-light font-normal leading-relaxed">
             {t("hero.subtitle")}
           </p>
           
@@ -336,7 +336,7 @@ function VisionSection() {
                 <span className="text-primary text-xs uppercase tracking-widest font-semibold">{t("nav.vision")}</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">{t("vision.heading1")} <span className="text-gradient-gold">{t("vision.heading2")}</span></h2>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 font-light dark:font-light font-normal leading-relaxed">
                 {t("vision.paragraph")}
               </p>
               <div className="flex items-center gap-6">
