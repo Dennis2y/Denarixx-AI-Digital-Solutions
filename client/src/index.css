@@ -94,7 +94,7 @@
 @layer utilities {
   /* Gold gradient - Primary accent */
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#8B6914] via-[#BF953F] to-[#8B6914];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#7A5A0B] via-[#A67C1A] to-[#7A5A0B];
   }
   .dark .text-gradient-gold {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728];
@@ -109,7 +109,7 @@
 
   /* Cyan gradient - Secondary accent */
   .text-gradient-cyan {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#0077AA] via-[#0066CC] to-[#0088BB];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#005577] via-[#004488] to-[#006699];
   }
   .dark .text-gradient-cyan {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00D9FF] via-[#0099FF] to-[#00CCFF];
@@ -117,7 +117,7 @@
 
   /* Purple gradient */
   .text-gradient-purple {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#C026D3];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5B21B6] via-[#7C3AED] to-[#9333EA];
   }
   .dark .text-gradient-purple {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#A855F7] via-[#D946EF] to-[#EC4899];

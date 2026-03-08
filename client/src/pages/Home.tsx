@@ -76,7 +76,7 @@ function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover z-0 opacity-25">
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover z-0 opacity-25 dark:opacity-25 opacity-20">
         <source src="/media/hero_video.mp4" type="video/mp4" />
       </video>
 
@@ -84,7 +84,7 @@ function HeroSection() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[150px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-cyan-500/5 rounded-full blur-[180px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background dark:via-background/50 dark:to-background" />
       </motion.div>
 
       <div className="container relative z-10 mx-auto px-4 text-center max-w-5xl">
@@ -102,7 +102,7 @@ function HeroSection() {
                 <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
                 <span className="text-gradient-purple">{t("hero.headline3")}</span>
               </span>
-              <span className="inline-block px-6 md:px-10 opacity-30" aria-hidden="true">
+              <span className="inline-block px-6 md:px-10 opacity-40 dark:opacity-30" aria-hidden="true">
                 <span className="text-gradient-cyan">{t("hero.headline1")}</span>{" "}
                 <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
                 <span className="text-gradient-purple">{t("hero.headline3")}</span>
@@ -112,7 +112,7 @@ function HeroSection() {
                 <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
                 <span className="text-gradient-purple">{t("hero.headline3")}</span>
               </span>
-              <span className="inline-block px-6 md:px-10 opacity-30" aria-hidden="true">
+              <span className="inline-block px-6 md:px-10 opacity-40 dark:opacity-30" aria-hidden="true">
                 <span className="text-gradient-cyan">{t("hero.headline1")}</span>{" "}
                 <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
                 <span className="text-gradient-purple">{t("hero.headline3")}</span>
@@ -134,7 +134,7 @@ function HeroSection() {
             </PremiumButton>
           </div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} className="flex items-center justify-center gap-3 text-xs text-muted-foreground/60 uppercase tracking-[0.2em] font-medium flex-wrap" data-testid="text-hero-trust-line">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} className="flex items-center justify-center gap-3 text-xs text-muted-foreground dark:text-muted-foreground/60 uppercase tracking-[0.2em] font-medium flex-wrap" data-testid="text-hero-trust-line">
             <span>{t("hero.trust.ai")}</span>
             <span className="w-1 h-1 rounded-full bg-primary/40" />
             <span>{t("hero.trust.automation")}</span>
@@ -545,7 +545,7 @@ function InnovationLabSection() {
           <source src="/media/innovation_lab_bg.mp4" type="video/mp4" />
         </video>
       </div>
-      <div className="absolute inset-0 bg-background/70 z-[1]" />
+      <div className="absolute inset-0 bg-background/90 dark:bg-background/70 z-[1]" />
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
@@ -558,7 +558,7 @@ function InnovationLabSection() {
           </FadeIn>
         </div>
         <FadeIn delay={0.1}>
-          <p className="text-base text-muted-foreground/80 leading-relaxed text-center max-w-4xl mx-auto mb-16" data-testid="text-innovation-intro">{t("innovation.intro")}</p>
+          <p className="text-base text-muted-foreground dark:text-muted-foreground/80 leading-relaxed text-center max-w-4xl mx-auto mb-16" data-testid="text-innovation-intro">{t("innovation.intro")}</p>
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {products.map((product, i) => (
@@ -605,7 +605,7 @@ function InnovationLabSection() {
           </FadeIn>
         </div>
         <FadeIn delay={0.5}>
-          <p className="text-xs text-muted-foreground/50 text-center mt-10 max-w-3xl mx-auto leading-relaxed italic" data-testid="text-innovation-disclaimer">{t("innovation.disclaimer")}</p>
+          <p className="text-xs text-muted-foreground dark:text-muted-foreground/50 text-center mt-10 max-w-3xl mx-auto leading-relaxed italic" data-testid="text-innovation-disclaimer">{t("innovation.disclaimer")}</p>
         </FadeIn>
         <FadeIn delay={0.6}>
           <div className="flex justify-center mt-10">
