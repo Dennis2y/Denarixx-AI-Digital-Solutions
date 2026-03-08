@@ -988,10 +988,10 @@ function Footer() {
           <div>
             <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">{t("footer.legal")}</h4>
             <ul className="space-y-3 mb-8">
-              <li><a href="#" data-testid="link-privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.privacy")}</a></li>
-              <li><a href="#" data-testid="link-terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.terms")}</a></li>
-              <li><a href="#" data-testid="link-impressum" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.impressum")}</a></li>
-              <li><a href="#" data-testid="link-cookie-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.cookies")}</a></li>
+              <li><a href="/privacy" data-testid="link-privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.privacy")}</a></li>
+              <li><a href="/terms" data-testid="link-terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.terms")}</a></li>
+              <li><a href="/impressum" data-testid="link-impressum" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.impressum")}</a></li>
+              <li><a href="/cookies" data-testid="link-cookie-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.cookies")}</a></li>
             </ul>
           </div>
         </div>
