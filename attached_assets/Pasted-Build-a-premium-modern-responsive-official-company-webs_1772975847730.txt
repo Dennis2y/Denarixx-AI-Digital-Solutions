@@ -1,0 +1,88 @@
+Build a premium, modern, responsive official company website for a brand called "Denarixx AI & Digital Solutions".
+
+Tech stack:
+- HTML, CSS, and JavaScript only
+- clean folder structure
+- no unnecessary libraries
+- mobile responsive
+- smooth animations
+- premium black and gold luxury tech design
+- professional corporate feel
+- production-ready code
+
+Brand direction:
+- futuristic
+- elegant
+- luxury
+- AI-first
+- high-end digital agency style
+- black background with gold accents
+- clean typography
+- premium spacing and layout
+
+Pages/sections required:
+1. Hero section
+   - headline: "Building Intelligent Digital Solutions for the Future"
+   - subheadline explaining AI, software, automation, branding, and digital innovation
+   - CTA buttons: "Explore Services" and "Contact Us"
+
+2. About section
+   - introduce Denarixx as an AI and digital solutions company
+   - mention innovation, automation, software, branding, and scalable digital products
+
+3. Services section
+   - AI Solutions
+   - Web Design & Development
+   - Automation & Digital Transformation
+   - Branding & Creative Design
+   - Business Digital Strategy
+
+4. Projects / Vision section
+   - show company vision and innovation focus
+   - include cards for AI systems, smart platforms, digital products, and future technologies
+
+5. Why Choose Us section
+   - premium design
+   - AI innovation
+   - scalable systems
+   - business-focused results
+
+6. Contact section
+   - contact form
+   - email placeholder
+   - company brand block
+   - strong call to action
+
+7. Footer
+   - company name
+   - navigation links
+   - copyright
+
+Design requirements:
+- sticky navbar
+- animated hero background or subtle visual effects
+- smooth scroll
+- hover effects
+- modern cards
+- rounded corners
+- soft shadows
+- premium button styling
+- elegant section transitions
+- strong desktop and mobile layout
+
+Files/folder structure:
+denarixx-website/
+  index.html
+  /assets/css/styles.css
+  /assets/js/main.js
+  /assets/img/
+
+Also:
+- create clean semantic HTML
+- separate CSS and JS files
+- include comments in code
+- make it easy to expand into multi-page later
+- keep all code organized and readable
+
+Do not make it look generic.
+It should feel like a premium AI company website similar to a luxury startup brand.
