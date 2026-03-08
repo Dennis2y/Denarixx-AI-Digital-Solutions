@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { useTheme } from "@/hooks/use-theme.tsx";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { 
@@ -44,7 +43,6 @@ function HeroSection() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const { theme } = useTheme();
 
   const scrollTo = (href: string) => {
     const element = document.querySelector(href);
@@ -62,16 +60,16 @@ function HeroSection() {
         muted
         loop
         playsInline
-        className={`absolute inset-0 w-full h-full object-cover z-0 ${theme === 'light' ? 'opacity-25' : 'opacity-40'}`}
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
       >
         <source src="/media/hero_video.mp4" type="video/mp4" />
       </video>
 
       {/* Background Effects */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
-        <div className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === 'light' ? 'bg-primary/10' : 'bg-primary/20'}`} />
-        <div className={`absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[150px] ${theme === 'light' ? 'bg-primary/5' : 'bg-primary/10'}`} />
-        <div className={`absolute inset-0 bg-gradient-to-b ${theme === 'light' ? 'from-background via-background/70 to-background' : 'from-transparent via-background/50 to-background'}`} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
       </motion.div>
 
       <div className="container relative z-10 mx-auto px-4 text-center max-w-5xl">

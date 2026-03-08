@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { PremiumButton } from "@/components/ui/premium-button";
-import { useTheme } from "@/hooks/use-theme.tsx";
 import logoUrl from "@assets/Denarixx_1772975867904.png";
 
 const NAV_LINKS = [
@@ -14,7 +13,6 @@ const NAV_LINKS = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -67,15 +65,8 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Theme Toggle & CTA */}
+          {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
             <PremiumButton onClick={() => scrollTo("#contact")} size="sm">
               Start Project
             </PremiumButton>
@@ -107,17 +98,7 @@ export function Navbar() {
               {link.label}
             </button>
           ))}
-          <div className="flex items-center gap-3 pt-2 border-t border-border">
-            <button
-              onClick={toggleTheme}
-              className="flex-1 p-3 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground flex items-center justify-center gap-2"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-              <span className="text-sm font-medium">{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
-            </button>
-          </div>
-          <PremiumButton onClick={() => scrollTo("#contact")} className="w-full">
+          <PremiumButton onClick={() => scrollTo("#contact")} className="w-full mt-2">
             Start Project
           </PremiumButton>
         </div>

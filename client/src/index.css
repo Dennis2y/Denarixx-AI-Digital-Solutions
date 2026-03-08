@@ -9,40 +9,6 @@
     --font-display: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 
-    /* Light Theme (Default) */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 5%;
-
-    --card: 0 0% 97%;
-    --card-foreground: 0 0% 5%;
-
-    --popover: 0 0% 97%;
-    --popover-foreground: 0 0% 5%;
-
-    /* Premium Gold & Cyan Palette */
-    --primary: 43 74% 49%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 0 0% 95%;
-    --secondary-foreground: 43 74% 45%;
-
-    --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 55%;
-
-    --accent: 43 74% 49%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 82%;
-    --input: 0 0% 82%;
-    --ring: 43 74% 49%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
     /* Dark Theme - Luxury */
     --background: 0 0% 2%;
     --foreground: 0 0% 98%;
@@ -72,6 +38,8 @@
     --border: 0 0% 12%;
     --input: 0 0% 12%;
     --ring: 43 74% 49%;
+
+    --radius: 0.5rem;
   }
 }
 
