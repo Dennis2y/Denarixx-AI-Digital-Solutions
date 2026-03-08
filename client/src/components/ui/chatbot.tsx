@@ -12,6 +12,62 @@ const CHAT_API = "/api/chat";
 const DEFAULT_MODEL = "gpt-4o-mini";
 const TYPING_SPEED = 18;
 
+function renderMarkdown(text: string) {
+  const lines = text.split("\n");
+  const elements: React.ReactNode[] = [];
+  let listItems: React.ReactNode[] = [];
+
+  const flushList = () => {
+    if (listItems.length > 0) {
+      elements.push(<ul key={`ul-${elements.length}`} className="list-disc pl-4 space-y-1 my-1">{listItems}</ul>);
+      listItems = [];
+    }
+  };
+
+  const inlineFormat = (str: string): React.ReactNode => {
+    const parts: React.ReactNode[] = [];
+    const regex = /\*\*(.+?)\*\*/g;
+    let lastIndex = 0;
+    let match;
+    while ((match = regex.exec(str)) !== null) {
+      if (match.index > lastIndex) parts.push(str.slice(lastIndex, match.index));
+      parts.push(<strong key={`b-${match.index}`} className="font-semibold text-foreground">{match[1]}</strong>);
+      lastIndex = regex.lastIndex;
+    }
+    if (lastIndex < str.length) parts.push(str.slice(lastIndex));
+    return parts.length === 1 ? parts[0] : <>{parts}</>;
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      flushList();
+      continue;
+    }
+
+    const headingMatch = trimmed.match(/^#{1,4}\s+(.+)$/);
+    if (headingMatch) {
+      flushList();
+      elements.push(<p key={`h-${i}`} className="font-semibold text-foreground mt-2 mb-1">{inlineFormat(headingMatch[1])}</p>);
+      continue;
+    }
+
+    const listMatch = trimmed.match(/^[-*•]\s+(.+)$/) || trimmed.match(/^\d+\.\s+(.+)$/);
+    if (listMatch) {
+      listItems.push(<li key={`li-${i}`}>{inlineFormat(listMatch[1])}</li>);
+      continue;
+    }
+
+    flushList();
+    elements.push(<p key={`p-${i}`}>{inlineFormat(trimmed)}</p>);
+  }
+
+  flushList();
+  return <div className="space-y-1">{elements}</div>;
+}
+
 const MODELS = [
   { id: "gpt-4o-mini", name: "GPT-4o Mini" },
   { id: "deepseek-chat", name: "Deepseek" },
@@ -109,7 +165,7 @@ export function Chatbot() {
     setTypingContent("");
 
     try {
-      const systemPrompt = `You are the AI assistant for Denarixx AI & Digital Solutions, a premium AI and digital agency founded by Dennis Charles. You help visitors learn about Denarixx's services (AI systems, web development, automation, branding, consulting) and answer questions. Be helpful, professional, and concise. Respond in the same language the user writes in.`;
+      const systemPrompt = `You are the AI assistant for Denarixx AI & Digital Solutions, a premium AI and digital agency founded by Dennis Charles. You help visitors learn about Denarixx's services (AI systems, web development, automation, branding, consulting) and answer questions. Be helpful, professional, and concise. Keep responses short and conversational — avoid heavy markdown formatting, long lists, or overly structured responses. Use bold (**text**) sparingly for emphasis. Use simple bullet points when listing items. Respond in the same language the user writes in.`;
 
       const res = await fetch(CHAT_API, {
         method: "POST",
@@ -251,14 +307,14 @@ export function Chatbot() {
                     </div>
                   )}
                   <div
-                    className={`rounded-2xl px-4 py-3 text-sm max-w-[85%] whitespace-pre-wrap ${
+                    className={`rounded-2xl px-4 py-3 text-sm max-w-[85%] ${
                       msg.role === "user"
-                        ? "bg-primary text-primary-foreground rounded-tr-sm"
+                        ? "bg-primary text-primary-foreground rounded-tr-sm whitespace-pre-wrap"
                         : "bg-card border border-border/30 text-foreground rounded-tl-sm"
                     }`}
                     data-testid={`chat-message-${msg.role}-${i}`}
                   >
-                    {msg.content}
+                    {msg.role === "assistant" ? renderMarkdown(msg.content) : msg.content}
                   </div>
                   {msg.role === "user" && (
                     <div className="w-7 h-7 rounded-lg bg-secondary border border-border/30 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -273,8 +329,8 @@ export function Chatbot() {
                   <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Bot size={14} className="text-primary" />
                   </div>
-                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-foreground max-w-[85%] whitespace-pre-wrap" data-testid="chat-typing">
-                    {typingContent}
+                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-foreground max-w-[85%]" data-testid="chat-typing">
+                    {renderMarkdown(typingContent)}
                     <span className="inline-block w-1.5 h-4 bg-primary/70 animate-pulse ml-0.5 align-middle" />
                   </div>
                 </div>
