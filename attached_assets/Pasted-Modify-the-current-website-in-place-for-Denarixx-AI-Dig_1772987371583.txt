@@ -1,0 +1,200 @@
+Modify the current website in place for:
+
+Denarixx AI & Digital Solutions
+
+IMPORTANT:
+- Do not rebuild the site from scratch
+- Keep the existing premium black-and-gold design language
+- Keep the current structure and sections
+- Add the new sections cleanly into the current site
+- Match the current visual style exactly
+- Make the result feel premium, visionary, and investor-ready
+
+PRIMARY GOAL:
+Upgrade the website by adding:
+1. Founder section
+2. Founder photo block
+3. Denarixx Innovation Lab section
+4. Better company credibility and brand depth
+
+==================================================
+1. ADD A NEW FOUNDER SECTION
+==================================================
+
+Add a premium section titled:
+
+Behind Denarixx
+
+This section should introduce the founder in a short, strategic, professional way.
+
+Use this content:
+
+Title:
+Dennis Charles
+
+Subtitle:
+Founder & CEO — Denarixx AI & Digital Solutions
+
+Body copy:
+Dennis Charles is the founder of Denarixx AI & Digital Solutions, a future-focused technology company building intelligent digital systems, AI-powered platforms, automation solutions, and premium digital experiences.
+
+His work combines artificial intelligence, modern software architecture, and strategic product thinking to help businesses, startups, and ambitious brands innovate, scale, and operate more intelligently.
+
+Through Denarixx, his vision is to build not only world-class digital services, but also future-facing innovation concepts and intelligent technology products designed for tomorrow’s world.
+
+Add a short founder philosophy / quote block:
+
+“Technology should simplify life, amplify intelligence, and create real-world opportunities. Denarixx exists to build those systems.”
+
+Design requirements:
+- premium two-column layout
+- founder photo on one side
+- text on the other side
+- black/gold luxury styling
+- subtle glow
+- responsive layout
+- elegant typography
+- no generic biography look
+
+==================================================
+2. ADD THE FOUNDER PHOTO
+==================================================
+
+Use the founder photo already available in the project or uploaded assets.
+
+Important styling instructions:
+- use the edited portrait with the AI-inspired background if available
+- crop it as a premium founder portrait
+- show it in a clean rounded or softly framed container
+- make it feel like a premium tech-founder profile image
+- blend it naturally with the site design
+- no distracting border styles
+- subtle premium shadow or glow only
+
+If multiple founder photos exist, choose the one that looks most professional and confident.
+
+==================================================
+3. ADD A NEW SECTION CALLED "DENARIXX INNOVATION LAB"
+==================================================
+
+Add a premium section after Focus Areas and before Why Choose Us.
+
+Section title:
+Denarixx Innovation Lab
+
+Section intro:
+Denarixx Innovation Lab explores future-facing digital products, intelligent systems, and internal R&D concepts designed to shape tomorrow’s technology landscape.
+
+Create 4 elegant innovation cards:
+
+1. Denarixx Vision
+Label: Wearable Intelligence
+Description:
+AI smart glasses concept focused on real-world assistance, wearable computing, and intelligent human interaction.
+
+2. Denarixx REMEMO
+Label: AI Memory System
+Description:
+AI memory recorder concept designed to capture, organize, and retrieve important spoken information.
+
+3. Denarixx Smartphone
+Label: Concept Stage
+Description:
+A future-facing exploration of intelligent personal devices within the Denarixx ecosystem.
+
+4. Denarixx Future Mobility
+Label: Future Platform
+Description:
+Early internal concept work around connected mobility, in-car intelligence, and premium digital driving experiences.
+
+Also add elegant small tags or badges to the cards such as:
+- Concept Stage
+- Internal R&D
+- Future Platform
+- Innovation Lab
+
+Important:
+- present these as innovation concepts, not released products
+- do not make them look like public product sales pages
+- make the section feel visionary, premium, and investor-friendly
+
+Design requirements:
+- premium card layout
+- hover effects
+- gold highlights
+- subtle blue/cyan accents only if needed
+- strong visual consistency with the current site
+
+==================================================
+4. ADD OPTIONAL IMAGE SUPPORT FOR INNOVATION LAB
+==================================================
+
+If suitable concept images already exist in the project, use them inside the innovation cards.
+If not, keep the cards text-first with premium icon blocks or visual placeholders.
+
+Do not use random stock images that break the Denarixx brand style.
+
+==================================================
+5. IMPROVE COMPANY CREDIBILITY
+==================================================
+
+Without changing the current design direction, strengthen the company website by making Denarixx feel:
+- founder-led
+- innovation-driven
+- premium
+- future-focused
+- more than just a services agency
+
+Use the new Founder section and Innovation Lab section to deepen the company identity.
+
+==================================================
+6. SECTION PLACEMENT
+==================================================
+
+Use this homepage flow:
+
+- Hero
+- About
+- Services
+- Process
+- Vision
+- Focus Areas
+- Denarixx Innovation Lab
+- Behind Denarixx
+- Why Choose Us
+- Contact
+- Footer
+
+If the Founder section fits better before Innovation Lab, that is acceptable as long as the flow feels premium and logical.
+
+==================================================
+7. KEEP THE CURRENT BRAND AND STYLE
+==================================================
+
+Preserve:
+- black background
+- gold premium accents
+- elegant modern typography
+- minimal luxury tech aesthetic
+- smooth spacing
+- existing navbar/footer style
+- investor-grade layout quality
+
+Avoid:
+- clutter
+- generic template styling
+- overuse of bright colors
+- fake testimonials
+- fake clients
+- fake stats
+
+==================================================
+8. FINAL REQUIREMENTS
+==================================================
+
+After making the updates:
+1. summarize everything added
+2. list the files changed
+3. provide the updated folder tree
+4. identify any placeholders I still need to fill manually
+5. keep everything responsive and production-ready

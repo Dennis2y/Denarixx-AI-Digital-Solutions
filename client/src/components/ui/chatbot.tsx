@@ -10,6 +10,7 @@ interface Message {
 
 const CHAT_API = "/api/chat";
 const DEFAULT_MODEL = "gpt-4o-mini";
+const TYPING_SPEED = 18;
 
 const MODELS = [
   { id: "gpt-4o-mini", name: "GPT-4o Mini" },
@@ -26,20 +27,61 @@ const chatLabels: Record<string, Record<string, string>> = {
   error: { en: "Sorry, something went wrong. Please try again.", de: "Entschuldigung, etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.", fr: "Désolé, une erreur s'est produite. Veuillez réessayer.", es: "Lo siento, algo salió mal. Por favor, inténtalo de nuevo.", it: "Mi dispiace, qualcosa è andato storto. Per favore riprova.", pt: "Desculpe, algo deu errado. Por favor, tente novamente.", nl: "Sorry, er ging iets mis. Probeer het opnieuw.", tr: "Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.", ar: "عذراً، حدث خطأ ما. يرجى المحاولة مرة أخرى.", zh: "抱歉，出现了问题。请重试。" },
 };
 
+function typeOutText(
+  fullText: string,
+  onUpdate: (partial: string) => void,
+  onDone: () => void
+): () => void {
+  let index = 0;
+  let cancelled = false;
+
+  onUpdate(fullText.slice(0, 1));
+  index = 1;
+
+  const tick = () => {
+    if (cancelled) return;
+    const charsPerTick = Math.random() < 0.1 ? 2 : 1;
+    index = Math.min(index + charsPerTick, fullText.length);
+    onUpdate(fullText.slice(0, index));
+
+    if (index < fullText.length) {
+      const char = fullText[index - 1];
+      let delay: number;
+      if (char === "." || char === "!" || char === "?") {
+        delay = TYPING_SPEED * 8;
+      } else if (char === "," || char === ";" || char === ":") {
+        delay = TYPING_SPEED * 4;
+      } else if (char === "\n") {
+        delay = TYPING_SPEED * 6;
+      } else {
+        delay = TYPING_SPEED + Math.random() * 10;
+      }
+      setTimeout(tick, delay);
+    } else {
+      onDone();
+    }
+  };
+
+  setTimeout(tick, TYPING_SPEED);
+  return () => { cancelled = true; };
+}
+
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [streamingContent, setStreamingContent] = useState("");
+  const [isWaiting, setIsWaiting] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [typingContent, setTypingContent] = useState("");
   const [model, setModel] = useState(DEFAULT_MODEL);
   const [showModelSelect, setShowModelSelect] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const abortRef = useRef<AbortController | null>(null);
+  const cancelTypingRef = useRef<(() => void) | null>(null);
   const { language } = useLanguage();
 
   const label = (key: string) => chatLabels[key]?.[language] || chatLabels[key]?.en || key;
+  const isBusy = isWaiting || isTyping;
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -47,7 +89,7 @@ export function Chatbot() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, streamingContent, isLoading, scrollToBottom]);
+  }, [messages, typingContent, isWaiting, scrollToBottom]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -57,16 +99,14 @@ export function Chatbot() {
 
   const sendMessage = async () => {
     const trimmed = input.trim();
-    if (!trimmed || isLoading) return;
+    if (!trimmed || isBusy) return;
 
     const userMessage: Message = { role: "user", content: trimmed };
     const updatedMessages = [...messages, userMessage];
     setMessages(updatedMessages);
     setInput("");
-    setIsLoading(true);
-    setStreamingContent("");
-
-    abortRef.current = new AbortController();
+    setIsWaiting(true);
+    setTypingContent("");
 
     try {
       const systemPrompt = `You are the AI assistant for Denarixx AI & Digital Solutions, a premium AI and digital agency founded by Dennis Charles. You help visitors learn about Denarixx's services (AI systems, web development, automation, branding, consulting) and answer questions. Be helpful, professional, and concise. Respond in the same language the user writes in.`;
@@ -81,11 +121,10 @@ export function Chatbot() {
             ...updatedMessages,
           ],
         }),
-        signal: abortRef.current.signal,
       });
 
       if (!res.ok || !res.body) {
-        throw new Error("Stream failed");
+        throw new Error("Request failed");
       }
 
       const reader = res.body.getReader();
@@ -95,42 +134,41 @@ export function Chatbot() {
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-
         const chunk = decoder.decode(value, { stream: true });
         const lines = chunk.split("\n");
-
         for (const line of lines) {
-          const trimmedLine = line.trim();
-          if (!trimmedLine || !trimmedLine.startsWith("data: ")) continue;
-
-          const data = trimmedLine.slice(6);
+          const tl = line.trim();
+          if (!tl || !tl.startsWith("data: ")) continue;
+          const data = tl.slice(6);
           if (data === "[DONE]") continue;
-
           try {
             const parsed = JSON.parse(data);
             const content = parsed?.choices?.[0]?.delta?.content;
-            if (content) {
-              fullContent += content;
-              setStreamingContent(fullContent);
-            }
-          } catch {
-            // skip malformed chunks
-          }
+            if (content) fullContent += content;
+          } catch { /* skip */ }
         }
       }
 
+      setIsWaiting(false);
+
       if (fullContent) {
-        setMessages([...updatedMessages, { role: "assistant", content: fullContent }]);
+        setIsTyping(true);
+        cancelTypingRef.current = typeOutText(
+          fullContent,
+          (partial) => setTypingContent(partial),
+          () => {
+            setMessages(prev => [...prev, { role: "assistant", content: fullContent }]);
+            setTypingContent("");
+            setIsTyping(false);
+            cancelTypingRef.current = null;
+          }
+        );
       } else {
         setMessages([...updatedMessages, { role: "assistant", content: label("error") }]);
       }
-    } catch (err: unknown) {
-      if (err instanceof Error && err.name === "AbortError") return;
-      setMessages([...updatedMessages, { role: "assistant", content: label("error") }]);
-    } finally {
-      setStreamingContent("");
-      setIsLoading(false);
-      abortRef.current = null;
+    } catch {
+      setIsWaiting(false);
+      setMessages(prev => [...prev, { role: "assistant", content: label("error") }]);
     }
   };
 
@@ -140,9 +178,6 @@ export function Chatbot() {
       sendMessage();
     }
   };
-
-  const isStreaming = isLoading && streamingContent.length > 0;
-  const isWaiting = isLoading && streamingContent.length === 0;
 
   return (
     <>
@@ -233,13 +268,13 @@ export function Chatbot() {
                 </div>
               ))}
 
-              {isStreaming && (
+              {isTyping && typingContent && (
                 <div className="flex gap-3">
                   <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Bot size={14} className="text-primary" />
                   </div>
-                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-foreground max-w-[85%] whitespace-pre-wrap" data-testid="chat-streaming">
-                    {streamingContent}
+                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-foreground max-w-[85%] whitespace-pre-wrap" data-testid="chat-typing">
+                    {typingContent}
                     <span className="inline-block w-1.5 h-4 bg-primary/70 animate-pulse ml-0.5 align-middle" />
                   </div>
                 </div>
@@ -272,12 +307,12 @@ export function Chatbot() {
                   onKeyDown={handleKeyDown}
                   placeholder={label("placeholder")}
                   className="flex-1 bg-secondary/50 border border-border/30 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
-                  disabled={isLoading}
+                  disabled={isBusy}
                   data-testid="input-chat-message"
                 />
                 <button
                   onClick={sendMessage}
-                  disabled={!input.trim() || isLoading}
+                  disabled={!input.trim() || isBusy}
                   className="w-10 h-10 rounded-xl bg-primary hover:bg-primary/90 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center transition-all"
                   data-testid="button-send-message"
                 >
