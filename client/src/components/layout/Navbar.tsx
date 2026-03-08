@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation } from "wouter";
 import { PremiumButton } from "@/components/ui/premium-button";
 import logoUrl from "@assets/Denarixx_1772975867904.png";
 
 const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Vision", href: "#vision" },
-  { label: "Why Us", href: "#why-us" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Vision", href: "/vision" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -20,13 +22,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
+  const navigateTo = (href: string) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: offsetTop, behavior: "smooth" });
-    }
+    setLocation(href);
   };
 
   return (
@@ -43,7 +41,7 @@ export function Navbar() {
           {/* Logo */}
           <div 
             className="flex items-center cursor-pointer group" 
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => navigateTo("/")}
           >
             <img 
               src={logoUrl} 
@@ -57,7 +55,7 @@ export function Navbar() {
             {NAV_LINKS.map((link) => (
               <button
                 key={link.label}
-                onClick={() => scrollTo(link.href)}
+                onClick={() => navigateTo(link.href)}
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wide"
               >
                 {link.label}
@@ -67,7 +65,7 @@ export function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <PremiumButton onClick={() => scrollTo("#contact")} size="sm">
+            <PremiumButton onClick={() => navigateTo("/contact")} size="sm">
               Start Project
             </PremiumButton>
           </div>
@@ -92,13 +90,13 @@ export function Navbar() {
           {NAV_LINKS.map((link) => (
             <button
               key={link.label}
-              onClick={() => scrollTo(link.href)}
+              onClick={() => navigateTo(link.href)}
               className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               {link.label}
             </button>
           ))}
-          <PremiumButton onClick={() => scrollTo("#contact")} className="w-full">
+          <PremiumButton onClick={() => navigateTo("/contact")} className="w-full">
             Start Project
           </PremiumButton>
         </div>
