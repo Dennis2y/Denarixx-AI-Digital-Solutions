@@ -2,19 +2,24 @@
 
 ## Overview
 
-This is the official company website for **Denarixx AI & Digital Solutions**, a premium AI and digital solutions company. The site is a single-page React application with a luxury black-and-gold dark aesthetic. It showcases services, company vision, focus areas, and includes a functional contact form that persists submissions to a PostgreSQL database.
+This is the official company website for **Denarixx AI & Digital Solutions**, a premium AI and digital solutions company. The site is a single-page React application with a luxury black-and-gold dark aesthetic. It showcases services, company vision, innovation lab, selected work, and includes a functional contact form that persists submissions to a PostgreSQL database.
 
 ### Page Sections (in scroll order)
-1. **Hero** — Full-screen video background, headline, CTA buttons, animated scroll indicator
+1. **Hero** — Full-screen video background, eyebrow badge, headline, CTA buttons, trust line, scroll indicator
 2. **About** — Company overview, AI-first approach, premium quality pillars
 3. **Services** — 5 service cards: AI Solutions, Web Design & Development, Automation & Digital Transformation, Branding & Creative Design, Digital Strategy & Product Consulting
 4. **Process** — 5-step process: Discover, Design, Build, Launch, Scale
 5. **Vision** — Full-bleed banner + 5 innovation cards (AI Systems, Smart Platforms, Intelligent Automation, Future Products, Scalable Infrastructure)
 6. **Projects / Focus Areas** — 6 project type cards showing what Denarixx builds
-7. **Why Choose Denarixx** — 6 credibility points + side panel with differentiators
-8. **CTA Banner** — Conversion section before Contact
-9. **Contact** — Contact form (name, email, message) + branding block + response time info
-10. **Footer** — Logo, nav links, services list, social icons, legal links (Privacy Policy, Terms & Conditions, Impressum, Cookie Policy)
+7. **Selected Work** — 4 premium project direction cards (AI Business Systems, Premium Company Websites, Startup Technology Ecosystems, Intelligent Automation Platforms)
+8. **Behind Denarixx** — Founder/company story with founder-led innovation positioning
+9. **Denarixx Innovation Lab** — 4 product concepts (Denarixx Vision, Denarixx REMEMO, AI Automation Systems, Future Platforms)
+10. **Who We Work With** — 5 audience cards (Startups, SMBs, Premium Brands, Founders & Innovators, Digital-First Companies)
+11. **Why Choose Denarixx** — 6 credibility points + side panel with differentiators
+12. **CTA Banner** — Conversion section before Contact
+13. **Contact** — Enhanced form (name, email, company, project type dropdown, budget dropdown, message) + response time + email + location
+14. **Newsletter** — "Join the Denarixx Network" email signup (client-side only)
+15. **Footer** — Logo, description, innovation tagline, nav links, services list, social icons, legal links
 
 ### Global Features
 - **Scroll progress bar** — Gold gradient line at bottom of fixed navbar
@@ -46,7 +51,7 @@ Preferred communication style: Simple, everyday language.
 - **UI Components**: shadcn/ui component library (Radix UI primitives) with custom premium variants (`PremiumButton`, `premium-input`, `premium-textarea`) that apply gold glow effects.
 - **Animations**: Framer Motion for scroll-triggered fade-ins, parallax hero effects, and hover interactions. A `FadeIn` helper component is used throughout.
 - **Data Fetching**: TanStack React Query for server state. A custom `useSubmitContact` hook wraps the contact form mutation.
-- **Forms**: React Hook Form + Zod resolver, sharing the same schema as the server for validation consistency.
+- **Forms**: React Hook Form + Zod resolver, sharing the same schema as the server for validation consistency. Contact form has optional fields (company, projectType, budget) that are extended with Zod on the frontend and appended to the message before submission.
 - **Theme**: Dark mode enforced via CSS variables. A `ThemeProvider` wraps the app for potential light/dark toggle.
 
 ### Backend Architecture
@@ -107,3 +112,9 @@ Preferred communication style: Simple, everyday language.
 ### Assets
 - Company logo: `attached_assets/Denarixx_1772975867904.png` (imported directly in React via `@assets/` alias)
 - Media files in `client/public/media/`: `hero_video.mp4`, `tech-abstract-bg.png`, `ai-network-bg.png`, `innovation-bg.png`
+
+### Placeholders to Update
+- **Social media links**: All currently `#` in Footer (LinkedIn, X, Instagram, GitHub)
+- **Legal pages**: Privacy Policy, Terms & Conditions, Impressum, Cookie Policy — all `#`
+- **Contact email**: `hello@denarixx.com` (update if different)
+- **Newsletter**: Client-side only (no backend persistence)

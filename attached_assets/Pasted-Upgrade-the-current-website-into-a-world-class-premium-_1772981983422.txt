@@ -1,0 +1,331 @@
+Upgrade the current website into a world-class premium company website for:
+
+Denarixx AI & Digital Solutions
+
+IMPORTANT:
+- Modify the current project in place
+- Do not rebuild from scratch unless necessary
+- Keep the current premium black-and-gold luxury AI design language
+- Make the site feel more credible, more visionary, more premium, and more investor-ready
+- Keep it modern, elegant, responsive, and production-quality
+
+CORE GOAL:
+Turn the current website into a premium AI company website that can impress:
+- clients
+- investors
+- partners
+- future collaborators
+
+BRAND POSITIONING:
+Denarixx AI & Digital Solutions is a future-focused AI and digital innovation company building intelligent systems, digital platforms, automation solutions, premium websites, and next-generation technology products.
+
+DESIGN DIRECTION:
+- black background
+- gold premium accents
+- subtle blue/cyan highlights only where appropriate
+- elegant spacing
+- refined cards
+- premium animations
+- luxury startup look
+- no generic template feeling
+- no clutter
+- no fake testimonials or fake clients
+
+==================================================
+1. KEEP AND IMPROVE THE CURRENT SECTIONS
+==================================================
+
+Keep and refine these sections:
+- Navbar
+- Hero
+- About
+- Services
+- Process
+- Vision
+- Focus Areas
+- Why Choose Us
+- Contact
+- Footer
+
+Polish spacing, typography, and consistency across all of them.
+
+==================================================
+2. IMPROVE THE HERO SECTION
+==================================================
+
+Keep the premium style, but make the hero more powerful and conversion-focused.
+
+Use:
+
+Eyebrow text:
+AI-Powered Digital Excellence
+
+Headline:
+Building Intelligent Digital Solutions
+
+Subheadline:
+Denarixx AI & Digital Solutions helps businesses, startups, and visionary brands build premium digital products, AI systems, automation workflows, and scalable technology platforms.
+
+Primary CTA:
+Explore Services
+
+Secondary CTA:
+Contact Us
+
+Add a stronger trust/positioning line under the CTAs such as:
+AI systems • automation • digital platforms • premium web experiences
+
+Make the hero feel bold and investor-grade.
+
+==================================================
+3. ADD A NEW “CASE STUDIES / SELECTED WORK” SECTION
+==================================================
+
+Add a new section after Focus Areas called:
+
+Selected Work
+
+This section should showcase example project categories in a premium way.
+Do NOT invent fake clients.
+You may present them as internal or representative project directions.
+
+Create 4 premium project cards:
+
+1. AI Business Systems
+Description:
+Custom AI models and decision systems built to improve operations, insights, and business efficiency.
+
+2. Premium Company Websites
+Description:
+High-converting corporate websites designed to establish credibility and elevate digital presence.
+
+3. Startup Technology Ecosystems
+Description:
+Scalable digital foundations for startups, from MVP platforms to growth-ready product systems.
+
+4. Intelligent Automation Platforms
+Description:
+Workflow automation, integrations, and AI-enhanced systems that reduce manual effort and increase speed.
+
+Each card should include:
+- title
+- short description
+- small category label
+- elegant hover effect
+
+==================================================
+4. ADD A NEW “FOUNDER / COMPANY STORY” SECTION
+==================================================
+
+Add a premium founder/company section titled:
+
+Behind Denarixx
+
+Suggested copy direction:
+Denarixx was created with a vision to build intelligent digital systems that combine technology, design, and long-term strategic thinking. The company focuses on helping businesses and startups embrace AI, automation, and premium digital execution while also developing future-facing technology concepts and innovation-driven products.
+
+Add a founder positioning block:
+Founder-led innovation
+AI systems • product thinking • digital architecture • premium execution
+
+This section should feel personal but professional.
+Do not make it overly emotional or generic.
+
+==================================================
+5. ADD A NEW “DENARIXX INNOVATION LAB” SECTION
+==================================================
+
+This is very important.
+
+Add a premium section titled:
+
+Denarixx Innovation Lab
+
+Purpose:
+Show that Denarixx is not only a services company, but also an innovation brand building future technology products.
+
+Create elegant product cards for:
+
+1. Denarixx Vision
+AI smart glasses concept focused on intelligent assistance, real-world interaction, and wearable computing.
+
+2. Denarixx REMEMO
+AI memory recorder concept designed to capture, organize, and retrieve important spoken information.
+
+3. AI Automation Systems
+Custom AI-driven systems for workflow optimization, digital intelligence, and automation.
+
+4. Future Platforms
+Emerging concepts in digital infrastructure, smart products, and next-generation experiences.
+
+Add a short section intro:
+We build not only digital services, but also future-facing product concepts and intelligent systems designed for tomorrow’s world.
+
+This section should feel premium, visionary, and investor-attractive.
+
+==================================================
+6. ADD A NEW “WHO WE WORK WITH” SECTION
+==================================================
+
+Add a new section titled:
+
+Who We Work With
+
+Create clean category cards for:
+- Startups
+- Small & Medium Businesses
+- Premium Brands
+- Founders & Innovators
+- Digital-First Companies
+
+Each card should explain who Denarixx helps and what value it brings.
+
+==================================================
+7. IMPROVE THE “WHY CHOOSE US” SECTION
+==================================================
+
+Keep the current structure, but refine the copy and make it sharper.
+
+Use strong points like:
+- AI-first thinking across every solution
+- premium design quality that builds trust
+- scalable systems built for long-term growth
+- business-focused execution with measurable value
+- modern technology stack and future-ready architecture
+- tailored strategy, not generic delivery
+
+Make this section feel more convincing and more premium.
+
+==================================================
+8. IMPROVE THE CONTACT SECTION
+==================================================
+
+Keep the current contact form but improve its business value.
+
+Use a clearer intro such as:
+Have a project in mind? Tell us about your goals and we’ll reply with a practical next step.
+
+Keep:
+- name
+- email
+- project brief
+
+Optional add:
+- company name
+- budget range dropdown
+- project type dropdown
+
+Keep the response time card.
+
+Use:
+Email: hello@denarixx.com
+
+Do not use fake addresses.
+If location is needed, use:
+Germany-based • Working globally
+
+==================================================
+9. IMPROVE THE FOOTER
+==================================================
+
+Keep the current footer structure, but strengthen it.
+
+Use:
+Denarixx AI & Digital Solutions builds intelligent digital products, AI systems, automation workflows, and premium web experiences for ambitious businesses worldwide.
+
+Footer columns:
+- Navigation
+- Services
+- Legal
+
+Keep legal links:
+- Privacy Policy
+- Terms & Conditions
+- Impressum
+- Cookie Policy
+
+Add a short innovation statement:
+Built for ambitious brands, startups, and future-focused businesses.
+
+==================================================
+10. ADD A NEWSLETTER / COMMUNITY BLOCK
+==================================================
+
+Add a small premium section before the footer titled:
+
+Join the Denarixx Network
+
+Text:
+Get updates on AI systems, digital innovation, product concepts, and future Denarixx developments.
+
+Include:
+- email input
+- subscribe button
+
+Keep it elegant and minimal.
+
+==================================================
+11. VISUAL IMPROVEMENTS
+==================================================
+
+Improve the website visually with:
+- better section spacing
+- stronger visual rhythm
+- more consistent card heights
+- smoother transitions
+- improved hover states
+- more refined mobile responsiveness
+- cleaner alignment
+- premium icon presentation
+- better contrast where needed
+- stronger visual hierarchy in headings and paragraphs
+
+Keep the style premium and not flashy.
+
+==================================================
+12. SEO + METADATA
+==================================================
+
+Add or improve:
+- page title
+- meta description
+- Open Graph title and description
+- favicon support
+- proper semantic section structure
+- alt text
+- heading hierarchy
+
+Use:
+Title:
+Denarixx AI & Digital Solutions | Intelligent Digital Solutions for the Future
+
+Meta description:
+Denarixx AI & Digital Solutions builds premium websites, AI systems, automation workflows, digital platforms, and future-focused technology solutions for businesses, startups, and innovative brands.
+
+==================================================
+13. TRUST + PROFESSIONALISM RULES
+==================================================
+
+Do NOT add:
+- fake testimonials
+- fake clients
+- fake awards
+- fake office locations
+- fake numbers
+
+Do add:
+- stronger clarity
+- stronger business credibility
+- stronger strategic positioning
+- stronger premium feel
+
+==================================================
+14. FINAL OUTPUT
+==================================================
+
+After making the changes, provide:
+1. a summary of what was upgraded
+2. the updated folder tree
+3. which files were changed
+4. any placeholders I still need to fill manually
+5. deployment steps if needed

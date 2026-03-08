@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,7 +20,6 @@ import {
   Code2,
   BarChart3,
   Globe,
-  CheckCircle2,
   Palette,
   Rocket,
   Shield,
@@ -30,7 +29,18 @@ import {
   BrainCircuit,
   Workflow,
   Server,
-  PenTool
+  PenTool,
+  Eye,
+  Mic,
+  Boxes,
+  FlaskConical,
+  Users,
+  Briefcase,
+  Crown,
+  User,
+  MonitorSmartphone,
+  MapPin,
+  Send
 } from "lucide-react";
 import { SiLinkedin, SiX, SiInstagram, SiGithub } from "react-icons/si";
 
@@ -77,26 +87,23 @@ function ScrollToTop() {
   );
 }
 
+function scrollTo(href: string) {
+  const element = document.querySelector(href);
+  if (element) {
+    const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: offsetTop, behavior: "smooth" });
+  }
+}
+
 function HeroSection() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const scrollTo = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: offsetTop, behavior: "smooth" });
-    }
-  };
-
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <video
-        autoPlay muted loop playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-30"
-      >
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover z-0 opacity-25">
         <source src="/media/hero_video.mp4" type="video/mp4" />
       </video>
 
@@ -131,10 +138,10 @@ function HeroSection() {
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-            Denarixx AI & Digital Solutions helps businesses, startups, and brands build powerful digital products, AI systems, automation workflows, and premium online experiences.
+            Denarixx AI & Digital Solutions helps businesses, startups, and visionary brands build premium digital products, AI systems, automation workflows, and scalable technology platforms.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10">
             <PremiumButton size="lg" onClick={() => scrollTo("#services")} className="w-full sm:w-auto" data-testid="button-explore-services">
               Explore Services
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -143,6 +150,22 @@ function HeroSection() {
               Contact Us
             </PremiumButton>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="flex items-center justify-center gap-3 text-xs text-muted-foreground/60 uppercase tracking-[0.2em] font-medium"
+            data-testid="text-hero-trust-line"
+          >
+            <span>AI systems</span>
+            <span className="w-1 h-1 rounded-full bg-primary/40" />
+            <span>automation</span>
+            <span className="w-1 h-1 rounded-full bg-primary/40" />
+            <span>digital platforms</span>
+            <span className="w-1 h-1 rounded-full bg-primary/40" />
+            <span>premium web experiences</span>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -154,10 +177,7 @@ function HeroSection() {
         onClick={() => scrollTo("#about")}
       >
         <span className="text-xs text-muted-foreground uppercase tracking-widest font-medium">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
           <ChevronDown size={20} className="text-primary" />
         </motion.div>
       </motion.div>
@@ -167,12 +187,12 @@ function HeroSection() {
 
 function AboutSection() {
   return (
-    <section id="about" className="py-32 md:py-40 relative overflow-hidden">
+    <section id="about" className="py-28 md:py-36 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 z-0">
         <img src="/media/tech-abstract-bg.png" alt="" className="w-full h-full object-cover" aria-hidden="true" />
       </div>
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <FadeIn>
             <div className="space-y-8">
               <div>
@@ -184,7 +204,7 @@ function AboutSection() {
                 </h2>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Denarixx AI & Digital Solutions is a technology company focused on building intelligent digital products for modern businesses. We combine artificial intelligence, premium design, and scalable software engineering to help our clients grow, automate, and lead in their industries.
                 </p>
@@ -193,27 +213,27 @@ function AboutSection() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
                       <BrainCircuit className="text-cyan-400" size={24} />
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">AI-First Approach</h4>
-                    <p className="text-sm text-muted-foreground">We integrate artificial intelligence into every solution to deliver smarter, faster results.</p>
+                    <h4 className="text-base font-bold text-foreground mb-1">AI-First Approach</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">We integrate artificial intelligence into every solution to deliver smarter, faster results.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
                       <Palette className="text-amber-400" size={24} />
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">Premium Quality</h4>
-                    <p className="text-sm text-muted-foreground">Every detail — from design to deployment — is crafted to the highest standard.</p>
+                    <h4 className="text-base font-bold text-foreground mb-1">Premium Quality</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">Every detail — from design to deployment — is crafted to the highest standard.</p>
                   </div>
                 </div>
               </div>
@@ -228,7 +248,7 @@ function AboutSection() {
                 alt="Abstract technology visualization" 
                 className="relative rounded-3xl border border-border/50 object-cover w-full shadow-2xl filter grayscale-[50%] contrast-[1.2] group-hover:grayscale-[30%] transition-all duration-500"
               />
-              <div className="absolute -bottom-8 -right-8 p-8 bg-card border border-border rounded-2xl shadow-2xl hidden md:block backdrop-blur-sm">
+              <div className="absolute -bottom-6 -right-6 p-6 bg-card border border-border/60 rounded-2xl shadow-2xl hidden md:block backdrop-blur-sm">
                 <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">Built for</p>
                 <p className="text-2xl font-bold text-gradient-gold mt-1">The Future</p>
               </div>
@@ -242,94 +262,43 @@ function AboutSection() {
 
 function ServicesSection() {
   const services = [
-    { 
-      icon: Bot, 
-      title: "AI Solutions", 
-      desc: "Custom AI systems, machine learning models, and intelligent automation that help your business make smarter decisions, streamline operations, and unlock new opportunities.",
-      color: "from-cyan-500/10 to-blue-500/5",
-      accent: true,
-      tags: ["Machine Learning", "NLP", "Predictive Analytics"]
-    },
-    { 
-      icon: Layers, 
-      title: "Web Design & Development", 
-      desc: "High-performance websites and web applications built with modern frameworks, responsive design, and conversion-focused user experiences that represent your brand at its best.",
-      color: "from-amber-500/10 to-orange-500/5",
-      accent: false,
-      tags: ["UI/UX", "Full-Stack", "Responsive"]
-    },
-    { 
-      icon: Cpu, 
-      title: "Automation & Digital Transformation", 
-      desc: "Streamline your business operations with intelligent workflows, system integrations, and process automation that reduce manual effort and increase efficiency at scale.",
-      color: "from-cyan-500/10 to-teal-500/5",
-      accent: true,
-      tags: ["Workflow", "APIs", "Integration"]
-    },
-    { 
-      icon: PenTool, 
-      title: "Branding & Creative Design", 
-      desc: "Comprehensive brand identity systems, visual design, and creative direction that position your company as a premium, trustworthy presence in your market.",
-      color: "from-amber-500/10 to-yellow-500/5",
-      accent: false,
-      tags: ["Brand Identity", "Visual Design", "Strategy"]
-    },
-    { 
-      icon: TrendingUp, 
-      title: "Digital Strategy & Product Consulting", 
-      desc: "Data-driven strategic planning, product roadmaps, and technology consulting that align your digital investments with real business outcomes and long-term growth.",
-      color: "from-cyan-500/10 to-blue-500/5",
-      accent: true,
-      tags: ["Growth", "Analytics", "Roadmapping"]
-    },
+    { icon: Bot, title: "AI Solutions", desc: "Custom AI systems, machine learning models, and intelligent automation that help your business make smarter decisions, streamline operations, and unlock new opportunities.", color: "from-cyan-500/10 to-blue-500/5", accent: true, tags: ["Machine Learning", "NLP", "Predictive Analytics"] },
+    { icon: Layers, title: "Web Design & Development", desc: "High-performance websites and web applications built with modern frameworks, responsive design, and conversion-focused user experiences that represent your brand at its best.", color: "from-amber-500/10 to-orange-500/5", accent: false, tags: ["UI/UX", "Full-Stack", "Responsive"] },
+    { icon: Cpu, title: "Automation & Digital Transformation", desc: "Streamline your business operations with intelligent workflows, system integrations, and process automation that reduce manual effort and increase efficiency at scale.", color: "from-cyan-500/10 to-teal-500/5", accent: true, tags: ["Workflow", "APIs", "Integration"] },
+    { icon: PenTool, title: "Branding & Creative Design", desc: "Comprehensive brand identity systems, visual design, and creative direction that position your company as a premium, trustworthy presence in your market.", color: "from-amber-500/10 to-yellow-500/5", accent: false, tags: ["Brand Identity", "Visual Design", "Strategy"] },
+    { icon: TrendingUp, title: "Digital Strategy & Product Consulting", desc: "Data-driven strategic planning, product roadmaps, and technology consulting that align your digital investments with real business outcomes and long-term growth.", color: "from-cyan-500/10 to-blue-500/5", accent: true, tags: ["Growth", "Analytics", "Roadmapping"] },
   ];
 
   return (
-    <section id="services" className="py-32 md:py-40 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+    <section id="services" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 z-0">
         <img src="/media/innovation-bg.png" alt="" className="w-full h-full object-cover" aria-hidden="true" />
       </div>
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">
-              Our Services
-            </div>
+            <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">Our Services</div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Solutions that <span className="text-gradient-gold">Drive Growth</span>
             </h2>
-            <p className="text-lg text-muted-foreground">
-              End-to-end digital services designed for businesses that want to lead, not follow.
-            </p>
+            <p className="text-lg text-muted-foreground">End-to-end digital services designed for businesses that want to lead, not follow.</p>
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <div
-                data-testid={`card-service-${i}`}
-                className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${service.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden cursor-default`}
-              >
+              <div data-testid={`card-service-${i}`} className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${service.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0`} />
-                
                 <div className="relative z-10 flex flex-col h-full">
                   <div className={`p-3 rounded-xl mb-6 w-fit transition-colors ${service.accent ? "bg-cyan-500/10 group-hover:bg-cyan-500/20" : "bg-amber-500/10 group-hover:bg-amber-500/20"}`}>
                     <service.icon size={28} className={service.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-foreground">
-                    {service.title}
-                  </h3>
+                  <h3 className="text-xl font-bold mb-3 text-foreground">{service.title}</h3>
                   <p className="text-muted-foreground leading-relaxed flex-grow text-sm">{service.desc}</p>
-                  
                   <div className="mt-6 flex flex-wrap gap-2">
                     {service.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`text-xs px-2.5 py-1 rounded-full border font-medium ${service.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/70" : "border-amber-500/20 bg-amber-500/5 text-amber-400/70"}`}
-                      >
-                        {tag}
-                      </span>
+                      <span key={tag} className={`text-xs px-2.5 py-1 rounded-full border font-medium ${service.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/70" : "border-amber-500/20 bg-amber-500/5 text-amber-400/70"}`}>{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -344,75 +313,26 @@ function ServicesSection() {
 
 function ProcessSection() {
   const steps = [
-    {
-      number: "01",
-      icon: Search,
-      title: "Discover",
-      desc: "We learn about your business, goals, audience, and challenges to define the right scope and strategy for your project.",
-      color: "text-cyan-400",
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-500/20"
-    },
-    {
-      number: "02",
-      icon: Lightbulb,
-      title: "Design",
-      desc: "Our team creates wireframes, visual designs, and detailed plans that bring your vision to life before a single line of code is written.",
-      color: "text-amber-400",
-      bg: "bg-amber-500/10",
-      border: "border-amber-500/20"
-    },
-    {
-      number: "03",
-      icon: Code2,
-      title: "Build",
-      desc: "We develop your solution using modern, scalable technology — with regular updates, clean code, and a focus on performance.",
-      color: "text-cyan-400",
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-500/20"
-    },
-    {
-      number: "04",
-      icon: Rocket,
-      title: "Launch",
-      desc: "After thorough testing and quality assurance, we deploy your product and ensure a smooth, reliable launch.",
-      color: "text-amber-400",
-      bg: "bg-amber-500/10",
-      border: "border-amber-500/20"
-    },
-    {
-      number: "05",
-      icon: BarChart3,
-      title: "Scale",
-      desc: "Post-launch, we monitor performance, gather insights, and continuously optimize to help your product grow with your business.",
-      color: "text-cyan-400",
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-500/20"
-    },
+    { number: "01", icon: Search, title: "Discover", desc: "We learn about your business, goals, audience, and challenges to define the right scope and strategy.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "02", icon: Lightbulb, title: "Design", desc: "Our team creates wireframes, visual designs, and detailed plans that bring your vision to life.", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { number: "03", icon: Code2, title: "Build", desc: "We develop your solution using modern, scalable technology with regular updates and clean code.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "04", icon: Rocket, title: "Launch", desc: "After thorough testing and quality assurance, we deploy your product and ensure a smooth launch.", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { number: "05", icon: BarChart3, title: "Scale", desc: "Post-launch, we monitor performance, gather insights, and optimize to help your product grow.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
   ];
 
   return (
-    <section id="process" className="py-32 md:py-40 relative overflow-hidden">
+    <section id="process" className="py-28 md:py-36 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
-      
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
-              Our Process
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              How We <span className="text-gradient-cyan">Work</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              A structured, transparent process from first conversation to long-term growth.
-            </p>
+            <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">Our Process</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">How We <span className="text-gradient-cyan">Work</span></h2>
+            <p className="text-lg text-muted-foreground">A structured, transparent process from first conversation to long-term growth.</p>
           </FadeIn>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative">
           <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-cyan-500/20 via-amber-500/20 to-cyan-500/20" />
-          
           {steps.map((step, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <div data-testid={`card-process-${i}`} className="relative flex flex-col items-start group">
@@ -441,31 +361,21 @@ function VisionSection() {
   ];
 
   return (
-    <section id="vision" className="py-32 md:py-40 relative overflow-hidden">
+    <section id="vision" className="py-28 md:py-36 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <FadeIn>
-          <div className="relative rounded-3xl overflow-hidden bg-card border border-border/50 group mb-20">
+          <div className="relative rounded-3xl overflow-hidden bg-card border border-border/50 group mb-16">
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10 group-hover:via-background/70 transition-all duration-500" />
-            <img 
-              src="/media/ai-network-bg.png" 
-              alt="Technology network visualization" 
-              className="absolute inset-0 w-full h-full object-cover object-right opacity-30 filter grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-500"
-            />
-            
-            <div className="relative z-20 p-12 md:p-20 lg:p-28 max-w-3xl">
+            <img src="/media/ai-network-bg.png" alt="Technology network visualization" className="absolute inset-0 w-full h-full object-cover object-right opacity-30 filter grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-500" />
+            <div className="relative z-20 p-12 md:p-20 lg:p-24 max-w-3xl">
               <div className="inline-flex items-center gap-2 mb-8">
                 <div className="w-8 h-[2px] bg-primary" />
                 <span className="text-primary text-xs uppercase tracking-widest font-semibold">Our Vision</span>
               </div>
-              
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-                Shaping the <span className="text-gradient-gold">Digital Future</span>
-              </h2>
-              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">Shaping the <span className="text-gradient-gold">Digital Future</span></h2>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 font-light leading-relaxed">
                 We believe the most successful companies of tomorrow will be those that fully embrace intelligent technology today. Our mission is to equip ambitious businesses with the AI-driven tools, platforms, and strategies they need to lead their industries.
               </p>
-              
               <div className="flex items-center gap-6">
                 <div className="w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center text-primary flex-shrink-0 group-hover:border-primary/60 transition-colors">
                   <Zap size={24} />
@@ -478,14 +388,10 @@ function VisionSection() {
             </div>
           </div>
         </FadeIn>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
           {cards.map((card, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <div
-                data-testid={`card-vision-${i}`}
-                className={`p-6 rounded-2xl bg-card border border-border/50 group hover:-translate-y-2 transition-all duration-300 ${card.accent ? "hover-glow-cyan" : "hover-glow"}`}
-              >
+              <div data-testid={`card-vision-${i}`} className={`p-6 rounded-2xl bg-card border border-border/50 group hover:-translate-y-2 transition-all duration-300 h-full ${card.accent ? "hover-glow-cyan" : "hover-glow"}`}>
                 <div className={`p-3 rounded-xl mb-4 w-fit ${card.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                   <card.icon size={24} className={card.accent ? "text-cyan-400" : "text-amber-400"} />
                 </div>
@@ -502,75 +408,226 @@ function VisionSection() {
 
 function ProjectsSection() {
   const projects = [
-    { 
-      icon: BrainCircuit, 
-      title: "AI Business Systems", 
-      desc: "Custom AI models and decision engines for enterprise workflows, customer insights, and operational intelligence.",
-      accent: true 
-    },
-    { 
-      icon: Building2, 
-      title: "Company Websites", 
-      desc: "Premium, high-converting corporate websites that establish credibility and drive business results.",
-      accent: false 
-    },
-    { 
-      icon: Smartphone, 
-      title: "Digital Product Design", 
-      desc: "End-to-end product design for web and mobile apps — from user research and wireframing to polished, pixel-perfect interfaces.",
-      accent: true 
-    },
-    { 
-      icon: Workflow, 
-      title: "Automation Systems", 
-      desc: "Intelligent workflow automation connecting your tools, APIs, and processes into efficient, self-running systems.",
-      accent: false 
-    },
-    { 
-      icon: Rocket, 
-      title: "Startup Technology Ecosystems", 
-      desc: "Full-stack technology foundations for startups — from MVP to scalable production systems, built for speed and growth.",
-      accent: true 
-    },
-    { 
-      icon: Globe, 
-      title: "Digital Platforms", 
-      desc: "Multi-user platforms, marketplaces, and SaaS products engineered for performance, security, and scale.",
-      accent: false 
-    },
+    { icon: BrainCircuit, title: "AI Business Systems", desc: "Custom AI models and decision engines for enterprise workflows, customer insights, and operational intelligence.", accent: true },
+    { icon: Building2, title: "Company Websites", desc: "Premium, high-converting corporate websites that establish credibility and drive business results.", accent: false },
+    { icon: Smartphone, title: "Digital Product Design", desc: "End-to-end product design for web and mobile apps — from user research to pixel-perfect interfaces.", accent: true },
+    { icon: Workflow, title: "Automation Systems", desc: "Intelligent workflow automation connecting your tools, APIs, and processes into efficient, self-running systems.", accent: false },
+    { icon: Rocket, title: "Startup Technology Ecosystems", desc: "Full-stack technology foundations for startups — from MVP to scalable production systems, built for speed and growth.", accent: true },
+    { icon: Globe, title: "Digital Platforms", desc: "Multi-user platforms, marketplaces, and SaaS products engineered for performance, security, and scale.", accent: false },
   ];
 
   return (
-    <section id="projects" className="py-32 md:py-40 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+    <section id="projects" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
-              What We Build
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Focus <span className="text-gradient-gold">Areas</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              From AI-powered systems to startup ecosystems, here are the types of projects we specialize in.
-            </p>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">What We Build</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Focus <span className="text-gradient-gold">Areas</span></h2>
+            <p className="text-lg text-muted-foreground">From AI-powered systems to startup ecosystems, here are the types of projects we specialize in.</p>
           </FadeIn>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <div
-                data-testid={`card-project-${i}`}
-                className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${project.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}
-              >
+              <div data-testid={`card-project-${i}`} className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${project.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}>
                 <div className="relative z-10 flex flex-col h-full">
                   <div className={`p-3 rounded-xl mb-6 w-fit ${project.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                     <project.icon size={28} className={project.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-foreground">{project.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-foreground">{project.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed flex-grow">{project.desc}</p>
                 </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SelectedWorkSection() {
+  const work = [
+    { title: "AI Business Systems", category: "Artificial Intelligence", desc: "Custom AI models and decision systems built to improve operations, insights, and business efficiency.", icon: BrainCircuit, accent: true },
+    { title: "Premium Company Websites", category: "Web Design & Development", desc: "High-converting corporate websites designed to establish credibility and elevate digital presence.", icon: Building2, accent: false },
+    { title: "Startup Technology Ecosystems", category: "Product Engineering", desc: "Scalable digital foundations for startups, from MVP platforms to growth-ready product systems.", icon: Rocket, accent: true },
+    { title: "Intelligent Automation Platforms", category: "Automation & AI", desc: "Workflow automation, integrations, and AI-enhanced systems that reduce manual effort and increase speed.", icon: Workflow, accent: false },
+  ];
+
+  return (
+    <section id="selected-work" className="py-28 md:py-36 relative overflow-hidden">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <FadeIn>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Portfolio Direction</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Selected <span className="text-gradient-gold">Work</span></h2>
+            <p className="text-lg text-muted-foreground">Representative project directions that reflect our capabilities and vision.</p>
+          </FadeIn>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {work.map((item, i) => (
+            <FadeIn key={i} delay={i * 0.1}>
+              <div data-testid={`card-selected-work-${i}`} className={`group p-10 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden ${item.accent ? "hover-glow-cyan" : "hover-glow"}`}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.accent ? "from-cyan-500/5 to-transparent" : "from-primary/5 to-transparent"} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className={`text-xs px-3 py-1 rounded-full border font-medium ${item.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/80" : "border-amber-500/20 bg-amber-500/5 text-amber-400/80"}`}>{item.category}</span>
+                    <div className={`p-2.5 rounded-xl ${item.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
+                      <item.icon size={22} className={item.accent ? "text-cyan-400" : "text-amber-400"} />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FounderSection() {
+  return (
+    <section id="behind" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+          <FadeIn>
+            <div className="space-y-8">
+              <div>
+                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Our Story</div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Behind <span className="text-gradient-gold">Denarixx</span></h2>
+              </div>
+              <div className="space-y-5">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Denarixx was created with a vision to build intelligent digital systems that combine technology, design, and long-term strategic thinking. The company focuses on helping businesses and startups embrace AI, automation, and premium digital execution while also developing future-facing technology concepts and innovation-driven products.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  What started as a founder-driven initiative has grown into a focused technology company with a clear mission: to deliver premium digital solutions that create real, measurable value — and to push the boundaries of what technology products can achieve.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/15 to-cyan-500/10 rounded-3xl blur-2xl" />
+              <div className="relative p-10 rounded-3xl bg-card border border-border/50 space-y-8">
+                <div className="flex items-center gap-4 mb-2">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <User size={28} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground">Founder-Led Innovation</h3>
+                    <p className="text-sm text-muted-foreground">Vision, execution, and long-term thinking</p>
+                  </div>
+                </div>
+                <div className="h-[1px] w-full bg-border/50" />
+                <div className="flex flex-wrap gap-3">
+                  {["AI systems", "product thinking", "digital architecture", "premium execution"].map((tag) => (
+                    <span key={tag} className="text-xs px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary/80 font-medium">{tag}</span>
+                  ))}
+                </div>
+                <div className="space-y-4 pt-2">
+                  {[
+                    { label: "Technology + Design", desc: "Deep integration of engineering and aesthetics" },
+                    { label: "Long-Term Vision", desc: "Building products and companies designed to last" },
+                    { label: "Innovation Focus", desc: "Constantly exploring new product concepts and systems" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-3 items-start">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">{item.label}</p>
+                        <p className="text-xs text-muted-foreground">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InnovationLabSection() {
+  const products = [
+    { icon: Eye, title: "Denarixx Vision", desc: "AI smart glasses concept focused on intelligent assistance, real-world interaction, and wearable computing.", accent: true },
+    { icon: Mic, title: "Denarixx REMEMO", desc: "AI memory recorder concept designed to capture, organize, and retrieve important spoken information.", accent: false },
+    { icon: Boxes, title: "AI Automation Systems", desc: "Custom AI-driven systems for workflow optimization, digital intelligence, and business automation.", accent: true },
+    { icon: FlaskConical, title: "Future Platforms", desc: "Emerging concepts in digital infrastructure, smart products, and next-generation technology experiences.", accent: false },
+  ];
+
+  return (
+    <section id="innovation-lab" className="py-28 md:py-36 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-3 z-0">
+        <img src="/media/ai-network-bg.png" alt="" className="w-full h-full object-cover" aria-hidden="true" />
+      </div>
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <FadeIn>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
+              <FlaskConical size={12} />
+              Innovation Lab
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Denarixx <span className="text-gradient-cyan">Innovation Lab</span></h2>
+            <p className="text-lg text-muted-foreground">We build not only digital services, but also future-facing product concepts and intelligent systems designed for tomorrow's world.</p>
+          </FadeIn>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {products.map((product, i) => (
+            <FadeIn key={i} delay={i * 0.1}>
+              <div data-testid={`card-innovation-${i}`} className={`group p-10 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden h-full ${product.accent ? "hover-glow-cyan" : "hover-glow"}`}>
+                <div className={`absolute top-0 right-0 w-40 h-40 rounded-full blur-[80px] transition-opacity duration-500 opacity-0 group-hover:opacity-100 ${product.accent ? "bg-cyan-500/10" : "bg-primary/10"}`} />
+                <div className="relative z-10">
+                  <div className={`p-3 rounded-xl mb-6 w-fit ${product.accent ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
+                    <product.icon size={28} className={product.accent ? "text-cyan-400" : "text-amber-400"} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">{product.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{product.desc}</p>
+                  <div className={`mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider ${product.accent ? "text-cyan-400/60" : "text-amber-400/60"}`}>
+                    Concept / In Development
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhoWeWorkWithSection() {
+  const audiences = [
+    { icon: Rocket, title: "Startups", desc: "From MVP to scale — we help startups build fast, iterate wisely, and grow with the right technology foundation.", accent: true },
+    { icon: Building2, title: "Small & Medium Businesses", desc: "Modern digital presence, automation, and AI tools designed to give established businesses a competitive edge.", accent: false },
+    { icon: Crown, title: "Premium Brands", desc: "Luxury-tier design, brand identity, and digital experiences for companies that demand the very best.", accent: true },
+    { icon: User, title: "Founders & Innovators", desc: "Strategic technology partnership for visionary founders building the next generation of products and companies.", accent: false },
+    { icon: MonitorSmartphone, title: "Digital-First Companies", desc: "Scalable platforms, AI integrations, and performance-optimized systems for companies that live and breathe digital.", accent: true },
+  ];
+
+  return (
+    <section id="who-we-work-with" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <FadeIn>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Our Clients</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Who We <span className="text-gradient-gold">Work With</span></h2>
+            <p className="text-lg text-muted-foreground">We partner with ambitious businesses and individuals who value quality, innovation, and long-term thinking.</p>
+          </FadeIn>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {audiences.map((aud, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div data-testid={`card-audience-${i}`} className={`group h-full p-8 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 ${aud.accent ? "hover-glow-cyan" : "hover-glow"}`}>
+                <div className={`p-3 rounded-xl mb-6 w-fit ${aud.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
+                  <aud.icon size={26} className={aud.accent ? "text-cyan-400" : "text-amber-400"} />
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-3">{aud.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{aud.desc}</p>
               </div>
             </FadeIn>
           ))}
@@ -583,43 +640,30 @@ function ProjectsSection() {
 function WhyUsSection() {
   const highlights = [
     { icon: BrainCircuit, text: "AI-first thinking across every solution we deliver", color: "text-cyan-400" },
-    { icon: Palette, text: "Premium design quality that builds brand trust", color: "text-amber-400" },
-    { icon: Server, text: "Scalable, modern architecture built for growth", color: "text-cyan-400" },
-    { icon: Target, text: "Strategic business focus with measurable outcomes", color: "text-amber-400" },
-    { icon: Zap, text: "Innovation-driven execution and fast delivery", color: "text-cyan-400" },
-    { icon: Shield, text: "Future-ready systems designed for long-term value", color: "text-amber-400" },
+    { icon: Palette, text: "Premium design quality that builds trust and credibility", color: "text-amber-400" },
+    { icon: Server, text: "Scalable systems built for long-term growth", color: "text-cyan-400" },
+    { icon: Target, text: "Business-focused execution with measurable value", color: "text-amber-400" },
+    { icon: Code2, text: "Modern technology stack and future-ready architecture", color: "text-cyan-400" },
+    { icon: Shield, text: "Tailored strategy, not generic delivery", color: "text-amber-400" },
   ];
 
   return (
-    <section id="why-us" className="py-32 md:py-40 relative">
+    <section id="why-us" className="py-28 md:py-36 relative">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <FadeIn>
             <div className="space-y-8">
               <div>
-                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
-                  Why Choose Denarixx
-                </div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Your <span className="text-gradient-gold">Competitive Edge</span>
-                </h2>
+                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Why Choose Denarixx</div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Your <span className="text-gradient-gold">Competitive Edge</span></h2>
               </div>
-
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We combine deep technical expertise with premium design sensibility to deliver digital solutions that don't just work — they set you apart. Choosing Denarixx means investing in quality, innovation, and results.
+                We combine deep technical expertise with premium design sensibility to deliver digital solutions that don't just work — they set you apart. Choosing Denarixx means investing in quality, innovation, and real results.
               </p>
-              
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {highlights.map((item, i) => (
-                  <motion.div 
-                    key={i} 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.08 }}
-                    viewport={{ once: true }}
-                    className="flex items-center gap-4"
-                  >
-                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${item.color === "text-cyan-400" ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
+                  <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: i * 0.08 }} viewport={{ once: true }} className="flex items-center gap-4">
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${item.color === "text-cyan-400" ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
                       <item.icon size={20} className={`${item.color} flex-shrink-0`} />
                     </div>
                     <p className="text-foreground font-medium">{item.text}</p>
@@ -628,7 +672,6 @@ function WhyUsSection() {
               </div>
             </div>
           </FadeIn>
-          
           <FadeIn delay={0.2}>
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/15 to-cyan-500/10 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl" />
@@ -639,12 +682,12 @@ function WhyUsSection() {
                 </div>
                 <div className="grid grid-cols-1 gap-6">
                   {[
-                    { label: "Tailored Solutions", desc: "Every project is custom-built for your specific needs", icon: Target },
-                    { label: "Modern Technology", desc: "We use the latest frameworks, tools, and AI capabilities", icon: Code2 },
+                    { label: "Tailored Solutions", desc: "Every project is custom-built for your specific needs and goals", icon: Target },
+                    { label: "Modern Technology", desc: "We use the latest frameworks, tools, and AI capabilities available", icon: Code2 },
                     { label: "Long-Term Partnership", desc: "We support your growth well beyond the initial launch", icon: Shield },
                   ].map((item, i) => (
                     <div key={i} className="flex gap-4 items-start">
-                      <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
+                      <div className="p-2.5 rounded-lg bg-primary/10 border border-primary/20 flex-shrink-0">
                         <item.icon size={18} className="text-primary" />
                       </div>
                       <div>
@@ -664,36 +707,20 @@ function WhyUsSection() {
 }
 
 function CTABannerSection() {
-  const scrollTo = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: offsetTop, behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-cyan-500/10" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background/50" />
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
-      
       <div className="container mx-auto px-4 max-w-4xl relative z-10 text-center">
         <FadeIn>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-8">
             <Sparkles size={14} />
             <span>Ready to Get Started?</span>
           </div>
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Let's Build Something <span className="text-gradient-gold">Remarkable</span>
-          </h2>
-          
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-            Whether you need an AI system, a new website, or a complete digital transformation — we're ready to help you take the next step.
-          </p>
-          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Let's Build Something <span className="text-gradient-gold">Remarkable</span></h2>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">Whether you need an AI system, a new website, or a complete digital transformation — we're ready to help you take the next step.</p>
           <PremiumButton size="lg" onClick={() => scrollTo("#contact")} data-testid="button-cta-banner">
             Start Your Project
             <ArrowRight size={18} className="ml-2" />
@@ -706,60 +733,74 @@ function CTABannerSection() {
 
 function ContactSection() {
   const { mutate: submitContact, isPending } = useSubmitContact();
-  
-  type FormValues = z.infer<typeof insertContactSchema>;
+
+  const contactFormSchema = insertContactSchema.extend({
+    company: z.string().optional(),
+    projectType: z.string().optional(),
+    budget: z.string().optional(),
+  });
+
+  type FormValues = z.infer<typeof contactFormSchema>;
   
   const form = useForm<FormValues>({
-    resolver: zodResolver(insertContactSchema),
-    defaultValues: { name: "", email: "", message: "" }
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: { name: "", email: "", message: "", company: "", projectType: "", budget: "" }
   });
 
   const onSubmit = (data: FormValues) => {
-    submitContact(data, {
-      onSuccess: () => form.reset()
-    });
+    let fullMessage = data.message;
+    const extras: string[] = [];
+    if (data.company) extras.push(`Company: ${data.company}`);
+    if (data.projectType) extras.push(`Project Type: ${data.projectType}`);
+    if (data.budget) extras.push(`Budget Range: ${data.budget}`);
+    if (extras.length > 0) fullMessage = `${extras.join(" | ")}\n\n${fullMessage}`;
+
+    submitContact(
+      { name: data.name, email: data.email, message: fullMessage },
+      { onSuccess: () => form.reset() }
+    );
   };
 
   return (
-    <section id="contact" className="py-32 md:py-40 bg-secondary/30 border-t border-border/50 relative">
+    <section id="contact" className="py-28 md:py-36 bg-secondary/30 border-t border-border/50 relative">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
           <FadeIn>
-            <div className="space-y-10">
+            <div className="space-y-8">
               <div>
-                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
-                  Get In Touch
-                </div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Let's Create <span className="text-gradient-gold">Together</span>
-                </h2>
+                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Get In Touch</div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Let's Create <span className="text-gradient-gold">Together</span></h2>
               </div>
-              
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Have a project in mind? Tell us about your goals and we'll get back to you with a plan. We work with businesses of all sizes — from startups to established enterprises.
+                Have a project in mind? Tell us about your goals and we'll reply with a practical next step. We work with businesses of all sizes — from startups to established enterprises.
               </p>
-
               <div data-testid="text-response-time" className="p-6 rounded-2xl border border-primary/20 bg-primary/5 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
                 <p className="text-sm font-semibold text-primary mb-1 uppercase tracking-wide">Response Time</p>
                 <p className="text-2xl font-bold text-foreground">Within 24 Hours</p>
                 <p className="text-sm text-muted-foreground mt-1">We review every inquiry personally</p>
               </div>
-              
-              <div className="space-y-6 pt-4">
+              <div className="space-y-5 pt-2">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-card border border-border rounded-lg flex-shrink-0">
-                    <Mail className="text-primary" size={22} />
+                  <div className="p-3 bg-card border border-border rounded-xl flex-shrink-0">
+                    <Mail className="text-primary" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-foreground font-bold mb-1">Email</h4>
+                    <h4 className="text-foreground font-bold mb-1 text-sm">Email</h4>
                     <p className="text-muted-foreground text-sm">hello@denarixx.com</p>
                   </div>
                 </div>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-card border border-border rounded-xl flex-shrink-0">
+                    <MapPin className="text-primary" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-foreground font-bold mb-1 text-sm">Location</h4>
+                    <p className="text-muted-foreground text-sm">Germany-based · Working globally</p>
+                  </div>
+                </div>
               </div>
-
               <div className="p-6 rounded-2xl border border-border/50 bg-card">
                 <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-8 mb-4 opacity-80" />
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -768,69 +809,66 @@ function ContactSection() {
               </div>
             </div>
           </FadeIn>
-          
           <FadeIn delay={0.2}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="p-8 md:p-10 rounded-3xl bg-card border border-border/50 shadow-2xl space-y-6 hover-glow transition-all duration-300"
-              data-testid="form-contact"
-            >
+            <form onSubmit={form.handleSubmit(onSubmit)} className="p-8 md:p-10 rounded-3xl bg-card border border-border/50 shadow-2xl space-y-5 hover-glow transition-all duration-300" data-testid="form-contact">
               <div>
                 <h3 className="text-xl font-bold text-foreground mb-1">Start Your Project</h3>
                 <p className="text-sm text-muted-foreground">Fill in the details below and we'll be in touch shortly.</p>
               </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-foreground uppercase tracking-wide">Full Name</label>
-                <Input 
-                  placeholder="Your name" 
-                  data-testid="input-name"
-                  {...form.register("name")}
-                  className={`text-base ${form.formState.errors.name ? "border-destructive/50 focus-visible:border-destructive" : ""}`}
-                />
-                {form.formState.errors.name && (
-                  <p className="text-xs text-destructive mt-1">{form.formState.errors.name.message}</p>
-                )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="space-y-2">
+                  <label htmlFor="contact-name" className="text-xs font-semibold text-foreground uppercase tracking-wide">Full Name *</label>
+                  <Input id="contact-name" placeholder="Your name" data-testid="input-name" {...form.register("name")} className={`text-sm ${form.formState.errors.name ? "border-destructive/50" : ""}`} />
+                  {form.formState.errors.name && <p className="text-xs text-destructive">{form.formState.errors.name.message}</p>}
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="contact-email" className="text-xs font-semibold text-foreground uppercase tracking-wide">Email Address *</label>
+                  <Input id="contact-email" type="email" placeholder="you@company.com" data-testid="input-email" {...form.register("email")} className={`text-sm ${form.formState.errors.email ? "border-destructive/50" : ""}`} />
+                  {form.formState.errors.email && <p className="text-xs text-destructive">{form.formState.errors.email.message}</p>}
+                </div>
               </div>
-              
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-foreground uppercase tracking-wide">Email Address</label>
-                <Input 
-                  type="email" 
-                  placeholder="you@company.com" 
-                  data-testid="input-email"
-                  {...form.register("email")}
-                  className={`text-base ${form.formState.errors.email ? "border-destructive/50 focus-visible:border-destructive" : ""}`}
-                />
-                {form.formState.errors.email && (
-                  <p className="text-xs text-destructive mt-1">{form.formState.errors.email.message}</p>
-                )}
+                <label htmlFor="contact-company" className="text-xs font-semibold text-foreground uppercase tracking-wide">Company Name</label>
+                <Input id="contact-company" placeholder="Your company (optional)" data-testid="input-company" {...form.register("company")} className="text-sm" />
               </div>
-              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="space-y-2">
+                  <label htmlFor="contact-project-type" className="text-xs font-semibold text-foreground uppercase tracking-wide">Project Type</label>
+                  <select id="contact-project-type" data-testid="select-project-type" {...form.register("projectType")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-primary/50 transition-colors">
+                    <option value="">Select type</option>
+                    <option value="AI System">AI System</option>
+                    <option value="Website">Website</option>
+                    <option value="Automation">Automation</option>
+                    <option value="Branding">Branding</option>
+                    <option value="Consulting">Consulting</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="contact-budget" className="text-xs font-semibold text-foreground uppercase tracking-wide">Budget Range</label>
+                  <select id="contact-budget" data-testid="select-budget" {...form.register("budget")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-primary/50 transition-colors">
+                    <option value="">Select range</option>
+                    <option value="Under €5,000">Under €5,000</option>
+                    <option value="€5,000 – €15,000">€5,000 – €15,000</option>
+                    <option value="€15,000 – €50,000">€15,000 – €50,000</option>
+                    <option value="€50,000+">€50,000+</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+              </div>
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-foreground uppercase tracking-wide">Project Brief</label>
-                <Textarea 
-                  placeholder="Tell us about your project, goals, and timeline..." 
-                  data-testid="input-message"
-                  {...form.register("message")}
-                  className={`text-base min-h-[140px] ${form.formState.errors.message ? "border-destructive/50 focus-visible:border-destructive" : ""}`}
-                />
-                {form.formState.errors.message && (
-                  <p className="text-xs text-destructive mt-1">{form.formState.errors.message.message}</p>
-                )}
+                <label htmlFor="contact-message" className="text-xs font-semibold text-foreground uppercase tracking-wide">Project Brief *</label>
+                <Textarea id="contact-message" placeholder="Tell us about your project, goals, and timeline..." data-testid="input-message" {...form.register("message")} className={`text-sm min-h-[120px] ${form.formState.errors.message ? "border-destructive/50" : ""}`} />
+                {form.formState.errors.message && <p className="text-xs text-destructive">{form.formState.errors.message.message}</p>}
               </div>
-              
               <PremiumButton type="submit" className="w-full" disabled={isPending} data-testid="button-submit-contact">
                 {isPending ? (
                   <><span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2" />Sending...</>
                 ) : (
-                  <> Send Message <ArrowRight size={16} className="ml-2" /> </>
+                  <>Send Message <ArrowRight size={16} className="ml-2" /></>
                 )}
               </PremiumButton>
-
-              <p className="text-xs text-muted-foreground text-center">
-                By submitting, you agree to our Privacy Policy. We never share your data.
-              </p>
+              <p className="text-xs text-muted-foreground text-center">By submitting, you agree to our Privacy Policy. We never share your data.</p>
             </form>
           </FadeIn>
         </div>
@@ -839,79 +877,106 @@ function ContactSection() {
   );
 }
 
-function Footer() {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+function NewsletterSection() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-  const scrollTo = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: offsetTop, behavior: "smooth" });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubmitted(true);
+      setEmail("");
+      setTimeout(() => setSubmitted(false), 4000);
     }
   };
+
+  return (
+    <section className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-cyan-500/5" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="container mx-auto px-4 max-w-2xl relative z-10 text-center">
+        <FadeIn>
+          <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-6 uppercase tracking-widest">Stay Connected</div>
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Join the Denarixx Network</h3>
+          <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
+            Get updates on AI systems, digital innovation, product concepts, and future Denarixx developments.
+          </p>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" data-testid="form-newsletter">
+            <Input
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+              required
+              data-testid="input-newsletter-email"
+              className="text-sm flex-1"
+            />
+            <PremiumButton type="submit" size="default" data-testid="button-newsletter-subscribe">
+              <Send size={14} className="mr-2" />
+              Subscribe
+            </PremiumButton>
+          </form>
+          {submitted && (
+            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-sm text-primary mt-4 font-medium" data-testid="text-newsletter-success">
+              Thank you for subscribing!
+            </motion.p>
+          )}
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const navLinks = [
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Vision", href: "#vision" },
     { label: "Projects", href: "#projects" },
-    { label: "Process", href: "#process" },
+    { label: "Innovation Lab", href: "#innovation-lab" },
     { label: "Contact", href: "#contact" },
   ];
 
   const services = [
     "AI Solutions",
     "Web Design & Development",
-    "Automation & Digital Transformation",
+    "Automation & Transformation",
     "Branding & Creative Design",
-    "Digital Strategy & Consulting",
+    "Strategy & Consulting",
   ];
 
   return (
     <footer className="bg-background pt-20 pb-10 border-t border-border/30 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-border/60 to-transparent" />
-      
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 pb-16 border-b border-border/30">
           <div className="lg:col-span-1">
-            <img
-              src={logoUrl}
-              alt="Denarixx AI & Digital Solutions"
-              className="h-9 mb-6 opacity-90 hover:opacity-100 transition-opacity cursor-pointer"
-              onClick={scrollToTop}
-            />
-            <p className="text-sm text-muted-foreground leading-relaxed mb-8">
-              Denarixx AI & Digital Solutions builds intelligent digital products, AI systems, and premium online experiences for ambitious businesses worldwide.
+            <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-9 mb-6 opacity-90 hover:opacity-100 transition-opacity cursor-pointer" onClick={scrollToTop} />
+            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+              Denarixx AI & Digital Solutions builds intelligent digital products, AI systems, automation workflows, and premium web experiences for ambitious businesses worldwide.
             </p>
-            <div className="flex gap-4">
+            <p className="text-xs text-primary/70 font-medium mb-6">Built for ambitious brands, startups, and future-focused businesses.</p>
+            <div className="flex gap-3">
               {[
                 { Icon: SiLinkedin, href: "#", label: "LinkedIn" },
                 { Icon: SiX, href: "#", label: "X (Twitter)" },
                 { Icon: SiInstagram, href: "#", label: "Instagram" },
                 { Icon: SiGithub, href: "#", label: "GitHub" },
               ].map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  data-testid={`link-social-${label.toLowerCase().replace(/[^a-z]/g, "")}`}
-                  className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <Icon size={16} />
+                <a key={label} href={href} aria-label={label} data-testid={`link-social-${label.toLowerCase().replace(/[^a-z]/g, "")}`} className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300 hover:-translate-y-0.5">
+                  <Icon size={15} />
                 </a>
               ))}
             </div>
           </div>
-
           <div>
             <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">Navigation</h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <button
-                    onClick={() => scrollTo(link.href)}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group"
-                  >
+                  <button onClick={() => scrollTo(link.href)} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group">
                     <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200" />
                     {link.label}
                   </button>
@@ -919,16 +984,12 @@ function Footer() {
               ))}
             </ul>
           </div>
-
           <div>
             <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <button
-                    onClick={() => scrollTo("#services")}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group text-left"
-                  >
+                  <button onClick={() => scrollTo("#services")} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group text-left">
                     <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200 flex-shrink-0" />
                     {service}
                   </button>
@@ -936,7 +997,6 @@ function Footer() {
               ))}
             </ul>
           </div>
-
           <div>
             <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">Legal</h4>
             <ul className="space-y-3 mb-8">
@@ -947,17 +1007,10 @@ function Footer() {
             </ul>
           </div>
         </div>
-        
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Denarixx AI & Digital Solutions. All rights reserved.
-          </p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Denarixx AI & Digital Solutions. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors group"
-              data-testid="button-back-to-top"
-            >
+            <button onClick={scrollToTop} className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors group" data-testid="button-back-to-top">
               Back to top
               <ArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
             </button>
@@ -980,10 +1033,15 @@ export default function Home() {
         <ProcessSection />
         <VisionSection />
         <ProjectsSection />
+        <SelectedWorkSection />
+        <FounderSection />
+        <InnovationLabSection />
+        <WhoWeWorkWithSection />
         <WhyUsSection />
         <CTABannerSection />
         <ContactSection />
       </main>
+      <NewsletterSection />
       <Footer />
     </div>
   );
