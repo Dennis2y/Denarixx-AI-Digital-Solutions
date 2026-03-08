@@ -9,41 +9,6 @@
     --font-display: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 
-    /* Light Theme */
-    --background: 40 20% 97%;
-    --foreground: 0 0% 5%;
-
-    --card: 40 15% 100%;
-    --card-foreground: 0 0% 5%;
-
-    --popover: 40 15% 100%;
-    --popover-foreground: 0 0% 5%;
-
-    /* Premium Gold Palette */
-    --primary: 43 74% 42%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 40 10% 92%;
-    --secondary-foreground: 43 74% 38%;
-
-    --muted: 40 10% 92%;
-    --muted-foreground: 0 0% 18%;
-
-    --accent: 43 74% 42%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 55%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 40 10% 85%;
-    --input: 40 10% 85%;
-    --ring: 43 74% 42%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    /* Dark Theme - Luxury (brightened) */
     --background: 0 0% 7%;
     --foreground: 0 0% 98%;
 
@@ -71,6 +36,8 @@
     --border: 0 0% 18%;
     --input: 0 0% 18%;
     --ring: 43 74% 49%;
+
+    --radius: 0.5rem;
   }
 }
 
@@ -81,7 +48,6 @@
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
     font-family: var(--font-body);
-    /* Subtle noise texture for premium feel */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
   }
 
@@ -92,11 +58,7 @@
 }
 
 @layer utilities {
-  /* Gold gradient - Primary accent */
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#7A5A0B] via-[#A67C1A] to-[#7A5A0B];
-  }
-  .dark .text-gradient-gold {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728];
   }
   
@@ -107,19 +69,11 @@
     border: 1px solid transparent;
   }
 
-  /* Cyan gradient - Secondary accent */
   .text-gradient-cyan {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#005577] via-[#004488] to-[#006699];
-  }
-  .dark .text-gradient-cyan {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00D9FF] via-[#0099FF] to-[#00CCFF];
   }
 
-  /* Purple gradient */
   .text-gradient-purple {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5B21B6] via-[#7C3AED] to-[#9333EA];
-  }
-  .dark .text-gradient-purple {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#A855F7] via-[#D946EF] to-[#EC4899];
   }
 
@@ -130,7 +84,6 @@
     border: 1px solid transparent;
   }
 
-  /* Glow effects for both colors */
   .hover-glow {
     transition: all 0.3s ease;
   }
