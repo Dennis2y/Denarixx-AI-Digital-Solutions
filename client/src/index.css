@@ -108,47 +108,17 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
-  .hero-shimmer-text {
-    background: linear-gradient(
-      90deg,
-      hsl(var(--foreground)) 0%,
-      hsl(var(--foreground)) 40%,
-      #FCF6BA 50%,
-      hsl(var(--foreground)) 60%,
-      hsl(var(--foreground)) 100%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: hero-shimmer 4s ease-in-out infinite;
+  .hero-marquee-track {
+    display: inline-flex;
+    animation: hero-marquee 20s linear infinite;
   }
 
-  .hero-shimmer-text .text-gradient-gold {
-    -webkit-text-fill-color: transparent;
-    background: linear-gradient(
-      90deg,
-      #BF953F 0%,
-      #FCF6BA 30%,
-      #FFF8DC 50%,
-      #FCF6BA 70%,
-      #B38728 100%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: hero-shimmer-gold 3s ease-in-out infinite;
+  .hero-marquee-track:hover {
+    animation-play-state: paused;
   }
 }
 
-@keyframes hero-shimmer {
-  0% { background-position: 100% 50%; }
-  50% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-@keyframes hero-shimmer-gold {
-  0% { background-position: 100% 50%; }
-  50% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+@keyframes hero-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

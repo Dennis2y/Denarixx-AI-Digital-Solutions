@@ -95,12 +95,30 @@ function HeroSection() {
             <span>{t("hero.eyebrow")}</span>
           </motion.div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.1] hero-shimmer-text">
-            {t("hero.headline1")}{" "}
-            <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
-            <br className="hidden md:block"/>
-            {t("hero.headline3")}
-          </h1>
+          <div className="overflow-hidden mb-8 w-full" data-testid="hero-marquee">
+            <div className="hero-marquee-track text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1] whitespace-nowrap">
+              <span className="inline-block px-6 md:px-10">
+                {t("hero.headline1")}{" "}
+                <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
+                {t("hero.headline3")}
+              </span>
+              <span className="inline-block px-6 md:px-10 text-foreground/30" aria-hidden="true">
+                {t("hero.headline1")}{" "}
+                <span className="text-gradient-gold opacity-40">{t("hero.headline2")}</span>{" "}
+                {t("hero.headline3")}
+              </span>
+              <span className="inline-block px-6 md:px-10">
+                {t("hero.headline1")}{" "}
+                <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
+                {t("hero.headline3")}
+              </span>
+              <span className="inline-block px-6 md:px-10 text-foreground/30" aria-hidden="true">
+                {t("hero.headline1")}{" "}
+                <span className="text-gradient-gold opacity-40">{t("hero.headline2")}</span>{" "}
+                {t("hero.headline3")}
+              </span>
+            </div>
+          </div>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             {t("hero.subtitle")}
