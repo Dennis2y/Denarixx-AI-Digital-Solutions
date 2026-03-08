@@ -6,6 +6,7 @@ import logoUrl from "@assets/Denarixx_1772975867904.png";
 const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Process", href: "#process" },
   { label: "Innovation", href: "#innovation" },
   { label: "Why Us", href: "#why-us" },
 ];
@@ -13,9 +14,15 @@ const NAV_LINKS = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(total > 0 ? (scrolled / total) * 100 : 0);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,13 +44,19 @@ export function Navbar() {
           : "bg-transparent border-transparent py-5"
       }`}
     >
+      <div
+        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary via-cyan-400 to-primary transition-all duration-100 ease-linear"
+        style={{ width: `${progress}%` }}
+        data-testid="progress-scroll"
+      />
+
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="flex items-center justify-between">
           
-          {/* Logo */}
           <div 
             className="flex items-center cursor-pointer group" 
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            data-testid="link-logo"
           >
             <img 
               src={logoUrl} 
@@ -52,37 +65,36 @@ export function Navbar() {
             />
           </div>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.label}
                 onClick={() => scrollTo(link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wide"
+                data-testid={`link-nav-${link.label.toLowerCase()}`}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wide relative group"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300" />
               </button>
             ))}
           </nav>
 
-          {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <PremiumButton onClick={() => scrollTo("#contact")} size="sm">
+            <PremiumButton onClick={() => scrollTo("#contact")} size="sm" data-testid="button-nav-cta">
               Start Project
             </PremiumButton>
           </div>
 
-          {/* Mobile Toggle */}
           <button 
             className="md:hidden text-foreground p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            data-testid="button-mobile-menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div className={`
         md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border/50
         transition-all duration-300 ease-in-out overflow-hidden
