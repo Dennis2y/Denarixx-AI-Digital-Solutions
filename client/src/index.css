@@ -78,6 +78,11 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00D9FF] via-[#0099FF] to-[#00CCFF];
   }
 
+  /* Purple gradient */
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#A855F7] via-[#D946EF] to-[#EC4899];
+  }
+
   .border-gradient-cyan {
     position: relative;
     background: linear-gradient(to right, #1a1a1a, #1a1a1a) padding-box,

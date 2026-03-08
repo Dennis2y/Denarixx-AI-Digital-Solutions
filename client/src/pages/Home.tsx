@@ -98,24 +98,24 @@ function HeroSection() {
           <div className="overflow-hidden mb-8 w-full" data-testid="hero-marquee">
             <div className="hero-marquee-track text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] whitespace-nowrap">
               <span className="inline-block px-6 md:px-10">
-                {t("hero.headline1")}{" "}
+                <span className="text-gradient-cyan">{t("hero.headline1")}</span>{" "}
                 <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
-                {t("hero.headline3")}
+                <span className="text-gradient-purple">{t("hero.headline3")}</span>
               </span>
-              <span className="inline-block px-6 md:px-10 text-foreground/30" aria-hidden="true">
-                {t("hero.headline1")}{" "}
-                <span className="text-gradient-gold opacity-40">{t("hero.headline2")}</span>{" "}
-                {t("hero.headline3")}
+              <span className="inline-block px-6 md:px-10 opacity-30" aria-hidden="true">
+                <span className="text-gradient-cyan">{t("hero.headline1")}</span>{" "}
+                <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
+                <span className="text-gradient-purple">{t("hero.headline3")}</span>
               </span>
               <span className="inline-block px-6 md:px-10">
-                {t("hero.headline1")}{" "}
+                <span className="text-gradient-cyan">{t("hero.headline1")}</span>{" "}
                 <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
-                {t("hero.headline3")}
+                <span className="text-gradient-purple">{t("hero.headline3")}</span>
               </span>
-              <span className="inline-block px-6 md:px-10 text-foreground/30" aria-hidden="true">
-                {t("hero.headline1")}{" "}
-                <span className="text-gradient-gold opacity-40">{t("hero.headline2")}</span>{" "}
-                {t("hero.headline3")}
+              <span className="inline-block px-6 md:px-10 opacity-30" aria-hidden="true">
+                <span className="text-gradient-cyan">{t("hero.headline1")}</span>{" "}
+                <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
+                <span className="text-gradient-purple">{t("hero.headline3")}</span>
               </span>
             </div>
           </div>
