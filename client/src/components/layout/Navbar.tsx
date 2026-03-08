@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { PremiumButton } from "@/components/ui/premium-button";
+import { LanguageSelector } from "@/components/ui/language-selector";
+import { useLanguage } from "@/hooks/use-language";
 import logoUrl from "@assets/Denarixx_1772975867904.png";
 
-const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Vision", href: "#vision" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+const NAV_KEYS = [
+  { key: "nav.about", href: "#about" },
+  { key: "nav.services", href: "#services" },
+  { key: "nav.vision", href: "#vision" },
+  { key: "nav.projects", href: "#projects" },
+  { key: "nav.contact", href: "#contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,33 +69,37 @@ export function Navbar() {
           </div>
 
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
-            {NAV_LINKS.map((link) => (
+            {NAV_KEYS.map((link) => (
               <button
-                key={link.label}
+                key={link.key}
                 onClick={() => scrollTo(link.href)}
-                data-testid={`link-nav-${link.label.toLowerCase()}`}
+                data-testid={`link-nav-${link.key.split(".")[1]}`}
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wide relative group"
               >
-                {link.label}
+                {t(link.key)}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300" />
               </button>
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
+            <LanguageSelector />
             <PremiumButton onClick={() => scrollTo("#contact")} size="sm" data-testid="button-nav-cta">
-              Start a Project
+              {t("nav.cta")}
             </PremiumButton>
           </div>
 
-          <button 
-            className="md:hidden text-foreground p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            data-testid="button-mobile-menu"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex md:hidden items-center gap-2">
+            <LanguageSelector />
+            <button 
+              className="text-foreground p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              data-testid="button-mobile-menu"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -102,17 +109,17 @@ export function Navbar() {
         ${mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
       `}>
         <div className="flex flex-col px-4 py-6 gap-6">
-          {NAV_LINKS.map((link) => (
+          {NAV_KEYS.map((link) => (
             <button
-              key={link.label}
+              key={link.key}
               onClick={() => scrollTo(link.href)}
               className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
-              {link.label}
+              {t(link.key)}
             </button>
           ))}
           <PremiumButton onClick={() => scrollTo("#contact")} className="w-full mt-2">
-            Start a Project
+            {t("nav.cta")}
           </PremiumButton>
         </div>
       </div>

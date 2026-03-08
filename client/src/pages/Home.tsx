@@ -4,43 +4,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { 
-  Bot, 
-  Cpu, 
-  Sparkles, 
-  TrendingUp, 
-  Layers, 
-  Zap, 
-  ArrowRight,
-  Mail,
-  ChevronRight,
-  ChevronDown,
-  ArrowUp,
-  Search,
-  Lightbulb,
-  Code2,
-  BarChart3,
-  Globe,
-  Palette,
-  Rocket,
-  Shield,
-  Target,
-  Building2,
-  Smartphone,
-  BrainCircuit,
-  Workflow,
-  Server,
-  PenTool,
-  Eye,
-  Mic,
-  Boxes,
-  FlaskConical,
-  Users,
-  Briefcase,
-  Crown,
-  User,
-  MonitorSmartphone,
-  MapPin,
-  Send
+  Bot, Cpu, Sparkles, TrendingUp, Layers, Zap, ArrowRight, Mail,
+  ChevronRight, ChevronDown, ArrowUp, Search, Lightbulb, Code2,
+  BarChart3, Globe, Palette, Rocket, Shield, Target, Building2,
+  Smartphone, BrainCircuit, Workflow, Server, PenTool, Eye, Mic,
+  Boxes, FlaskConical, Crown, User, MonitorSmartphone, MapPin, Send
 } from "lucide-react";
 import { SiLinkedin, SiX, SiInstagram, SiGithub } from "react-icons/si";
 
@@ -49,6 +17,7 @@ import { PremiumButton } from "@/components/ui/premium-button";
 import { Input } from "@/components/ui/premium-input";
 import { Textarea } from "@/components/ui/premium-textarea";
 import { useSubmitContact } from "@/hooks/use-contact";
+import { useLanguage } from "@/hooks/use-language";
 import { insertContactSchema } from "@shared/schema";
 import logoUrl from "@assets/Denarixx_1772975867904.png";
 
@@ -100,6 +69,7 @@ function HeroSection() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const { t } = useLanguage();
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -115,68 +85,47 @@ function HeroSection() {
       </motion.div>
 
       <div className="container relative z-10 mx-auto px-4 text-center max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-8"
-          >
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }}>
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-8">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <Sparkles size={14} />
-            <span>AI-Powered Digital Excellence</span>
+            <span>{t("hero.eyebrow")}</span>
           </motion.div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.1]">
-            Building <span className="text-gradient-gold">Intelligent</span>{" "}
+            {t("hero.headline1")} <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
             <br className="hidden md:block"/>
-            Digital Solutions
+            {t("hero.headline3")}
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-            Denarixx AI & Digital Solutions helps businesses, startups, and visionary brands build premium digital products, AI systems, automation workflows, and scalable technology platforms.
+            {t("hero.subtitle")}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10">
             <PremiumButton size="lg" onClick={() => scrollTo("#services")} className="w-full sm:w-auto" data-testid="button-explore-services">
-              Explore Services
+              {t("hero.cta1")}
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </PremiumButton>
             <PremiumButton size="lg" variant="outline" onClick={() => scrollTo("#contact")} className="w-full sm:w-auto" data-testid="button-contact-hero">
-              Contact Us
+              {t("hero.cta2")}
             </PremiumButton>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="flex items-center justify-center gap-3 text-xs text-muted-foreground/60 uppercase tracking-[0.2em] font-medium"
-            data-testid="text-hero-trust-line"
-          >
-            <span>AI systems</span>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} className="flex items-center justify-center gap-3 text-xs text-muted-foreground/60 uppercase tracking-[0.2em] font-medium flex-wrap" data-testid="text-hero-trust-line">
+            <span>{t("hero.trust.ai")}</span>
             <span className="w-1 h-1 rounded-full bg-primary/40" />
-            <span>automation</span>
+            <span>{t("hero.trust.automation")}</span>
             <span className="w-1 h-1 rounded-full bg-primary/40" />
-            <span>digital platforms</span>
+            <span>{t("hero.trust.platforms")}</span>
             <span className="w-1 h-1 rounded-full bg-primary/40" />
-            <span>premium web experiences</span>
+            <span>{t("hero.trust.web")}</span>
           </motion.div>
         </motion.div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer"
-        onClick={() => scrollTo("#about")}
-      >
-        <span className="text-xs text-muted-foreground uppercase tracking-widest font-medium">Scroll</span>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.5 }} className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer" onClick={() => scrollTo("#about")}>
+        <span className="text-xs text-muted-foreground uppercase tracking-widest font-medium">{t("hero.scroll")}</span>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
           <ChevronDown size={20} className="text-primary" />
         </motion.div>
@@ -186,6 +135,7 @@ function HeroSection() {
 }
 
 function AboutSection() {
+  const { t } = useLanguage();
   return (
     <section id="about" className="py-28 md:py-36 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 z-0">
@@ -197,22 +147,16 @@ function AboutSection() {
             <div className="space-y-8">
               <div>
                 <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
-                  About Denarixx
+                  {t("about.badge")}
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Where <span className="text-gradient-cyan">Intelligence</span> Meets Design
+                  {t("about.heading1")} <span className="text-gradient-cyan">{t("about.heading2")}</span> {t("about.heading3")}
                 </h2>
               </div>
-              
               <div className="space-y-5">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Denarixx AI & Digital Solutions is a technology company focused on building intelligent digital products for modern businesses. We combine artificial intelligence, premium design, and scalable software engineering to help our clients grow, automate, and lead in their industries.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  From AI-powered business systems to beautifully crafted websites and digital platforms, we deliver solutions that are both technically robust and visually exceptional. Every project is built with long-term scalability, performance, and real business impact in mind.
-                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">{t("about.p1")}</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">{t("about.p2")}</p>
               </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
@@ -221,8 +165,8 @@ function AboutSection() {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-base font-bold text-foreground mb-1">AI-First Approach</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">We integrate artificial intelligence into every solution to deliver smarter, faster results.</p>
+                    <h4 className="text-base font-bold text-foreground mb-1">{t("about.aifirst")}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t("about.aifirst.desc")}</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -232,25 +176,20 @@ function AboutSection() {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-base font-bold text-foreground mb-1">Premium Quality</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">Every detail — from design to deployment — is crafted to the highest standard.</p>
+                    <h4 className="text-base font-bold text-foreground mb-1">{t("about.premium")}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t("about.premium.desc")}</p>
                   </div>
                 </div>
               </div>
             </div>
           </FadeIn>
-
           <FadeIn delay={0.2}>
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl" />
-              <img 
-                src="/media/tech-abstract-bg.png" 
-                alt="Abstract technology visualization" 
-                className="relative rounded-3xl border border-border/50 object-cover w-full shadow-2xl filter grayscale-[50%] contrast-[1.2] group-hover:grayscale-[30%] transition-all duration-500"
-              />
+              <img src="/media/tech-abstract-bg.png" alt="Abstract technology visualization" className="relative rounded-3xl border border-border/50 object-cover w-full shadow-2xl filter grayscale-[50%] contrast-[1.2] group-hover:grayscale-[30%] transition-all duration-500" />
               <div className="absolute -bottom-6 -right-6 p-6 bg-card border border-border/60 rounded-2xl shadow-2xl hidden md:block backdrop-blur-sm">
-                <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">Built for</p>
-                <p className="text-2xl font-bold text-gradient-gold mt-1">The Future</p>
+                <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">{t("about.builtfor")}</p>
+                <p className="text-2xl font-bold text-gradient-gold mt-1">{t("about.thefuture")}</p>
               </div>
             </div>
           </FadeIn>
@@ -261,12 +200,13 @@ function AboutSection() {
 }
 
 function ServicesSection() {
+  const { t } = useLanguage();
   const services = [
-    { icon: Bot, title: "AI Solutions", desc: "Custom AI systems, machine learning models, and intelligent automation that help your business make smarter decisions, streamline operations, and unlock new opportunities.", color: "from-cyan-500/10 to-blue-500/5", accent: true, tags: ["Machine Learning", "NLP", "Predictive Analytics"] },
-    { icon: Layers, title: "Web Design & Development", desc: "High-performance websites and web applications built with modern frameworks, responsive design, and conversion-focused user experiences that represent your brand at its best.", color: "from-amber-500/10 to-orange-500/5", accent: false, tags: ["UI/UX", "Full-Stack", "Responsive"] },
-    { icon: Cpu, title: "Automation & Digital Transformation", desc: "Streamline your business operations with intelligent workflows, system integrations, and process automation that reduce manual effort and increase efficiency at scale.", color: "from-cyan-500/10 to-teal-500/5", accent: true, tags: ["Workflow", "APIs", "Integration"] },
-    { icon: PenTool, title: "Branding & Creative Design", desc: "Comprehensive brand identity systems, visual design, and creative direction that position your company as a premium, trustworthy presence in your market.", color: "from-amber-500/10 to-yellow-500/5", accent: false, tags: ["Brand Identity", "Visual Design", "Strategy"] },
-    { icon: TrendingUp, title: "Digital Strategy & Product Consulting", desc: "Data-driven strategic planning, product roadmaps, and technology consulting that align your digital investments with real business outcomes and long-term growth.", color: "from-cyan-500/10 to-blue-500/5", accent: true, tags: ["Growth", "Analytics", "Roadmapping"] },
+    { icon: Bot, titleKey: "services.ai", descKey: "services.ai.desc", color: "from-cyan-500/10 to-blue-500/5", accent: true, tags: ["Machine Learning", "NLP", "Predictive Analytics"] },
+    { icon: Layers, titleKey: "services.web", descKey: "services.web.desc", color: "from-amber-500/10 to-orange-500/5", accent: false, tags: ["UI/UX", "Full-Stack", "Responsive"] },
+    { icon: Cpu, titleKey: "services.automation", descKey: "services.automation.desc", color: "from-cyan-500/10 to-teal-500/5", accent: true, tags: ["Workflow", "APIs", "Integration"] },
+    { icon: PenTool, titleKey: "services.branding", descKey: "services.branding.desc", color: "from-amber-500/10 to-yellow-500/5", accent: false, tags: ["Brand Identity", "Visual Design", "Strategy"] },
+    { icon: TrendingUp, titleKey: "services.strategy", descKey: "services.strategy.desc", color: "from-cyan-500/10 to-blue-500/5", accent: true, tags: ["Growth", "Analytics", "Roadmapping"] },
   ];
 
   return (
@@ -277,14 +217,13 @@ function ServicesSection() {
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">Our Services</div>
+            <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("services.badge")}</div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Solutions that <span className="text-gradient-gold">Drive Growth</span>
+              {t("services.heading1")} <span className="text-gradient-gold">{t("services.heading2")}</span>
             </h2>
-            <p className="text-lg text-muted-foreground">End-to-end digital services designed for businesses that want to lead, not follow.</p>
+            <p className="text-lg text-muted-foreground">{t("services.subtitle")}</p>
           </FadeIn>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, i) => (
             <FadeIn key={i} delay={i * 0.08}>
@@ -294,8 +233,8 @@ function ServicesSection() {
                   <div className={`p-3 rounded-xl mb-6 w-fit transition-colors ${service.accent ? "bg-cyan-500/10 group-hover:bg-cyan-500/20" : "bg-amber-500/10 group-hover:bg-amber-500/20"}`}>
                     <service.icon size={28} className={service.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-foreground">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed flex-grow text-sm">{service.desc}</p>
+                  <h3 className="text-xl font-bold mb-3 text-foreground">{t(service.titleKey)}</h3>
+                  <p className="text-muted-foreground leading-relaxed flex-grow text-sm">{t(service.descKey)}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {service.tags.map((tag) => (
                       <span key={tag} className={`text-xs px-2.5 py-1 rounded-full border font-medium ${service.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/70" : "border-amber-500/20 bg-amber-500/5 text-amber-400/70"}`}>{tag}</span>
@@ -312,12 +251,13 @@ function ServicesSection() {
 }
 
 function ProcessSection() {
+  const { t } = useLanguage();
   const steps = [
-    { number: "01", icon: Search, title: "Discover", desc: "We learn about your business, goals, audience, and challenges to define the right scope and strategy.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
-    { number: "02", icon: Lightbulb, title: "Design", desc: "Our team creates wireframes, visual designs, and detailed plans that bring your vision to life.", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-    { number: "03", icon: Code2, title: "Build", desc: "We develop your solution using modern, scalable technology with regular updates and clean code.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
-    { number: "04", icon: Rocket, title: "Launch", desc: "After thorough testing and quality assurance, we deploy your product and ensure a smooth launch.", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-    { number: "05", icon: BarChart3, title: "Scale", desc: "Post-launch, we monitor performance, gather insights, and optimize to help your product grow.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "01", icon: Search, titleKey: "process.discover", desc: "We learn about your business, goals, audience, and challenges to define the right scope and strategy.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "02", icon: Lightbulb, titleKey: "process.design", desc: "Our team creates wireframes, visual designs, and detailed plans that bring your vision to life.", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { number: "03", icon: Code2, titleKey: "process.build", desc: "We develop your solution using modern, scalable technology with regular updates and clean code.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "04", icon: Rocket, titleKey: "process.launch", desc: "After thorough testing and quality assurance, we deploy your product and ensure a smooth launch.", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { number: "05", icon: BarChart3, titleKey: "process.scale", desc: "Post-launch, we monitor performance, gather insights, and optimize to help your product grow.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
   ];
 
   return (
@@ -326,9 +266,9 @@ function ProcessSection() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">Our Process</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">How We <span className="text-gradient-cyan">Work</span></h2>
-            <p className="text-lg text-muted-foreground">A structured, transparent process from first conversation to long-term growth.</p>
+            <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("process.badge")}</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("process.heading1")} <span className="text-gradient-cyan">{t("process.heading2")}</span></h2>
+            <p className="text-lg text-muted-foreground">{t("process.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative">
@@ -340,7 +280,7 @@ function ProcessSection() {
                   <step.icon size={28} className={step.color} />
                   <span className={`text-xs font-bold ${step.color} mt-1 opacity-60`}>{step.number}</span>
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-3">{step.title}</h3>
+                <h3 className="text-lg font-bold text-foreground mb-3">{t(step.titleKey)}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
               </div>
             </FadeIn>
@@ -352,6 +292,7 @@ function ProcessSection() {
 }
 
 function VisionSection() {
+  const { t } = useLanguage();
   const cards = [
     { icon: BrainCircuit, title: "AI Systems", desc: "Intelligent platforms that learn, adapt, and deliver actionable insights for your business.", accent: true },
     { icon: Globe, title: "Smart Platforms", desc: "Connected digital ecosystems that unify data, users, and processes in one seamless experience.", accent: false },
@@ -370,7 +311,7 @@ function VisionSection() {
             <div className="relative z-20 p-12 md:p-20 lg:p-24 max-w-3xl">
               <div className="inline-flex items-center gap-2 mb-8">
                 <div className="w-8 h-[2px] bg-primary" />
-                <span className="text-primary text-xs uppercase tracking-widest font-semibold">Our Vision</span>
+                <span className="text-primary text-xs uppercase tracking-widest font-semibold">{t("nav.vision")}</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">Shaping the <span className="text-gradient-gold">Digital Future</span></h2>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 font-light leading-relaxed">
@@ -707,6 +648,7 @@ function WhyUsSection() {
 }
 
 function CTABannerSection() {
+  const { t } = useLanguage();
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-cyan-500/10" />
@@ -717,12 +659,12 @@ function CTABannerSection() {
         <FadeIn>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-8">
             <Sparkles size={14} />
-            <span>Ready to Get Started?</span>
+            <span>{t("cta.badge")}</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Let's Build Something <span className="text-gradient-gold">Remarkable</span></h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">Whether you need an AI system, a new website, or a complete digital transformation — we're ready to help you take the next step.</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("cta.heading1")} <span className="text-gradient-gold">{t("cta.heading2")}</span></h2>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">{t("cta.subtitle")}</p>
           <PremiumButton size="lg" onClick={() => scrollTo("#contact")} data-testid="button-cta-banner">
-            Start Your Project
+            {t("cta.button")}
             <ArrowRight size={18} className="ml-2" />
           </PremiumButton>
         </FadeIn>
@@ -733,6 +675,7 @@ function CTABannerSection() {
 
 function ContactSection() {
   const { mutate: submitContact, isPending } = useSubmitContact();
+  const { t } = useLanguage();
 
   const contactFormSchema = insertContactSchema.extend({
     company: z.string().optional(),
@@ -769,17 +712,15 @@ function ContactSection() {
           <FadeIn>
             <div className="space-y-8">
               <div>
-                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Get In Touch</div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Let's Create <span className="text-gradient-gold">Together</span></h2>
+                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("contact.badge")}</div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("contact.heading1")} <span className="text-gradient-gold">{t("contact.heading2")}</span></h2>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Have a project in mind? Tell us about your goals and we'll reply with a practical next step. We work with businesses of all sizes — from startups to established enterprises.
-              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">{t("contact.subtitle")}</p>
               <div data-testid="text-response-time" className="p-6 rounded-2xl border border-primary/20 bg-primary/5 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
-                <p className="text-sm font-semibold text-primary mb-1 uppercase tracking-wide">Response Time</p>
-                <p className="text-2xl font-bold text-foreground">Within 24 Hours</p>
-                <p className="text-sm text-muted-foreground mt-1">We review every inquiry personally</p>
+                <p className="text-sm font-semibold text-primary mb-1 uppercase tracking-wide">{t("contact.response")}</p>
+                <p className="text-2xl font-bold text-foreground">{t("contact.24h")}</p>
+                <p className="text-sm text-muted-foreground mt-1">{t("contact.review")}</p>
               </div>
               <div className="space-y-5 pt-2">
                 <div className="flex items-start gap-4">
@@ -796,8 +737,8 @@ function ContactSection() {
                     <MapPin className="text-primary" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-foreground font-bold mb-1 text-sm">Location</h4>
-                    <p className="text-muted-foreground text-sm">Germany-based · Working globally</p>
+                    <h4 className="text-foreground font-bold mb-1 text-sm">{t("contact.location")}</h4>
+                    <p className="text-muted-foreground text-sm">{t("contact.location.value")}</p>
                   </div>
                 </div>
               </div>
@@ -812,30 +753,30 @@ function ContactSection() {
           <FadeIn delay={0.2}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="p-8 md:p-10 rounded-3xl bg-card border border-border/50 shadow-2xl space-y-5 hover-glow transition-all duration-300" data-testid="form-contact">
               <div>
-                <h3 className="text-xl font-bold text-foreground mb-1">Start Your Project</h3>
-                <p className="text-sm text-muted-foreground">Fill in the details below and we'll be in touch shortly.</p>
+                <h3 className="text-xl font-bold text-foreground mb-1">{t("contact.form.title")}</h3>
+                <p className="text-sm text-muted-foreground">{t("contact.form.subtitle")}</p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label htmlFor="contact-name" className="text-xs font-semibold text-foreground uppercase tracking-wide">Full Name *</label>
-                  <Input id="contact-name" placeholder="Your name" data-testid="input-name" {...form.register("name")} className={`text-sm ${form.formState.errors.name ? "border-destructive/50" : ""}`} />
+                  <label htmlFor="contact-name" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.name")} *</label>
+                  <Input id="contact-name" placeholder={t("contact.form.name")} data-testid="input-name" {...form.register("name")} className={`text-sm ${form.formState.errors.name ? "border-destructive/50" : ""}`} />
                   {form.formState.errors.name && <p className="text-xs text-destructive">{form.formState.errors.name.message}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="contact-email" className="text-xs font-semibold text-foreground uppercase tracking-wide">Email Address *</label>
+                  <label htmlFor="contact-email" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.email")} *</label>
                   <Input id="contact-email" type="email" placeholder="you@company.com" data-testid="input-email" {...form.register("email")} className={`text-sm ${form.formState.errors.email ? "border-destructive/50" : ""}`} />
                   {form.formState.errors.email && <p className="text-xs text-destructive">{form.formState.errors.email.message}</p>}
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="contact-company" className="text-xs font-semibold text-foreground uppercase tracking-wide">Company Name</label>
-                <Input id="contact-company" placeholder="Your company (optional)" data-testid="input-company" {...form.register("company")} className="text-sm" />
+                <label htmlFor="contact-company" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.company")}</label>
+                <Input id="contact-company" placeholder={t("contact.form.company")} data-testid="input-company" {...form.register("company")} className="text-sm" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label htmlFor="contact-project-type" className="text-xs font-semibold text-foreground uppercase tracking-wide">Project Type</label>
+                  <label htmlFor="contact-project-type" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.projecttype")}</label>
                   <select id="contact-project-type" data-testid="select-project-type" {...form.register("projectType")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-primary/50 transition-colors">
-                    <option value="">Select type</option>
+                    <option value="">{t("contact.form.selecttype")}</option>
                     <option value="AI System">AI System</option>
                     <option value="Website">Website</option>
                     <option value="Automation">Automation</option>
@@ -845,30 +786,30 @@ function ContactSection() {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="contact-budget" className="text-xs font-semibold text-foreground uppercase tracking-wide">Budget Range</label>
+                  <label htmlFor="contact-budget" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.budget")}</label>
                   <select id="contact-budget" data-testid="select-budget" {...form.register("budget")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-primary/50 transition-colors">
-                    <option value="">Select range</option>
+                    <option value="">{t("contact.form.selectrange")}</option>
                     <option value="Under €5,000">Under €5,000</option>
                     <option value="€5,000 – €15,000">€5,000 – €15,000</option>
                     <option value="€15,000 – €50,000">€15,000 – €50,000</option>
                     <option value="€50,000+">€50,000+</option>
-                    <option value="Not sure yet">Not sure yet</option>
+                    <option value="Not sure yet">{t("contact.form.notsure")}</option>
                   </select>
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="contact-message" className="text-xs font-semibold text-foreground uppercase tracking-wide">Project Brief *</label>
-                <Textarea id="contact-message" placeholder="Tell us about your project, goals, and timeline..." data-testid="input-message" {...form.register("message")} className={`text-sm min-h-[120px] ${form.formState.errors.message ? "border-destructive/50" : ""}`} />
+                <label htmlFor="contact-message" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.brief")} *</label>
+                <Textarea id="contact-message" placeholder={t("contact.form.brief")} data-testid="input-message" {...form.register("message")} className={`text-sm min-h-[120px] ${form.formState.errors.message ? "border-destructive/50" : ""}`} />
                 {form.formState.errors.message && <p className="text-xs text-destructive">{form.formState.errors.message.message}</p>}
               </div>
               <PremiumButton type="submit" className="w-full" disabled={isPending} data-testid="button-submit-contact">
                 {isPending ? (
-                  <><span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2" />Sending...</>
+                  <><span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2" />{t("contact.form.sending")}</>
                 ) : (
-                  <>Send Message <ArrowRight size={16} className="ml-2" /></>
+                  <>{t("contact.form.submit")} <ArrowRight size={16} className="ml-2" /></>
                 )}
               </PremiumButton>
-              <p className="text-xs text-muted-foreground text-center">By submitting, you agree to our Privacy Policy. We never share your data.</p>
+              <p className="text-xs text-muted-foreground text-center">{t("contact.form.privacy")}</p>
             </form>
           </FadeIn>
         </div>
@@ -880,6 +821,7 @@ function ContactSection() {
 function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -896,29 +838,19 @@ function NewsletterSection() {
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="container mx-auto px-4 max-w-2xl relative z-10 text-center">
         <FadeIn>
-          <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-6 uppercase tracking-widest">Stay Connected</div>
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Join the Denarixx Network</h3>
-          <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
-            Get updates on AI systems, digital innovation, product concepts, and future Denarixx developments.
-          </p>
+          <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-6 uppercase tracking-widest">{t("newsletter.badge")}</div>
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{t("newsletter.heading")}</h3>
+          <p className="text-muted-foreground mb-8 text-sm leading-relaxed">{t("newsletter.text")}</p>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" data-testid="form-newsletter">
-            <Input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-              required
-              data-testid="input-newsletter-email"
-              className="text-sm flex-1"
-            />
+            <Input type="email" placeholder="your@email.com" value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} required data-testid="input-newsletter-email" className="text-sm flex-1" />
             <PremiumButton type="submit" size="default" data-testid="button-newsletter-subscribe">
               <Send size={14} className="mr-2" />
-              Subscribe
+              {t("newsletter.subscribe")}
             </PremiumButton>
           </form>
           {submitted && (
             <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-sm text-primary mt-4 font-medium" data-testid="text-newsletter-success">
-              Thank you for subscribing!
+              {t("newsletter.thanks")}
             </motion.p>
           )}
         </FadeIn>
@@ -929,22 +861,19 @@ function NewsletterSection() {
 
 function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const { t } = useLanguage();
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Vision", href: "#vision" },
-    { label: "Projects", href: "#projects" },
-    { label: "Innovation Lab", href: "#innovation-lab" },
-    { label: "Contact", href: "#contact" },
+    { labelKey: "nav.about", href: "#about" },
+    { labelKey: "nav.services", href: "#services" },
+    { labelKey: "nav.vision", href: "#vision" },
+    { labelKey: "nav.projects", href: "#projects" },
+    { labelKey: "footer.innovationlab", href: "#innovation-lab" },
+    { labelKey: "nav.contact", href: "#contact" },
   ];
 
   const services = [
-    "AI Solutions",
-    "Web Design & Development",
-    "Automation & Transformation",
-    "Branding & Creative Design",
-    "Strategy & Consulting",
+    "services.ai", "services.web", "services.automation", "services.branding", "services.strategy",
   ];
 
   return (
@@ -954,10 +883,8 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 pb-16 border-b border-border/30">
           <div className="lg:col-span-1">
             <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-9 mb-6 opacity-90 hover:opacity-100 transition-opacity cursor-pointer" onClick={scrollToTop} />
-            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-              Denarixx AI & Digital Solutions builds intelligent digital products, AI systems, automation workflows, and premium web experiences for ambitious businesses worldwide.
-            </p>
-            <p className="text-xs text-primary/70 font-medium mb-6">Built for ambitious brands, startups, and future-focused businesses.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-6">{t("footer.desc")}</p>
+            <p className="text-xs text-primary/70 font-medium mb-6">{t("footer.innovation")}</p>
             <div className="flex gap-3">
               {[
                 { Icon: SiLinkedin, href: "#", label: "LinkedIn" },
@@ -972,46 +899,46 @@ function Footer() {
             </div>
           </div>
           <div>
-            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">Navigation</h4>
+            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">{t("footer.nav")}</h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <button onClick={() => scrollTo(link.href)} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group">
                     <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200" />
-                    {link.label}
+                    {t(link.labelKey)}
                   </button>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">Services</h4>
+            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">{t("footer.services")}</h4>
             <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
+              {services.map((key) => (
+                <li key={key}>
                   <button onClick={() => scrollTo("#services")} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group text-left">
                     <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200 flex-shrink-0" />
-                    {service}
+                    {t(key)}
                   </button>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">Legal</h4>
+            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">{t("footer.legal")}</h4>
             <ul className="space-y-3 mb-8">
-              <li><a href="#" data-testid="link-privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" data-testid="link-terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms & Conditions</a></li>
-              <li><a href="#" data-testid="link-impressum" className="text-sm text-muted-foreground hover:text-primary transition-colors">Impressum</a></li>
-              <li><a href="#" data-testid="link-cookie-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Cookie Policy</a></li>
+              <li><a href="#" data-testid="link-privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.privacy")}</a></li>
+              <li><a href="#" data-testid="link-terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.terms")}</a></li>
+              <li><a href="#" data-testid="link-impressum" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.impressum")}</a></li>
+              <li><a href="#" data-testid="link-cookie-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.cookies")}</a></li>
             </ul>
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Denarixx AI & Digital Solutions. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} {t("footer.copyright")}</p>
           <div className="flex items-center gap-6">
             <button onClick={scrollToTop} className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors group" data-testid="button-back-to-top">
-              Back to top
+              {t("footer.backtotop")}
               <ArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>

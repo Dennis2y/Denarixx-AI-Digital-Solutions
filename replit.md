@@ -22,6 +22,7 @@ This is the official company website for **Denarixx AI & Digital Solutions**, a 
 15. **Footer** — Logo, description, innovation tagline, nav links, services list, social icons, legal links
 
 ### Global Features
+- **Language selector** — 10 languages with flag emojis (EN, DE, FR, ES, IT, PT, NL, TR, AR, ZH) in navbar dropdown. Translations stored in `client/src/lib/translations.ts`, managed via `LanguageProvider` context. Selection persists in localStorage.
 - **Scroll progress bar** — Gold gradient line at bottom of fixed navbar
 - **Scroll-to-top button** — Appears after scrolling 600px
 - **Dark luxury theme** — Black-and-gold design system with cyan accents
