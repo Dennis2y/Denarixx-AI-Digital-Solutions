@@ -507,13 +507,17 @@ function InnovationLabSection() {
     { icon: FlaskConical, title: "Denarixx Future Mobility", labelKey: "innovation.mobility.label", descKey: "innovation.mobility.desc", accent: false },
   ];
 
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="innovation-lab" className="py-28 md:py-36 relative overflow-hidden">
       <div className="absolute inset-0 opacity-3 z-0">
         <img src="/media/ai-network-bg.png" alt="" className="w-full h-full object-cover" aria-hidden="true" />
       </div>
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
               <FlaskConical size={12} />
@@ -523,6 +527,9 @@ function InnovationLabSection() {
             <p className="text-lg text-muted-foreground">{t("innovation.subtitle")}</p>
           </FadeIn>
         </div>
+        <FadeIn delay={0.1}>
+          <p className="text-base text-muted-foreground/80 leading-relaxed text-center max-w-4xl mx-auto mb-16" data-testid="text-innovation-intro">{t("innovation.intro")}</p>
+        </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {products.map((product, i) => (
             <FadeIn key={i} delay={i * 0.1}>
@@ -546,7 +553,42 @@ function InnovationLabSection() {
               </div>
             </FadeIn>
           ))}
+          <FadeIn delay={0.4} className="md:col-span-2">
+            <div data-testid="card-innovation-4" className="group p-10 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden h-full hover-glow">
+              <div className="absolute top-0 right-0 w-40 h-40 rounded-full blur-[80px] transition-opacity duration-500 opacity-0 group-hover:opacity-100 bg-primary/10" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="p-3 rounded-xl w-fit bg-primary/10 border border-primary/20">
+                    <Lightbulb size={28} className="text-primary" />
+                  </div>
+                  <span className="text-[10px] px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider border text-primary/70 border-primary/20 bg-primary/5">
+                    {t("innovation.more.label")}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3">{t("innovation.more.title")}</h3>
+                <p className="text-muted-foreground leading-relaxed">{t("innovation.more.desc")}</p>
+                <div className="mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider text-primary/60">
+                  {t("innovation.status")}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
+        <FadeIn delay={0.5}>
+          <p className="text-xs text-muted-foreground/50 text-center mt-10 max-w-3xl mx-auto leading-relaxed italic" data-testid="text-innovation-disclaimer">{t("innovation.disclaimer")}</p>
+        </FadeIn>
+        <FadeIn delay={0.6}>
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={scrollToContact}
+              data-testid="button-discuss-concept"
+              className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary/10 border border-primary/30 text-primary font-semibold text-sm hover:bg-primary/20 hover:border-primary/50 transition-all duration-300"
+            >
+              {t("innovation.cta")}
+              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
