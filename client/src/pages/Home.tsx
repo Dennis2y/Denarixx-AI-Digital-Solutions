@@ -9,7 +9,7 @@ import {
   BarChart3, Globe, Palette, Rocket, Shield, Target, Building2,
   Smartphone, BrainCircuit, Workflow, Server, PenTool, Eye, Mic,
   Boxes, FlaskConical, Crown, User, MonitorSmartphone, MapPin, Send,
-  Download, X, Share
+  Download
 } from "lucide-react";
 import { SiLinkedin, SiX, SiInstagram, SiGithub } from "react-icons/si";
 
@@ -921,6 +921,79 @@ function NewsletterSection() {
   );
 }
 
+function FooterInstallButton() {
+  const { t } = useLanguage();
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+  const [isIos, setIsIos] = useState(false);
+  const [showIosHint, setShowIosHint] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(display-mode: standalone)").matches || (window.navigator as any).standalone) {
+      setIsInstalled(true);
+      return;
+    }
+
+    const ua = window.navigator.userAgent;
+    const iosDevice = /iPad|iPhone|iPod/.test(ua) && !(window as any).MSStream;
+    setIsIos(iosDevice);
+
+    const handler = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  const handleInstall = async () => {
+    if (isIos) {
+      setShowIosHint(!showIosHint);
+      return;
+    }
+    if (!deferredPrompt) {
+      setShowIosHint(!showIosHint);
+      return;
+    }
+    deferredPrompt.prompt();
+    const result = await deferredPrompt.userChoice;
+    if (result.outcome === "accepted") {
+      setIsInstalled(true);
+    }
+    setDeferredPrompt(null);
+  };
+
+  if (isInstalled) return null;
+
+  return (
+    <div className="space-y-2">
+      <button
+        onClick={handleInstall}
+        className="group flex items-center gap-2.5 px-4 py-2.5 w-full rounded-xl bg-gradient-to-r from-primary/15 to-primary/5 border border-primary/30 hover:border-primary/60 hover:from-primary/25 hover:to-primary/10 transition-all duration-300"
+        data-testid="button-footer-install"
+      >
+        <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors">
+          <Download size={15} className="text-primary" />
+        </div>
+        <div className="text-left">
+          <p className="text-sm font-semibold text-foreground leading-tight">{t("pwa.install")}</p>
+          <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">{t("pwa.install.desc")}</p>
+        </div>
+      </button>
+      {showIosHint && (
+        <motion.p
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          className="text-xs text-primary/80 bg-primary/5 border border-primary/20 rounded-lg px-3 py-2 leading-relaxed"
+          data-testid="text-ios-hint"
+        >
+          {t("pwa.ios.hint")}
+        </motion.p>
+      )}
+    </div>
+  );
+}
+
 function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const { t } = useLanguage();
@@ -994,6 +1067,7 @@ function Footer() {
               <li><a href="/impressum" data-testid="link-impressum" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.impressum")}</a></li>
               <li><a href="/cookies" data-testid="link-cookie-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.cookies")}</a></li>
             </ul>
+            <FooterInstallButton />
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -1007,109 +1081,6 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function PwaInstallBanner() {
-  const { t } = useLanguage();
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [showBanner, setShowBanner] = useState(false);
-  const [isIos, setIsIos] = useState(false);
-  const [isInstalled, setIsInstalled] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(display-mode: standalone)").matches || (window.navigator as any).standalone) {
-      setIsInstalled(true);
-      return;
-    }
-
-    const dismissed = localStorage.getItem("pwa-banner-dismissed");
-    if (dismissed) {
-      const dismissedAt = parseInt(dismissed, 10);
-      if (Date.now() - dismissedAt < 7 * 24 * 60 * 60 * 1000) return;
-    }
-
-    const ua = window.navigator.userAgent;
-    const iosDevice = /iPad|iPhone|iPod/.test(ua) && !(window as any).MSStream;
-    setIsIos(iosDevice);
-
-    const handler = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      setShowBanner(true);
-    };
-    window.addEventListener("beforeinstallprompt", handler);
-
-    if (iosDevice) {
-      setShowBanner(true);
-    }
-
-    return () => window.removeEventListener("beforeinstallprompt", handler);
-  }, []);
-
-  const handleInstall = async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const result = await deferredPrompt.userChoice;
-    if (result.outcome === "accepted") {
-      setShowBanner(false);
-      setIsInstalled(true);
-    }
-    setDeferredPrompt(null);
-  };
-
-  const handleDismiss = () => {
-    setShowBanner(false);
-    localStorage.setItem("pwa-banner-dismissed", Date.now().toString());
-  };
-
-  if (isInstalled || !showBanner) return null;
-
-  return (
-    <motion.div
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: 100, opacity: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="fixed bottom-0 left-0 right-0 z-50 safe-bottom"
-      data-testid="pwa-install-banner"
-    >
-      <div className="bg-card/95 backdrop-blur-xl border-t border-primary/30 shadow-[0_-4px_30px_rgba(212,168,71,0.15)]">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center flex-shrink-0">
-                {isIos ? <Share size={18} className="text-primary" /> : <Download size={18} className="text-primary" />}
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-foreground truncate">{t("pwa.install")}</p>
-                <p className="text-xs text-muted-foreground truncate">
-                  {isIos ? t("pwa.ios.hint") : t("pwa.install.desc")}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 flex-shrink-0">
-              {!isIos && (
-                <button
-                  onClick={handleInstall}
-                  className="px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 active:scale-95"
-                  data-testid="button-pwa-install"
-                >
-                  {t("pwa.install")}
-                </button>
-              )}
-              <button
-                onClick={handleDismiss}
-                className="w-8 h-8 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-                data-testid="button-pwa-dismiss"
-              >
-                <X size={16} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
   );
 }
 
@@ -1136,7 +1107,6 @@ export default function Home() {
       <NewsletterSection />
       <Footer />
       <Chatbot />
-      <PwaInstallBanner />
     </div>
   );
 }
