@@ -1,0 +1,346 @@
+Upgrade and refine my existing company website into a polished, production-ready official website for my brand.
+
+Official company name:
+Denarixx AI & Digital Solutions
+
+IMPORTANT:
+Do not rebuild everything from scratch unless necessary.
+Keep the existing premium black-and-gold luxury tech visual style, but improve the structure, copy, clarity, branding consistency, and production readiness.
+
+PRIMARY GOAL:
+Turn the current website into a real official company website that looks premium, trustworthy, modern, global, and business-ready.
+
+BRAND DIRECTION:
+- luxury technology brand
+- premium AI-first company
+- black and gold design system
+- elegant, futuristic, minimal
+- powerful but professional
+- not generic startup style
+- should feel like a high-end AI and digital solutions company
+
+GLOBAL RULES:
+1. Use the official company name consistently everywhere:
+   "Denarixx AI & Digital Solutions"
+2. Remove or replace all placeholder or generic business info
+3. Improve all copy so it sounds real, business-focused, and premium
+4. Keep the current design direction, but make it more refined and credible
+5. Make the site responsive, clean, and deployment-ready
+6. Keep code organized, readable, and scalable
+
+====================================
+SECTION 1 — BRANDING CONSISTENCY
+====================================
+
+Please update all text, headings, metadata, and branding references to consistently use:
+
+Denarixx AI & Digital Solutions
+
+Do not mix it with:
+- Denarixx Digital & AI Solutions
+- Denarixx Technology
+- any other variation
+
+Apply this consistency to:
+- navbar
+- hero
+- footer
+- contact section
+- SEO title
+- meta description
+- any structured data or page metadata
+- any placeholder business references
+
+====================================
+SECTION 2 — IMPROVE THE COPY
+====================================
+
+Rewrite the website copy so it sounds:
+- premium
+- professional
+- clear
+- business-focused
+- globally relevant
+- less abstract
+- less template-like
+
+Avoid overly vague phrases unless supported by clear business meaning.
+
+Reduce or replace lines like:
+- "Engineering the Unimaginable"
+- "Digital Sovereignty"
+- "Refuse to compete on price"
+unless they are rewritten into stronger, clearer business copy.
+
+The copy should clearly explain:
+- what Denarixx does
+- who it helps
+- what problems it solves
+- what results clients can expect
+
+Use messaging around:
+- AI solutions
+- websites and digital platforms
+- automation
+- branding and creative systems
+- digital transformation
+- scalable business technology
+
+Suggested hero direction:
+Headline:
+"Building Intelligent Digital Solutions for the Future"
+
+Subheadline:
+"Denarixx AI & Digital Solutions helps businesses, startups, and brands build powerful digital products, AI systems, automation workflows, and premium online experiences."
+
+CTA buttons:
+- Explore Services
+- Contact Us
+
+====================================
+SECTION 3 — REQUIRED WEBSITE STRUCTURE
+====================================
+
+Refine the site into the following official structure:
+
+1. Sticky Navbar
+- company logo
+- links: Home, About, Services, Vision, Projects, Contact
+- premium mobile menu
+- smooth scroll behavior
+
+2. Hero Section
+- strong headline
+- premium subheadline
+- primary and secondary CTA
+- subtle animated luxury-tech background
+- strong brand presence
+
+3. About Section
+Explain Denarixx clearly:
+- who we are
+- what we build
+- our focus on AI, software, automation, branding, and innovation
+- our premium technology approach
+
+4. Services Section
+Create polished service cards for:
+- AI Solutions
+- Web Design & Development
+- Automation & Digital Transformation
+- Branding & Creative Design
+- Digital Strategy & Product Consulting
+
+Each card should include:
+- short business-oriented description
+- icon or visual cue
+- clean layout
+
+5. Vision / Innovation Section
+Create a section that presents Denarixx as a future-focused innovation company.
+Include cards or blocks for:
+- AI Systems
+- Smart Platforms
+- Intelligent Automation
+- Future Products
+- Scalable Digital Infrastructure
+
+6. Projects / Focus Areas Section
+Add a strong section showing what Denarixx builds or focuses on.
+Examples:
+- AI business systems
+- company websites
+- digital product design
+- automation systems
+- startup technology ecosystems
+
+This section should help visitors understand the kinds of projects Denarixx can handle.
+
+7. Why Choose Denarixx Section
+Add a credibility-focused section with 4–6 strong points such as:
+- AI-first thinking
+- premium design quality
+- scalable architecture
+- strategic business focus
+- innovation-driven execution
+- future-ready digital systems
+
+8. Process Section
+Add a simple premium process timeline:
+- Discover
+- Design
+- Build
+- Launch
+- Scale
+
+Each step should have short explanatory text.
+
+9. Contact Section
+Create a premium contact area with:
+- contact form
+- email placeholder
+- company branding block
+- strong CTA
+- optional office/location placeholder that is not fake or misleading
+
+10. Footer
+Include:
+- official company name
+- short company description
+- navigation links
+- copyright
+- legal links placeholders: Privacy Policy, Terms, Impressum
+
+====================================
+SECTION 4 — ADD REAL BUSINESS CREDIBILITY
+====================================
+
+Add a section or content blocks that make the company feel trustworthy and serious.
+
+Include content such as:
+- premium service quality
+- scalable solutions
+- AI and digital expertise
+- startup and business support
+- tailored modern systems
+- long-term innovation mindset
+
+Optionally add:
+- industries served
+- who we help
+- company mission
+- founder-driven innovation approach
+
+Do not invent fake clients, fake case studies, fake awards, fake locations, or fake testimonials.
+
+If testimonials or stats are not real, do not fabricate them.
+
+====================================
+SECTION 5 — LEGAL / CORPORATE READINESS
+====================================
+
+Prepare the site structure so it is ready for a real company launch.
+
+Add placeholder pages or sections for:
+- Privacy Policy
+- Terms & Conditions
+- Impressum
+
+If multi-page structure is too much, add legal page placeholders and footer links ready for future expansion.
+
+Do not use fake addresses.
+Do not use fake phone numbers.
+Use clearly marked placeholders where real info is needed.
+
+====================================
+SECTION 6 — DESIGN IMPROVEMENTS
+====================================
+
+Keep the premium black-and-gold luxury tech style, but improve it with:
+- more consistent spacing
+- better typography hierarchy
+- cleaner card layouts
+- more refined button styles
+- more elegant hover effects
+- stronger section separation
+- better mobile responsiveness
+- smoother animations
+- visually balanced layout
+- premium shadows, glow, gradients, and subtle effects
+
+Design feel:
+- luxury startup
+- premium AI brand
+- sleek and modern
+- high-end digital company
+
+Avoid:
+- clutter
+- overly flashy effects
+- childish gradients
+- cheap-looking neon
+- generic template design
+
+====================================
+SECTION 7 — PRODUCT / INNOVATION IDENTITY
+====================================
+
+Make the site feel uniquely Denarixx.
+
+Integrate the brand identity more strongly by using content that suggests Denarixx is building:
+- intelligent systems
+- future-ready digital products
+- premium AI experiences
+- innovative technology platforms
+
+Without overcomplicating the homepage, make the brand feel:
+- visionary
+- structured
+- premium
+- scalable
+
+====================================
+SECTION 8 — SEO / META / TECHNICAL
+====================================
+
+Add or improve:
+- page title
+- meta description
+- Open Graph metadata
+- favicon support
+- semantic HTML structure
+- proper heading hierarchy
+- alt text for images
+- accessibility basics
+- smooth performance
+- clean scroll behavior
+
+Suggested meta title:
+Denarixx AI & Digital Solutions | Intelligent Digital Solutions for the Future
+
+Suggested meta description:
+Denarixx AI & Digital Solutions builds premium websites, AI systems, automation workflows, branding, and scalable digital solutions for businesses, startups, and future-focused brands.
+
+====================================
+SECTION 9 — CODE CLEANUP
+====================================
+
+Review the current codebase and clean it up.
+
+Do the following:
+- remove unused pages, components, and dead code if they are not needed
+- keep only what supports the official website
+- organize files clearly
+- ensure consistent naming
+- make code production-ready
+- keep it easy to expand later into multi-page
+
+If the project is currently overbuilt, simplify where possible without breaking the design.
+
+====================================
+SECTION 10 — DEPLOYMENT READINESS
+====================================
+
+Make sure the project is ready for deployment.
+
+Please:
+- check build configuration
+- fix any issues that would block production build
+- ensure dependencies are correct
+- ensure the final app runs cleanly
+- keep the project stable and maintainable
+
+At the end, provide:
+1. updated folder tree
+2. summary of what was changed
+3. any placeholders I still need to fill manually
+4. deployment steps
+
+FINAL QUALITY BAR:
+The final result should feel like a polished official website for a premium AI and digital solutions company — not a template, not a generic landing page, and not a student project.
+
+It should look worthy of:
+- clients
+- investors
+- strategic partners
+- future brand expansion
