@@ -792,7 +792,7 @@ function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-foreground font-bold mb-1 text-sm">Email</h4>
-                    <p className="text-muted-foreground text-sm">hello@denarixx.com</p>
+                    <p className="text-muted-foreground text-sm">hello@denarixxai.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
