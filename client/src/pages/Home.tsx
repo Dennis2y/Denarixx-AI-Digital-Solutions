@@ -202,11 +202,11 @@ function AboutSection() {
 function ServicesSection() {
   const { t } = useLanguage();
   const services = [
-    { icon: Bot, titleKey: "services.ai", descKey: "services.ai.desc", color: "from-cyan-500/10 to-blue-500/5", accent: true, tags: ["Machine Learning", "NLP", "Predictive Analytics"] },
-    { icon: Layers, titleKey: "services.web", descKey: "services.web.desc", color: "from-amber-500/10 to-orange-500/5", accent: false, tags: ["UI/UX", "Full-Stack", "Responsive"] },
-    { icon: Cpu, titleKey: "services.automation", descKey: "services.automation.desc", color: "from-cyan-500/10 to-teal-500/5", accent: true, tags: ["Workflow", "APIs", "Integration"] },
-    { icon: PenTool, titleKey: "services.branding", descKey: "services.branding.desc", color: "from-amber-500/10 to-yellow-500/5", accent: false, tags: ["Brand Identity", "Visual Design", "Strategy"] },
-    { icon: TrendingUp, titleKey: "services.strategy", descKey: "services.strategy.desc", color: "from-cyan-500/10 to-blue-500/5", accent: true, tags: ["Growth", "Analytics", "Roadmapping"] },
+    { icon: Bot, titleKey: "services.ai", descKey: "services.ai.desc", color: "from-cyan-500/10 to-blue-500/5", accent: true, tagKeys: ["services.tag.ml", "services.tag.nlp", "services.tag.predictive"] },
+    { icon: Layers, titleKey: "services.web", descKey: "services.web.desc", color: "from-amber-500/10 to-orange-500/5", accent: false, tagKeys: ["services.tag.uiux", "services.tag.fullstack", "services.tag.responsive"] },
+    { icon: Cpu, titleKey: "services.automation", descKey: "services.automation.desc", color: "from-cyan-500/10 to-teal-500/5", accent: true, tagKeys: ["services.tag.workflow", "services.tag.apis", "services.tag.integration"] },
+    { icon: PenTool, titleKey: "services.branding", descKey: "services.branding.desc", color: "from-amber-500/10 to-yellow-500/5", accent: false, tagKeys: ["services.tag.brandid", "services.tag.visualdesign", "services.tag.strategy"] },
+    { icon: TrendingUp, titleKey: "services.strategy", descKey: "services.strategy.desc", color: "from-cyan-500/10 to-blue-500/5", accent: true, tagKeys: ["services.tag.growth", "services.tag.analytics", "services.tag.roadmapping"] },
   ];
 
   return (
@@ -236,8 +236,8 @@ function ServicesSection() {
                   <h3 className="text-xl font-bold mb-3 text-foreground">{t(service.titleKey)}</h3>
                   <p className="text-muted-foreground leading-relaxed flex-grow text-sm">{t(service.descKey)}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
-                    {service.tags.map((tag) => (
-                      <span key={tag} className={`text-xs px-2.5 py-1 rounded-full border font-medium ${service.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/70" : "border-amber-500/20 bg-amber-500/5 text-amber-400/70"}`}>{tag}</span>
+                    {service.tagKeys.map((tagKey) => (
+                      <span key={tagKey} className={`text-xs px-2.5 py-1 rounded-full border font-medium ${service.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/70" : "border-amber-500/20 bg-amber-500/5 text-amber-400/70"}`}>{t(tagKey)}</span>
                     ))}
                   </div>
                 </div>
@@ -253,11 +253,11 @@ function ServicesSection() {
 function ProcessSection() {
   const { t } = useLanguage();
   const steps = [
-    { number: "01", icon: Search, titleKey: "process.discover", desc: "We learn about your business, goals, audience, and challenges to define the right scope and strategy.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
-    { number: "02", icon: Lightbulb, titleKey: "process.design", desc: "Our team creates wireframes, visual designs, and detailed plans that bring your vision to life.", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-    { number: "03", icon: Code2, titleKey: "process.build", desc: "We develop your solution using modern, scalable technology with regular updates and clean code.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
-    { number: "04", icon: Rocket, titleKey: "process.launch", desc: "After thorough testing and quality assurance, we deploy your product and ensure a smooth launch.", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-    { number: "05", icon: BarChart3, titleKey: "process.scale", desc: "Post-launch, we monitor performance, gather insights, and optimize to help your product grow.", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "01", icon: Search, titleKey: "process.discover", descKey: "process.discover.desc", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "02", icon: Lightbulb, titleKey: "process.design", descKey: "process.design.desc", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { number: "03", icon: Code2, titleKey: "process.build", descKey: "process.build.desc", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "04", icon: Rocket, titleKey: "process.launch", descKey: "process.launch.desc", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { number: "05", icon: BarChart3, titleKey: "process.scale", descKey: "process.scale.desc", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
   ];
 
   return (
@@ -281,7 +281,7 @@ function ProcessSection() {
                   <span className={`text-xs font-bold ${step.color} mt-1 opacity-60`}>{step.number}</span>
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-3">{t(step.titleKey)}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t(step.descKey)}</p>
               </div>
             </FadeIn>
           ))}
@@ -294,11 +294,11 @@ function ProcessSection() {
 function VisionSection() {
   const { t } = useLanguage();
   const cards = [
-    { icon: BrainCircuit, title: "AI Systems", desc: "Intelligent platforms that learn, adapt, and deliver actionable insights for your business.", accent: true },
-    { icon: Globe, title: "Smart Platforms", desc: "Connected digital ecosystems that unify data, users, and processes in one seamless experience.", accent: false },
-    { icon: Workflow, title: "Intelligent Automation", desc: "Self-optimizing workflows that reduce manual effort and scale with your operations.", accent: true },
-    { icon: Smartphone, title: "Future Products", desc: "Innovative digital products designed to meet tomorrow's market demands today.", accent: false },
-    { icon: Server, title: "Scalable Infrastructure", desc: "Cloud-native architecture built for reliability, performance, and growth at any scale.", accent: true },
+    { icon: BrainCircuit, titleKey: "vision.card.ai", descKey: "vision.card.ai.desc", accent: true },
+    { icon: Globe, titleKey: "vision.card.platforms", descKey: "vision.card.platforms.desc", accent: false },
+    { icon: Workflow, titleKey: "vision.card.automation", descKey: "vision.card.automation.desc", accent: true },
+    { icon: Smartphone, titleKey: "vision.card.products", descKey: "vision.card.products.desc", accent: false },
+    { icon: Server, titleKey: "vision.card.infra", descKey: "vision.card.infra.desc", accent: true },
   ];
 
   return (
@@ -313,17 +313,17 @@ function VisionSection() {
                 <div className="w-8 h-[2px] bg-primary" />
                 <span className="text-primary text-xs uppercase tracking-widest font-semibold">{t("nav.vision")}</span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">Shaping the <span className="text-gradient-gold">Digital Future</span></h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">{t("vision.heading1")} <span className="text-gradient-gold">{t("vision.heading2")}</span></h2>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 font-light leading-relaxed">
-                We believe the most successful companies of tomorrow will be those that fully embrace intelligent technology today. Our mission is to equip ambitious businesses with the AI-driven tools, platforms, and strategies they need to lead their industries.
+                {t("vision.paragraph")}
               </p>
               <div className="flex items-center gap-6">
                 <div className="w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center text-primary flex-shrink-0 group-hover:border-primary/60 transition-colors">
                   <Zap size={24} />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-foreground mb-1">Innovation at Every Level</p>
-                  <p className="text-xs text-muted-foreground">From strategy and design to engineering and deployment.</p>
+                  <p className="text-sm font-bold text-foreground mb-1">{t("vision.innovation")}</p>
+                  <p className="text-xs text-muted-foreground">{t("vision.innovation.desc")}</p>
                 </div>
               </div>
             </div>
@@ -336,8 +336,8 @@ function VisionSection() {
                 <div className={`p-3 rounded-xl mb-4 w-fit ${card.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                   <card.icon size={24} className={card.accent ? "text-cyan-400" : "text-amber-400"} />
                 </div>
-                <h3 className="text-base font-bold text-foreground mb-2">{card.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{card.desc}</p>
+                <h3 className="text-base font-bold text-foreground mb-2">{t(card.titleKey)}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t(card.descKey)}</p>
               </div>
             </FadeIn>
           ))}
@@ -348,13 +348,14 @@ function VisionSection() {
 }
 
 function ProjectsSection() {
+  const { t } = useLanguage();
   const projects = [
-    { icon: BrainCircuit, title: "AI Business Systems", desc: "Custom AI models and decision engines for enterprise workflows, customer insights, and operational intelligence.", accent: true },
-    { icon: Building2, title: "Company Websites", desc: "Premium, high-converting corporate websites that establish credibility and drive business results.", accent: false },
-    { icon: Smartphone, title: "Digital Product Design", desc: "End-to-end product design for web and mobile apps — from user research to pixel-perfect interfaces.", accent: true },
-    { icon: Workflow, title: "Automation Systems", desc: "Intelligent workflow automation connecting your tools, APIs, and processes into efficient, self-running systems.", accent: false },
-    { icon: Rocket, title: "Startup Technology Ecosystems", desc: "Full-stack technology foundations for startups — from MVP to scalable production systems, built for speed and growth.", accent: true },
-    { icon: Globe, title: "Digital Platforms", desc: "Multi-user platforms, marketplaces, and SaaS products engineered for performance, security, and scale.", accent: false },
+    { icon: BrainCircuit, titleKey: "projects.ai", descKey: "projects.ai.desc", accent: true },
+    { icon: Building2, titleKey: "projects.websites", descKey: "projects.websites.desc", accent: false },
+    { icon: Smartphone, titleKey: "projects.product", descKey: "projects.product.desc", accent: true },
+    { icon: Workflow, titleKey: "projects.automation", descKey: "projects.automation.desc", accent: false },
+    { icon: Rocket, titleKey: "projects.startup", descKey: "projects.startup.desc", accent: true },
+    { icon: Globe, titleKey: "projects.platforms", descKey: "projects.platforms.desc", accent: false },
   ];
 
   return (
@@ -362,9 +363,9 @@ function ProjectsSection() {
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">What We Build</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Focus <span className="text-gradient-gold">Areas</span></h2>
-            <p className="text-lg text-muted-foreground">From AI-powered systems to startup ecosystems, here are the types of projects we specialize in.</p>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("projects.badge")}</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("projects.heading1")} <span className="text-gradient-gold">{t("projects.heading2")}</span></h2>
+            <p className="text-lg text-muted-foreground">{t("projects.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -375,8 +376,8 @@ function ProjectsSection() {
                   <div className={`p-3 rounded-xl mb-6 w-fit ${project.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                     <project.icon size={28} className={project.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-foreground">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-grow">{project.desc}</p>
+                  <h3 className="text-xl font-bold mb-3 text-foreground">{t(project.titleKey)}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-grow">{t(project.descKey)}</p>
                 </div>
               </div>
             </FadeIn>
@@ -388,11 +389,12 @@ function ProjectsSection() {
 }
 
 function SelectedWorkSection() {
+  const { t } = useLanguage();
   const work = [
-    { title: "AI Business Systems", category: "Artificial Intelligence", desc: "Custom AI models and decision systems built to improve operations, insights, and business efficiency.", icon: BrainCircuit, accent: true },
-    { title: "Premium Company Websites", category: "Web Design & Development", desc: "High-converting corporate websites designed to establish credibility and elevate digital presence.", icon: Building2, accent: false },
-    { title: "Startup Technology Ecosystems", category: "Product Engineering", desc: "Scalable digital foundations for startups, from MVP platforms to growth-ready product systems.", icon: Rocket, accent: true },
-    { title: "Intelligent Automation Platforms", category: "Automation & AI", desc: "Workflow automation, integrations, and AI-enhanced systems that reduce manual effort and increase speed.", icon: Workflow, accent: false },
+    { titleKey: "selectedwork.ai", catKey: "selectedwork.ai.cat", descKey: "selectedwork.ai.desc", icon: BrainCircuit, accent: true },
+    { titleKey: "selectedwork.web", catKey: "selectedwork.web.cat", descKey: "selectedwork.web.desc", icon: Building2, accent: false },
+    { titleKey: "selectedwork.startup", catKey: "selectedwork.startup.cat", descKey: "selectedwork.startup.desc", icon: Rocket, accent: true },
+    { titleKey: "selectedwork.automation", catKey: "selectedwork.automation.cat", descKey: "selectedwork.automation.desc", icon: Workflow, accent: false },
   ];
 
   return (
@@ -400,9 +402,9 @@ function SelectedWorkSection() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Portfolio Direction</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Selected <span className="text-gradient-gold">Work</span></h2>
-            <p className="text-lg text-muted-foreground">Representative project directions that reflect our capabilities and vision.</p>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("selectedwork.badge")}</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("selectedwork.heading1")} <span className="text-gradient-gold">{t("selectedwork.heading2")}</span></h2>
+            <p className="text-lg text-muted-foreground">{t("selectedwork.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -412,13 +414,13 @@ function SelectedWorkSection() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.accent ? "from-cyan-500/5 to-transparent" : "from-primary/5 to-transparent"} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
-                    <span className={`text-xs px-3 py-1 rounded-full border font-medium ${item.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/80" : "border-amber-500/20 bg-amber-500/5 text-amber-400/80"}`}>{item.category}</span>
+                    <span className={`text-xs px-3 py-1 rounded-full border font-medium ${item.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/80" : "border-amber-500/20 bg-amber-500/5 text-amber-400/80"}`}>{t(item.catKey)}</span>
                     <div className={`p-2.5 rounded-xl ${item.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                       <item.icon size={22} className={item.accent ? "text-cyan-400" : "text-amber-400"} />
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">{t(item.titleKey)}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{t(item.descKey)}</p>
                 </div>
               </div>
             </FadeIn>
@@ -430,6 +432,7 @@ function SelectedWorkSection() {
 }
 
 function FounderSection() {
+  const { t } = useLanguage();
   return (
     <section id="behind" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -437,16 +440,12 @@ function FounderSection() {
           <FadeIn>
             <div className="space-y-8">
               <div>
-                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Our Story</div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Behind <span className="text-gradient-gold">Denarixx</span></h2>
+                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("founder.badge")}</div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("founder.heading1")} <span className="text-gradient-gold">{t("founder.heading2")}</span></h2>
               </div>
               <div className="space-y-5">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Denarixx was created with a vision to build intelligent digital systems that combine technology, design, and long-term strategic thinking. The company focuses on helping businesses and startups embrace AI, automation, and premium digital execution while also developing future-facing technology concepts and innovation-driven products.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  What started as a founder-driven initiative has grown into a focused technology company with a clear mission: to deliver premium digital solutions that create real, measurable value — and to push the boundaries of what technology products can achieve.
-                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.p1")}</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.p2")}</p>
               </div>
             </div>
           </FadeIn>
@@ -459,27 +458,27 @@ function FounderSection() {
                     <User size={28} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-foreground">Founder-Led Innovation</h3>
-                    <p className="text-sm text-muted-foreground">Vision, execution, and long-term thinking</p>
+                    <h3 className="text-xl font-bold text-foreground">{t("founder.led")}</h3>
+                    <p className="text-sm text-muted-foreground">{t("founder.led.desc")}</p>
                   </div>
                 </div>
                 <div className="h-[1px] w-full bg-border/50" />
                 <div className="flex flex-wrap gap-3">
-                  {["AI systems", "product thinking", "digital architecture", "premium execution"].map((tag) => (
-                    <span key={tag} className="text-xs px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary/80 font-medium">{tag}</span>
+                  {["founder.tag1", "founder.tag2", "founder.tag3", "founder.tag4"].map((tagKey) => (
+                    <span key={tagKey} className="text-xs px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary/80 font-medium">{t(tagKey)}</span>
                   ))}
                 </div>
                 <div className="space-y-4 pt-2">
                   {[
-                    { label: "Technology + Design", desc: "Deep integration of engineering and aesthetics" },
-                    { label: "Long-Term Vision", desc: "Building products and companies designed to last" },
-                    { label: "Innovation Focus", desc: "Constantly exploring new product concepts and systems" },
+                    { labelKey: "founder.point1", descKey: "founder.point1.desc" },
+                    { labelKey: "founder.point2", descKey: "founder.point2.desc" },
+                    { labelKey: "founder.point3", descKey: "founder.point3.desc" },
                   ].map((item, i) => (
                     <div key={i} className="flex gap-3 items-start">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                       <div>
-                        <p className="text-sm font-semibold text-foreground">{item.label}</p>
-                        <p className="text-xs text-muted-foreground">{item.desc}</p>
+                        <p className="text-sm font-semibold text-foreground">{t(item.labelKey)}</p>
+                        <p className="text-xs text-muted-foreground">{t(item.descKey)}</p>
                       </div>
                     </div>
                   ))}
@@ -494,11 +493,12 @@ function FounderSection() {
 }
 
 function InnovationLabSection() {
+  const { t } = useLanguage();
   const products = [
-    { icon: Eye, title: "Denarixx Vision", desc: "AI smart glasses concept focused on intelligent assistance, real-world interaction, and wearable computing.", accent: true },
-    { icon: Mic, title: "Denarixx REMEMO", desc: "AI memory recorder concept designed to capture, organize, and retrieve important spoken information.", accent: false },
-    { icon: Boxes, title: "AI Automation Systems", desc: "Custom AI-driven systems for workflow optimization, digital intelligence, and business automation.", accent: true },
-    { icon: FlaskConical, title: "Future Platforms", desc: "Emerging concepts in digital infrastructure, smart products, and next-generation technology experiences.", accent: false },
+    { icon: Eye, title: "Denarixx Vision", descKey: "innovation.vision.desc", accent: true },
+    { icon: Mic, title: "Denarixx REMEMO", descKey: "innovation.rememo.desc", accent: false },
+    { icon: Boxes, titleKey: "innovation.aisystems", descKey: "innovation.aisystems.desc", accent: true },
+    { icon: FlaskConical, titleKey: "innovation.future", descKey: "innovation.future.desc", accent: false },
   ];
 
   return (
@@ -511,10 +511,10 @@ function InnovationLabSection() {
           <FadeIn>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
               <FlaskConical size={12} />
-              Innovation Lab
+              {t("innovation.badge")}
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Denarixx <span className="text-gradient-cyan">Innovation Lab</span></h2>
-            <p className="text-lg text-muted-foreground">We build not only digital services, but also future-facing product concepts and intelligent systems designed for tomorrow's world.</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("innovation.heading1")} <span className="text-gradient-cyan">{t("innovation.heading2")}</span></h2>
+            <p className="text-lg text-muted-foreground">{t("innovation.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -526,10 +526,10 @@ function InnovationLabSection() {
                   <div className={`p-3 rounded-xl mb-6 w-fit ${product.accent ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
                     <product.icon size={28} className={product.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">{product.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{product.desc}</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">{product.titleKey ? t(product.titleKey) : product.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{t(product.descKey)}</p>
                   <div className={`mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider ${product.accent ? "text-cyan-400/60" : "text-amber-400/60"}`}>
-                    Concept / In Development
+                    {t("innovation.status")}
                   </div>
                 </div>
               </div>
@@ -542,12 +542,13 @@ function InnovationLabSection() {
 }
 
 function WhoWeWorkWithSection() {
+  const { t } = useLanguage();
   const audiences = [
-    { icon: Rocket, title: "Startups", desc: "From MVP to scale — we help startups build fast, iterate wisely, and grow with the right technology foundation.", accent: true },
-    { icon: Building2, title: "Small & Medium Businesses", desc: "Modern digital presence, automation, and AI tools designed to give established businesses a competitive edge.", accent: false },
-    { icon: Crown, title: "Premium Brands", desc: "Luxury-tier design, brand identity, and digital experiences for companies that demand the very best.", accent: true },
-    { icon: User, title: "Founders & Innovators", desc: "Strategic technology partnership for visionary founders building the next generation of products and companies.", accent: false },
-    { icon: MonitorSmartphone, title: "Digital-First Companies", desc: "Scalable platforms, AI integrations, and performance-optimized systems for companies that live and breathe digital.", accent: true },
+    { icon: Rocket, titleKey: "clients.startups", descKey: "clients.startups.desc", accent: true },
+    { icon: Building2, titleKey: "clients.smb", descKey: "clients.smb.desc", accent: false },
+    { icon: Crown, titleKey: "clients.premium", descKey: "clients.premium.desc", accent: true },
+    { icon: User, titleKey: "clients.founders", descKey: "clients.founders.desc", accent: false },
+    { icon: MonitorSmartphone, titleKey: "clients.digital", descKey: "clients.digital.desc", accent: true },
   ];
 
   return (
@@ -555,9 +556,9 @@ function WhoWeWorkWithSection() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Our Clients</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Who We <span className="text-gradient-gold">Work With</span></h2>
-            <p className="text-lg text-muted-foreground">We partner with ambitious businesses and individuals who value quality, innovation, and long-term thinking.</p>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("clients.badge")}</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("clients.heading1")} <span className="text-gradient-gold">{t("clients.heading2")}</span></h2>
+            <p className="text-lg text-muted-foreground">{t("clients.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -567,8 +568,8 @@ function WhoWeWorkWithSection() {
                 <div className={`p-3 rounded-xl mb-6 w-fit ${aud.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                   <aud.icon size={26} className={aud.accent ? "text-cyan-400" : "text-amber-400"} />
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-3">{aud.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{aud.desc}</p>
+                <h3 className="text-lg font-bold text-foreground mb-3">{t(aud.titleKey)}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t(aud.descKey)}</p>
               </div>
             </FadeIn>
           ))}
@@ -579,13 +580,14 @@ function WhoWeWorkWithSection() {
 }
 
 function WhyUsSection() {
+  const { t } = useLanguage();
   const highlights = [
-    { icon: BrainCircuit, text: "AI-first thinking across every solution we deliver", color: "text-cyan-400" },
-    { icon: Palette, text: "Premium design quality that builds trust and credibility", color: "text-amber-400" },
-    { icon: Server, text: "Scalable systems built for long-term growth", color: "text-cyan-400" },
-    { icon: Target, text: "Business-focused execution with measurable value", color: "text-amber-400" },
-    { icon: Code2, text: "Modern technology stack and future-ready architecture", color: "text-cyan-400" },
-    { icon: Shield, text: "Tailored strategy, not generic delivery", color: "text-amber-400" },
+    { icon: BrainCircuit, textKey: "whyus.h1", color: "text-cyan-400" },
+    { icon: Palette, textKey: "whyus.h2", color: "text-amber-400" },
+    { icon: Server, textKey: "whyus.h3", color: "text-cyan-400" },
+    { icon: Target, textKey: "whyus.h4", color: "text-amber-400" },
+    { icon: Code2, textKey: "whyus.h5", color: "text-cyan-400" },
+    { icon: Shield, textKey: "whyus.h6", color: "text-amber-400" },
   ];
 
   return (
@@ -595,19 +597,17 @@ function WhyUsSection() {
           <FadeIn>
             <div className="space-y-8">
               <div>
-                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">Why Choose Denarixx</div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Your <span className="text-gradient-gold">Competitive Edge</span></h2>
+                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("whyus.badge")}</div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("whyus.heading1")} <span className="text-gradient-gold">{t("whyus.heading2")}</span></h2>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                We combine deep technical expertise with premium design sensibility to deliver digital solutions that don't just work — they set you apart. Choosing Denarixx means investing in quality, innovation, and real results.
-              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">{t("whyus.desc")}</p>
               <div className="space-y-4">
                 {highlights.map((item, i) => (
                   <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: i * 0.08 }} viewport={{ once: true }} className="flex items-center gap-4">
                     <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${item.color === "text-cyan-400" ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
                       <item.icon size={20} className={`${item.color} flex-shrink-0`} />
                     </div>
-                    <p className="text-foreground font-medium">{item.text}</p>
+                    <p className="text-foreground font-medium">{t(item.textKey)}</p>
                   </motion.div>
                 ))}
               </div>
@@ -618,22 +618,22 @@ function WhyUsSection() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/15 to-cyan-500/10 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl" />
               <div className="relative p-10 rounded-3xl bg-card border border-border/50 space-y-8">
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-foreground">What sets us apart</h3>
-                  <p className="text-sm text-muted-foreground">Built on principles that deliver real results.</p>
+                  <h3 className="text-2xl font-bold text-foreground">{t("whyus.card.heading")}</h3>
+                  <p className="text-sm text-muted-foreground">{t("whyus.card.subtitle")}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-6">
                   {[
-                    { label: "Tailored Solutions", desc: "Every project is custom-built for your specific needs and goals", icon: Target },
-                    { label: "Modern Technology", desc: "We use the latest frameworks, tools, and AI capabilities available", icon: Code2 },
-                    { label: "Long-Term Partnership", desc: "We support your growth well beyond the initial launch", icon: Shield },
+                    { labelKey: "whyus.card.t1", descKey: "whyus.card.t1.desc", icon: Target },
+                    { labelKey: "whyus.card.t2", descKey: "whyus.card.t2.desc", icon: Code2 },
+                    { labelKey: "whyus.card.t3", descKey: "whyus.card.t3.desc", icon: Shield },
                   ].map((item, i) => (
                     <div key={i} className="flex gap-4 items-start">
                       <div className="p-2.5 rounded-lg bg-primary/10 border border-primary/20 flex-shrink-0">
                         <item.icon size={18} className="text-primary" />
                       </div>
                       <div>
-                        <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                        <p className="font-semibold text-foreground text-sm">{t(item.labelKey)}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{t(item.descKey)}</p>
                       </div>
                     </div>
                   ))}
@@ -744,9 +744,7 @@ function ContactSection() {
               </div>
               <div className="p-6 rounded-2xl border border-border/50 bg-card">
                 <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-8 mb-4 opacity-80" />
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Denarixx AI & Digital Solutions — Building intelligent digital solutions for businesses, startups, and brands worldwide.
-                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t("contact.companydesc")}</p>
               </div>
             </div>
           </FadeIn>
@@ -777,22 +775,22 @@ function ContactSection() {
                   <label htmlFor="contact-project-type" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.projecttype")}</label>
                   <select id="contact-project-type" data-testid="select-project-type" {...form.register("projectType")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-primary/50 transition-colors">
                     <option value="">{t("contact.form.selecttype")}</option>
-                    <option value="AI System">AI System</option>
-                    <option value="Website">Website</option>
-                    <option value="Automation">Automation</option>
-                    <option value="Branding">Branding</option>
-                    <option value="Consulting">Consulting</option>
-                    <option value="Other">Other</option>
+                    <option value="AI System">{t("contact.form.aisystem")}</option>
+                    <option value="Website">{t("contact.form.website")}</option>
+                    <option value="Automation">{t("contact.form.automationopt")}</option>
+                    <option value="Branding">{t("contact.form.brandingopt")}</option>
+                    <option value="Consulting">{t("contact.form.consultingopt")}</option>
+                    <option value="Other">{t("contact.form.otheropt")}</option>
                   </select>
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="contact-budget" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.budget")}</label>
                   <select id="contact-budget" data-testid="select-budget" {...form.register("budget")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-primary/50 transition-colors">
                     <option value="">{t("contact.form.selectrange")}</option>
-                    <option value="Under €5,000">Under €5,000</option>
-                    <option value="€5,000 – €15,000">€5,000 – €15,000</option>
-                    <option value="€15,000 – €50,000">€15,000 – €50,000</option>
-                    <option value="€50,000+">€50,000+</option>
+                    <option value="Under €5,000">{t("contact.form.under5k")}</option>
+                    <option value="€5,000 – €15,000">{t("contact.form.5to15k")}</option>
+                    <option value="€15,000 – €50,000">{t("contact.form.15to50k")}</option>
+                    <option value="€50,000+">{t("contact.form.50kplus")}</option>
                     <option value="Not sure yet">{t("contact.form.notsure")}</option>
                   </select>
                 </div>
@@ -935,7 +933,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} {t("footer.copyright")}</p>
+          <p className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} {t("footer.copyright")}</p>
           <div className="flex items-center gap-6">
             <button onClick={scrollToTop} className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors group" data-testid="button-back-to-top">
               {t("footer.backtotop")}
