@@ -82,7 +82,7 @@ function HeroSection() {
 
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[150px]" />
+        <div className="absolute bottom-01/4 right-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[150px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-cyan-500/5 rounded-full blur-[180px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background" />
       </motion.div>
@@ -120,7 +120,7 @@ function HeroSection() {
             </div>
           </div>
           
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             {t("hero.subtitle")}
           </p>
           
@@ -134,7 +134,7 @@ function HeroSection() {
             </PremiumButton>
           </div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} className="flex items-center justify-center gap-3 text-xs text-muted-foreground/60 uppercase tracking-[0.2em] font-medium flex-wrap" data-testid="text-hero-trust-line">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} className="flex items-center justify-center gap-3 text-xs text-white/90/60 uppercase tracking-[0.2em] font-medium flex-wrap" data-testid="text-hero-trust-line">
             <span>{t("hero.trust.ai")}</span>
             <span className="w-1 h-1 rounded-full bg-primary/40" />
             <span>{t("hero.trust.automation")}</span>
@@ -146,12 +146,6 @@ function HeroSection() {
         </motion.div>
       </div>
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.5 }} className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer" onClick={() => scrollTo("#about")}>
-        <span className="text-xs text-muted-foreground uppercase tracking-widest font-medium">{t("hero.scroll")}</span>
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
-          <ChevronDown size={20} className="text-primary" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
@@ -176,8 +170,8 @@ function AboutSection() {
                 </h2>
               </div>
               <div className="space-y-5">
-                <p className="text-lg text-muted-foreground leading-relaxed">{t("about.p1")}</p>
-                <p className="text-lg text-muted-foreground leading-relaxed">{t("about.p2")}</p>
+                <p className="text-xl text-gray-100 leading-relaxed font-semibold">{t("about.p1")}</p>
+                <p className="text-xl text-gray-100 leading-relaxed font-semibold">{t("about.p2")}</p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
                 <div className="flex gap-4">
@@ -187,8 +181,8 @@ function AboutSection() {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-base font-bold text-foreground mb-1">{t("about.aifirst")}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{t("about.aifirst.desc")}</p>
+                    <h4 className="text-base font-bold text-white mb-1">{t("about.aifirst")}</h4>
+                    <p className="text-base text-gray-100 leading-relaxed font-medium">{t("about.aifirst.desc")}</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -198,8 +192,8 @@ function AboutSection() {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-base font-bold text-foreground mb-1">{t("about.premium")}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{t("about.premium.desc")}</p>
+                    <h4 className="text-base font-bold text-white mb-1">{t("about.premium")}</h4>
+                    <p className="text-base text-gray-100 leading-relaxed font-medium">{t("about.premium.desc")}</p>
                   </div>
                 </div>
               </div>
@@ -210,7 +204,7 @@ function AboutSection() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl" />
               <img src="/media/tech-abstract-bg.png" alt="Abstract technology visualization" className="relative rounded-3xl border border-border/50 object-cover w-full shadow-2xl filter grayscale-[50%] contrast-[1.2] group-hover:grayscale-[30%] transition-all duration-500" />
               <div className="absolute -bottom-6 -right-6 p-6 bg-card border border-border/60 rounded-2xl shadow-2xl hidden md:block backdrop-blur-sm">
-                <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">{t("about.builtfor")}</p>
+                <p className="text-sm text-white/90 uppercase tracking-wider font-semibold">{t("about.builtfor")}</p>
                 <p className="text-2xl font-bold text-gradient-gold mt-1">{t("about.thefuture")}</p>
               </div>
             </div>
@@ -243,7 +237,7 @@ function ServicesSection() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               {t("services.heading1")} <span className="text-gradient-gold">{t("services.heading2")}</span>
             </h2>
-            <p className="text-lg text-muted-foreground">{t("services.subtitle")}</p>
+            <p className="text-lg text-white/90">{t("services.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -255,8 +249,8 @@ function ServicesSection() {
                   <div className={`p-3 rounded-xl mb-6 w-fit transition-colors ${service.accent ? "bg-cyan-500/10 group-hover:bg-cyan-500/20" : "bg-amber-500/10 group-hover:bg-amber-500/20"}`}>
                     <service.icon size={28} className={service.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-foreground">{t(service.titleKey)}</h3>
-                  <p className="text-muted-foreground leading-relaxed flex-grow text-sm">{t(service.descKey)}</p>
+                  <h3 className="text-xl font-bold mb-3 text-white">{t(service.titleKey)}</h3>
+                  <p className="text-white/90 leading-relaxed flex-grow text-sm">{t(service.descKey)}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {service.tagKeys.map((tagKey) => (
                       <span key={tagKey} className={`text-xs px-2.5 py-1 rounded-full border font-medium ${service.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/70" : "border-amber-500/20 bg-amber-500/5 text-amber-400/70"}`}>{t(tagKey)}</span>
@@ -290,7 +284,7 @@ function ProcessSection() {
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("process.badge")}</div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("process.heading1")} <span className="text-gradient-cyan">{t("process.heading2")}</span></h2>
-            <p className="text-lg text-muted-foreground">{t("process.subtitle")}</p>
+            <p className="text-lg text-white/90">{t("process.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative">
@@ -302,8 +296,8 @@ function ProcessSection() {
                   <step.icon size={28} className={step.color} />
                   <span className={`text-xs font-bold ${step.color} mt-1 opacity-60`}>{step.number}</span>
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-3">{t(step.titleKey)}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t(step.descKey)}</p>
+                <h3 className="text-lg font-bold text-white mb-3">{t(step.titleKey)}</h3>
+                <p className="text-sm text-white/90 leading-relaxed">{t(step.descKey)}</p>
               </div>
             </FadeIn>
           ))}
@@ -336,7 +330,7 @@ function VisionSection() {
                 <span className="text-primary text-xs uppercase tracking-widest font-semibold">{t("nav.vision")}</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">{t("vision.heading1")} <span className="text-gradient-gold">{t("vision.heading2")}</span></h2>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-white/90 mb-8 font-light leading-relaxed">
                 {t("vision.paragraph")}
               </p>
               <div className="flex items-center gap-6">
@@ -344,8 +338,8 @@ function VisionSection() {
                   <Zap size={24} />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-foreground mb-1">{t("vision.innovation")}</p>
-                  <p className="text-xs text-muted-foreground">{t("vision.innovation.desc")}</p>
+                  <p className="text-sm font-bold text-white mb-1">{t("vision.innovation")}</p>
+                  <p className="text-xs text-white/90">{t("vision.innovation.desc")}</p>
                 </div>
               </div>
             </div>
@@ -358,8 +352,8 @@ function VisionSection() {
                 <div className={`p-3 rounded-xl mb-4 w-fit ${card.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                   <card.icon size={24} className={card.accent ? "text-cyan-400" : "text-amber-400"} />
                 </div>
-                <h3 className="text-base font-bold text-foreground mb-2">{t(card.titleKey)}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t(card.descKey)}</p>
+                <h3 className="text-base font-bold text-white mb-2">{t(card.titleKey)}</h3>
+                <p className="text-sm text-white/90 leading-relaxed">{t(card.descKey)}</p>
               </div>
             </FadeIn>
           ))}
@@ -387,7 +381,7 @@ function ProjectsSection() {
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("projects.badge")}</div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("projects.heading1")} <span className="text-gradient-gold">{t("projects.heading2")}</span></h2>
-            <p className="text-lg text-muted-foreground">{t("projects.subtitle")}</p>
+            <p className="text-lg text-white/90">{t("projects.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -398,8 +392,8 @@ function ProjectsSection() {
                   <div className={`p-3 rounded-xl mb-6 w-fit ${project.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                     <project.icon size={28} className={project.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-foreground">{t(project.titleKey)}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-grow">{t(project.descKey)}</p>
+                  <h3 className="text-xl font-bold mb-3 text-white">{t(project.titleKey)}</h3>
+                  <p className="text-sm text-white/90 leading-relaxed flex-grow">{t(project.descKey)}</p>
                 </div>
               </div>
             </FadeIn>
@@ -426,7 +420,7 @@ function SelectedWorkSection() {
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("selectedwork.badge")}</div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("selectedwork.heading1")} <span className="text-gradient-gold">{t("selectedwork.heading2")}</span></h2>
-            <p className="text-lg text-muted-foreground">{t("selectedwork.subtitle")}</p>
+            <p className="text-lg text-white/90">{t("selectedwork.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -441,8 +435,8 @@ function SelectedWorkSection() {
                       <item.icon size={22} className={item.accent ? "text-cyan-400" : "text-amber-400"} />
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">{t(item.titleKey)}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{t(item.descKey)}</p>
+                  <h3 className="text-2xl font-bold text-white mb-3">{t(item.titleKey)}</h3>
+                  <p className="text-white/90 leading-relaxed">{t(item.descKey)}</p>
                 </div>
               </div>
             </FadeIn>
@@ -476,8 +470,8 @@ function FounderSection() {
                   data-testid="img-founder"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <h3 className="text-2xl font-bold text-foreground" data-testid="text-founder-name">Dennis Charles</h3>
+                <div className="absolute bottom-00 left-0 right-0 p-8">
+                  <h3 className="text-2xl font-bold text-white" data-testid="text-founder-name">Dennis Charles</h3>
                   <p className="text-primary font-semibold text-sm mt-1" data-testid="text-founder-title">{t("founder.role")}</p>
                 </div>
               </div>
@@ -490,18 +484,18 @@ function FounderSection() {
                   <div className="w-8 h-[2px] bg-primary" />
                   <span className="text-primary text-xs uppercase tracking-widest font-semibold">{t("founder.badge")}</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-2" data-testid="text-founder-heading">Dennis Charles</h3>
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="text-founder-heading">Dennis Charles</h3>
                 <p className="text-primary font-semibold mb-6">{t("founder.role")} — Denarixx AI & Digital Solutions</p>
               </div>
               <div className="space-y-5">
-                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.bio1")}</p>
-                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.bio2")}</p>
-                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.bio3")}</p>
+                <p className="text-lg text-white/90 leading-relaxed">{t("founder.bio1")}</p>
+                <p className="text-lg text-white/90 leading-relaxed">{t("founder.bio2")}</p>
+                <p className="text-lg text-white/90 leading-relaxed">{t("founder.bio3")}</p>
               </div>
               <FadeIn delay={0.3}>
                 <div className="relative mt-8 p-6 rounded-2xl bg-primary/5 border border-primary/15">
                   <div className="absolute -top-3 left-6 text-4xl text-primary/30 font-serif">"</div>
-                  <p className="text-base text-foreground/90 italic leading-relaxed pl-4" data-testid="text-founder-quote">{t("founder.quote")}</p>
+                  <p className="text-base text-white/90 italic leading-relaxed pl-4" data-testid="text-founder-quote">{t("founder.quote")}</p>
                   <p className="text-xs text-primary/60 mt-3 pl-4 font-semibold uppercase tracking-wider">— Dennis Charles</p>
                 </div>
               </FadeIn>
@@ -554,11 +548,11 @@ function InnovationLabSection() {
               {t("innovation.badge")}
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("innovation.heading1")} <span className="text-gradient-cyan">{t("innovation.heading2")}</span></h2>
-            <p className="text-lg text-muted-foreground">{t("innovation.subtitle")}</p>
+            <p className="text-lg text-white/90">{t("innovation.subtitle")}</p>
           </FadeIn>
         </div>
         <FadeIn delay={0.1}>
-          <p className="text-base text-muted-foreground/80 leading-relaxed text-center max-w-4xl mx-auto mb-16" data-testid="text-innovation-intro">{t("innovation.intro")}</p>
+          <p className="text-base text-white/90/80 leading-relaxed text-center max-w-4xl mx-auto mb-16" data-testid="text-innovation-intro">{t("innovation.intro")}</p>
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {products.map((product, i) => (
@@ -574,8 +568,8 @@ function InnovationLabSection() {
                       {t(product.labelKey)}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">{product.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{t(product.descKey)}</p>
+                  <h3 className="text-2xl font-bold text-white mb-3">{product.title}</h3>
+                  <p className="text-white/90 leading-relaxed">{t(product.descKey)}</p>
                   <div className={`mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider ${product.accent ? "text-cyan-400/60" : "text-amber-400/60"}`}>
                     {t("innovation.status")}
                   </div>
@@ -595,8 +589,8 @@ function InnovationLabSection() {
                     {t("innovation.more.label")}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-3">{t("innovation.more.title")}</h3>
-                <p className="text-muted-foreground leading-relaxed">{t("innovation.more.desc")}</p>
+                <h3 className="text-2xl font-bold text-white mb-3">{t("innovation.more.title")}</h3>
+                <p className="text-white/90 leading-relaxed">{t("innovation.more.desc")}</p>
                 <div className="mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider text-primary/60">
                   {t("innovation.status")}
                 </div>
@@ -605,7 +599,7 @@ function InnovationLabSection() {
           </FadeIn>
         </div>
         <FadeIn delay={0.5}>
-          <p className="text-xs text-muted-foreground/50 text-center mt-10 max-w-3xl mx-auto leading-relaxed italic" data-testid="text-innovation-disclaimer">{t("innovation.disclaimer")}</p>
+          <p className="text-xs text-white/90/50 text-center mt-10 max-w-3xl mx-auto leading-relaxed italic" data-testid="text-innovation-disclaimer">{t("innovation.disclaimer")}</p>
         </FadeIn>
         <FadeIn delay={0.6}>
           <div className="flex justify-center mt-10">
@@ -641,7 +635,7 @@ function WhoWeWorkWithSection() {
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("clients.badge")}</div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("clients.heading1")} <span className="text-gradient-gold">{t("clients.heading2")}</span></h2>
-            <p className="text-lg text-muted-foreground">{t("clients.subtitle")}</p>
+            <p className="text-lg text-white/90">{t("clients.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -651,8 +645,8 @@ function WhoWeWorkWithSection() {
                 <div className={`p-3 rounded-xl mb-6 w-fit ${aud.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                   <aud.icon size={26} className={aud.accent ? "text-cyan-400" : "text-amber-400"} />
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-3">{t(aud.titleKey)}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t(aud.descKey)}</p>
+                <h3 className="text-lg font-bold text-white mb-3">{t(aud.titleKey)}</h3>
+                <p className="text-sm text-white/90 leading-relaxed">{t(aud.descKey)}</p>
               </div>
             </FadeIn>
           ))}
@@ -683,14 +677,14 @@ function WhyUsSection() {
                 <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("whyus.badge")}</div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("whyus.heading1")} <span className="text-gradient-gold">{t("whyus.heading2")}</span></h2>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">{t("whyus.desc")}</p>
+              <p className="text-lg text-white/90 leading-relaxed">{t("whyus.desc")}</p>
               <div className="space-y-4">
                 {highlights.map((item, i) => (
                   <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: i * 0.08 }} viewport={{ once: true }} className="flex items-center gap-4">
                     <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${item.color === "text-cyan-400" ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
                       <item.icon size={20} className={`${item.color} flex-shrink-0`} />
                     </div>
-                    <p className="text-foreground font-medium">{t(item.textKey)}</p>
+                    <p className="text-white font-medium">{t(item.textKey)}</p>
                   </motion.div>
                 ))}
               </div>
@@ -701,8 +695,8 @@ function WhyUsSection() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/15 to-cyan-500/10 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl" />
               <div className="relative p-10 rounded-3xl bg-card border border-border/50 space-y-8">
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-foreground">{t("whyus.card.heading")}</h3>
-                  <p className="text-sm text-muted-foreground">{t("whyus.card.subtitle")}</p>
+                  <h3 className="text-2xl font-bold text-white">{t("whyus.card.heading")}</h3>
+                  <p className="text-sm text-white/90">{t("whyus.card.subtitle")}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-6">
                   {[
@@ -715,8 +709,8 @@ function WhyUsSection() {
                         <item.icon size={18} className="text-primary" />
                       </div>
                       <div>
-                        <p className="font-semibold text-foreground text-sm">{t(item.labelKey)}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{t(item.descKey)}</p>
+                        <p className="font-semibold text-white text-sm">{t(item.labelKey)}</p>
+                        <p className="text-xs text-white/90 mt-0.5">{t(item.descKey)}</p>
                       </div>
                     </div>
                   ))}
@@ -737,7 +731,7 @@ function CTABannerSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-cyan-500/10" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background/50" />
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+      <div className="absolute bottom-00 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
       <div className="container mx-auto px-4 max-w-4xl relative z-10 text-center">
         <FadeIn>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-8">
@@ -745,7 +739,7 @@ function CTABannerSection() {
             <span>{t("cta.badge")}</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("cta.heading1")} <span className="text-gradient-gold">{t("cta.heading2")}</span></h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">{t("cta.subtitle")}</p>
+          <p className="text-lg text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">{t("cta.subtitle")}</p>
           <PremiumButton size="lg" onClick={() => scrollTo("#contact")} data-testid="button-cta-banner">
             {t("cta.button")}
             <ArrowRight size={18} className="ml-2" />
@@ -798,12 +792,12 @@ function ContactSection() {
                 <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("contact.badge")}</div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("contact.heading1")} <span className="text-gradient-gold">{t("contact.heading2")}</span></h2>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">{t("contact.subtitle")}</p>
+              <p className="text-lg text-white/90 leading-relaxed">{t("contact.subtitle")}</p>
               <div data-testid="text-response-time" className="p-6 rounded-2xl border border-primary/20 bg-primary/5 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
                 <p className="text-sm font-semibold text-primary mb-1 uppercase tracking-wide">{t("contact.response")}</p>
-                <p className="text-2xl font-bold text-foreground">{t("contact.24h")}</p>
-                <p className="text-sm text-muted-foreground mt-1">{t("contact.review")}</p>
+                <p className="text-2xl font-bold text-white">{t("contact.24h")}</p>
+                <p className="text-sm text-white/90 mt-1">{t("contact.review")}</p>
               </div>
               <div className="space-y-5 pt-2">
                 <div className="flex items-start gap-4">
@@ -811,8 +805,8 @@ function ContactSection() {
                     <Mail className="text-primary" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-foreground font-bold mb-1 text-sm">Email</h4>
-                    <p className="text-muted-foreground text-sm">hello@denarixxai.com</p>
+                    <h4 className="text-white font-bold mb-1 text-sm">Email</h4>
+                    <p className="text-white/90 text-sm">hello@denarixxai.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -820,43 +814,43 @@ function ContactSection() {
                     <MapPin className="text-primary" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-foreground font-bold mb-1 text-sm">{t("contact.location")}</h4>
-                    <p className="text-muted-foreground text-sm">{t("contact.location.value")}</p>
+                    <h4 className="text-white font-bold mb-1 text-sm">{t("contact.location")}</h4>
+                    <p className="text-white/90 text-sm">{t("contact.location.value")}</p>
                   </div>
                 </div>
               </div>
               <div className="p-6 rounded-2xl border border-border/50 bg-card">
                 <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-8 mb-4 opacity-80" />
-                <p className="text-sm text-muted-foreground leading-relaxed">{t("contact.companydesc")}</p>
+                <p className="text-sm text-white/90 leading-relaxed">{t("contact.companydesc")}</p>
               </div>
             </div>
           </FadeIn>
           <FadeIn delay={0.2}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="p-8 md:p-10 rounded-3xl bg-card border border-border/50 shadow-2xl space-y-5 hover-glow transition-all duration-300" data-testid="form-contact">
               <div>
-                <h3 className="text-xl font-bold text-foreground mb-1">{t("contact.form.title")}</h3>
-                <p className="text-sm text-muted-foreground">{t("contact.form.subtitle")}</p>
+                <h3 className="text-xl font-bold text-white mb-1">{t("contact.form.title")}</h3>
+                <p className="text-sm text-white/90">{t("contact.form.subtitle")}</p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label htmlFor="contact-name" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.name")} *</label>
+                  <label htmlFor="contact-name" className="text-xs font-semibold text-white uppercase tracking-wide">{t("contact.form.name")} *</label>
                   <Input id="contact-name" placeholder={t("contact.form.name")} data-testid="input-name" {...form.register("name")} className={`text-sm ${form.formState.errors.name ? "border-destructive/50" : ""}`} />
                   {form.formState.errors.name && <p className="text-xs text-destructive">{form.formState.errors.name.message}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="contact-email" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.email")} *</label>
+                  <label htmlFor="contact-email" className="text-xs font-semibold text-white uppercase tracking-wide">{t("contact.form.email")} *</label>
                   <Input id="contact-email" type="email" placeholder="you@company.com" data-testid="input-email" {...form.register("email")} className={`text-sm ${form.formState.errors.email ? "border-destructive/50" : ""}`} />
                   {form.formState.errors.email && <p className="text-xs text-destructive">{form.formState.errors.email.message}</p>}
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="contact-company" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.company")}</label>
+                <label htmlFor="contact-company" className="text-xs font-semibold text-white uppercase tracking-wide">{t("contact.form.company")}</label>
                 <Input id="contact-company" placeholder={t("contact.form.company")} data-testid="input-company" {...form.register("company")} className="text-sm" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label htmlFor="contact-project-type" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.projecttype")}</label>
-                  <select id="contact-project-type" data-testid="select-project-type" {...form.register("projectType")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-primary/50 transition-colors">
+                  <label htmlFor="contact-project-type" className="text-xs font-semibold text-white uppercase tracking-wide">{t("contact.form.projecttype")}</label>
+                  <select id="contact-project-type" data-testid="select-project-type" {...form.register("projectType")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-white focus:outline-none focus:border-primary/50 transition-colors">
                     <option value="">{t("contact.form.selecttype")}</option>
                     <option value="AI System">{t("contact.form.aisystem")}</option>
                     <option value="Website">{t("contact.form.website")}</option>
@@ -867,8 +861,8 @@ function ContactSection() {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="contact-budget" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.budget")}</label>
-                  <select id="contact-budget" data-testid="select-budget" {...form.register("budget")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-primary/50 transition-colors">
+                  <label htmlFor="contact-budget" className="text-xs font-semibold text-white uppercase tracking-wide">{t("contact.form.budget")}</label>
+                  <select id="contact-budget" data-testid="select-budget" {...form.register("budget")} className="w-full h-11 px-4 text-sm rounded-lg bg-background border border-border text-white focus:outline-none focus:border-primary/50 transition-colors">
                     <option value="">{t("contact.form.selectrange")}</option>
                     <option value="Under €5,000">{t("contact.form.under5k")}</option>
                     <option value="€5,000 – €15,000">{t("contact.form.5to15k")}</option>
@@ -879,7 +873,7 @@ function ContactSection() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="contact-message" className="text-xs font-semibold text-foreground uppercase tracking-wide">{t("contact.form.brief")} *</label>
+                <label htmlFor="contact-message" className="text-xs font-semibold text-white uppercase tracking-wide">{t("contact.form.brief")} *</label>
                 <Textarea id="contact-message" placeholder={t("contact.form.brief")} data-testid="input-message" {...form.register("message")} className={`text-sm min-h-[120px] ${form.formState.errors.message ? "border-destructive/50" : ""}`} />
                 {form.formState.errors.message && <p className="text-xs text-destructive">{form.formState.errors.message.message}</p>}
               </div>
@@ -890,7 +884,7 @@ function ContactSection() {
                   <>{t("contact.form.submit")} <ArrowRight size={16} className="ml-2" /></>
                 )}
               </PremiumButton>
-              <p className="text-xs text-muted-foreground text-center">{t("contact.form.privacy")}</p>
+              <p className="text-xs text-white/90 text-center">{t("contact.form.privacy")}</p>
             </form>
           </FadeIn>
         </div>
@@ -920,8 +914,8 @@ function NewsletterSection() {
       <div className="container mx-auto px-4 max-w-2xl relative z-10 text-center">
         <FadeIn>
           <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-6 uppercase tracking-widest">{t("newsletter.badge")}</div>
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{t("newsletter.heading")}</h3>
-          <p className="text-muted-foreground mb-8 text-sm leading-relaxed">{t("newsletter.text")}</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">{t("newsletter.heading")}</h3>
+          <p className="text-white/90 mb-8 text-sm leading-relaxed">{t("newsletter.text")}</p>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" data-testid="form-newsletter">
             <Input type="email" placeholder="your@email.com" value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} required data-testid="input-newsletter-email" className="text-sm flex-1" />
             <PremiumButton type="submit" size="default" data-testid="button-newsletter-subscribe">
@@ -995,8 +989,8 @@ function FooterInstallButton() {
           <Download size={15} className="text-primary" />
         </div>
         <div className="text-left">
-          <p className="text-sm font-semibold text-foreground leading-tight">{t("pwa.install")}</p>
-          <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">{t("pwa.install.desc")}</p>
+          <p className="text-sm font-semibold text-white leading-tight">{t("pwa.install")}</p>
+          <p className="text-[11px] text-white/90 leading-tight mt-0.5">{t("pwa.install.desc")}</p>
         </div>
       </button>
       {showIosHint && (
@@ -1037,7 +1031,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 pb-16 border-b border-border/30">
           <div className="lg:col-span-1">
             <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-9 mb-6 opacity-90 hover:opacity-100 transition-opacity cursor-pointer" onClick={scrollToTop} />
-            <p className="text-sm text-muted-foreground leading-relaxed mb-6">{t("footer.desc")}</p>
+            <p className="text-sm text-white/90 leading-relaxed mb-6">{t("footer.desc")}</p>
             <p className="text-xs text-primary/70 font-medium mb-6">{t("footer.innovation")}</p>
             <div className="flex gap-3">
               {[
@@ -1046,18 +1040,18 @@ function Footer() {
                 { Icon: SiInstagram, href: "#", label: "Instagram" },
                 { Icon: SiGithub, href: "#", label: "GitHub" },
               ].map(({ Icon, href, label }) => (
-                <a key={label} href={href} aria-label={label} data-testid={`link-social-${label.toLowerCase().replace(/[^a-z]/g, "")}`} className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300 hover:-translate-y-0.5">
+                <a key={label} href={href} aria-label={label} data-testid={`link-social-${label.toLowerCase().replace(/[^a-z]/g, "")}`} className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-white/90 hover:text-primary hover:border-primary/40 transition-all duration-300 hover:-translate-y-0.5">
                   <Icon size={15} />
                 </a>
               ))}
             </div>
           </div>
           <div>
-            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">{t("footer.nav")}</h4>
+            <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-widest">{t("footer.nav")}</h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.labelKey}>
-                  <button onClick={() => scrollTo(link.href)} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group">
+                  <button onClick={() => scrollTo(link.href)} className="text-sm text-white/90 hover:text-primary transition-colors flex items-center gap-1.5 group">
                     <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200" />
                     {t(link.labelKey)}
                   </button>
@@ -1066,11 +1060,11 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">{t("footer.services")}</h4>
+            <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-widest">{t("footer.services")}</h4>
             <ul className="space-y-3">
               {services.map((key) => (
                 <li key={key}>
-                  <button onClick={() => scrollTo("#services")} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group text-left">
+                  <button onClick={() => scrollTo("#services")} className="text-sm text-white/90 hover:text-primary transition-colors flex items-center gap-1.5 group text-left">
                     <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200 flex-shrink-0" />
                     {t(key)}
                   </button>
@@ -1079,20 +1073,20 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-widest">{t("footer.legal")}</h4>
+            <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-widest">{t("footer.legal")}</h4>
             <ul className="space-y-3 mb-8">
-              <li><a href="/privacy" data-testid="link-privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.privacy")}</a></li>
-              <li><a href="/terms" data-testid="link-terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.terms")}</a></li>
-              <li><a href="/impressum" data-testid="link-impressum" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.impressum")}</a></li>
-              <li><a href="/cookies" data-testid="link-cookie-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">{t("footer.cookies")}</a></li>
+              <li><a href="/privacy" data-testid="link-privacy-policy" className="text-sm text-white/90 hover:text-primary transition-colors">{t("footer.privacy")}</a></li>
+              <li><a href="/terms" data-testid="link-terms" className="text-sm text-white/90 hover:text-primary transition-colors">{t("footer.terms")}</a></li>
+              <li><a href="/impressum" data-testid="link-impressum" className="text-sm text-white/90 hover:text-primary transition-colors">{t("footer.impressum")}</a></li>
+              <li><a href="/cookies" data-testid="link-cookie-policy" className="text-sm text-white/90 hover:text-primary transition-colors">{t("footer.cookies")}</a></li>
             </ul>
             <FooterInstallButton />
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} {t("footer.copyright")}</p>
+          <p className="text-xs text-white/90">&copy; {new Date().getFullYear()} {t("footer.copyright")}</p>
           <div className="flex items-center gap-6">
-            <button onClick={scrollToTop} className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors group" data-testid="button-back-to-top">
+            <button onClick={scrollToTop} className="flex items-center gap-2 text-xs text-white/90 hover:text-primary transition-colors group" data-testid="button-back-to-top">
               {t("footer.backtotop")}
               <ArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
             </button>

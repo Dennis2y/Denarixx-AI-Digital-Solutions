@@ -31,7 +31,7 @@ export function useSubmitContact() {
         title: "Message Sent Successfully",
         description: "Our team will get back to you shortly.",
         variant: "default",
-        className: "bg-background border-primary/20 text-foreground",
+        className: "bg-background border-primary/20 text-white",
       });
     },
     onError: (error) => {

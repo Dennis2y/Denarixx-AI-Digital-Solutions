@@ -74,7 +74,7 @@ export function Navbar() {
                 key={link.key}
                 onClick={() => scrollTo(link.href)}
                 data-testid={`link-nav-${link.key.split(".")[1]}`}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors tracking-wide relative group"
+                className="text-sm font-medium text-white/90 hover:text-primary transition-colors tracking-wide relative group"
               >
                 {t(link.key)}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300" />
@@ -92,7 +92,7 @@ export function Navbar() {
           <div className="flex md:hidden items-center gap-2">
             <LanguageSelector />
             <button 
-              className="text-foreground p-2"
+              className="text-white p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="button-mobile-menu"
               aria-label="Toggle menu"
@@ -113,7 +113,7 @@ export function Navbar() {
             <button
               key={link.key}
               onClick={() => scrollTo(link.href)}
-              className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors"
+              className="text-left text-lg font-medium text-white hover:text-primary transition-colors"
             >
               {t(link.key)}
             </button>

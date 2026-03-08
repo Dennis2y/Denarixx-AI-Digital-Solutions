@@ -13,17 +13,17 @@ function LegalLayout({ title, children }: { title: string; children: React.React
             <ArrowLeft size={16} />
             {t("legal.back")}
           </a>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">{title}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h1>
           <div className="w-16 h-1 bg-primary rounded-full mb-8" />
-          <p className="text-sm text-muted-foreground/60 mb-12">{t("legal.updated")}</p>
-          <div className="prose prose-invert max-w-none space-y-8 text-muted-foreground leading-relaxed">
+          <p className="text-sm text-white/90/60 mb-12">{t("legal.updated")}</p>
+          <div className="prose prose-invert max-w-none space-y-8 text-white/90 leading-relaxed">
             {children}
           </div>
         </div>
       </main>
       <footer className="border-t border-border/30 py-8">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-xs text-muted-foreground/40">&copy; {new Date().getFullYear()} Denarixx AI & Digital Solutions. All rights reserved.</p>
+          <p className="text-xs text-white/90/40">&copy; {new Date().getFullYear()} Denarixx AI & Digital Solutions. All rights reserved.</p>
         </div>
       </footer>
     </div>
@@ -33,7 +33,7 @@ function LegalLayout({ title, children }: { title: string; children: React.React
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="space-y-4">
-      <h2 className="text-xl font-bold text-foreground">{title}</h2>
+      <h2 className="text-xl font-bold text-white">{title}</h2>
       {children}
     </section>
   );
@@ -264,21 +264,21 @@ export function CookiePolicy() {
           <table className="w-full text-sm border border-border/30 rounded-lg overflow-hidden">
             <thead>
               <tr className="bg-card border-b border-border/30">
-                <th className="text-left p-3 text-foreground font-semibold">{t("cookies.s3.cookie")}</th>
-                <th className="text-left p-3 text-foreground font-semibold">{t("cookies.s3.type")}</th>
-                <th className="text-left p-3 text-foreground font-semibold">{t("cookies.s3.purpose")}</th>
-                <th className="text-left p-3 text-foreground font-semibold">{t("cookies.s3.duration")}</th>
+                <th className="text-left p-3 text-white font-semibold">{t("cookies.s3.cookie")}</th>
+                <th className="text-left p-3 text-white font-semibold">{t("cookies.s3.type")}</th>
+                <th className="text-left p-3 text-white font-semibold">{t("cookies.s3.purpose")}</th>
+                <th className="text-left p-3 text-white font-semibold">{t("cookies.s3.duration")}</th>
               </tr>
             </thead>
             <tbody>
               <tr className="border-b border-border/20">
-                <td className="p-3 text-foreground/80">language</td>
+                <td className="p-3 text-white/80">language</td>
                 <td className="p-3">{t("cookies.s3.r1.type")}</td>
                 <td className="p-3">{t("cookies.s3.r1.purpose")}</td>
                 <td className="p-3">{t("cookies.s3.r1.duration")}</td>
               </tr>
               <tr className="border-b border-border/20">
-                <td className="p-3 text-foreground/80">theme</td>
+                <td className="p-3 text-white/80">theme</td>
                 <td className="p-3">{t("cookies.s3.r2.type")}</td>
                 <td className="p-3">{t("cookies.s3.r2.purpose")}</td>
                 <td className="p-3">{t("cookies.s3.r2.duration")}</td>

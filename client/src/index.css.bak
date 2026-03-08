@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 43 74% 49%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 43 74% 49%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 75%;
+
+    --accent: 43 74% 49%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 43 74% 49%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
+    font-family: var(--font-body);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728];
+  }
+  
+  .border-gradient-gold {
+    position: relative;
+    background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card))) padding-box,
+                linear-gradient(135deg, rgba(191, 149, 63, 0.5), rgba(252, 246, 186, 0.2), rgba(179, 135, 40, 0.5)) border-box;
+    border: 1px solid transparent;
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00D9FF] via-[#0099FF] to-[#00CCFF];
+  }
+
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#A855F7] via-[#D946EF] to-[#EC4899];
+  }
+
+  .border-gradient-cyan {
+    position: relative;
+    background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card))) padding-box,
+                linear-gradient(135deg, rgba(0, 217, 255, 0.5), rgba(0, 153, 255, 0.2), rgba(0, 204, 255, 0.5)) border-box;
+    border: 1px solid transparent;
+  }
+
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(191, 149, 63, 0.15);
+    border-color: rgba(191, 149, 63, 0.4);
+  }
+
+  .hover-glow-cyan {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow-cyan:hover {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+    border-color: rgba(0, 217, 255, 0.4);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .hero-marquee-track {
+    display: inline-flex;
+    animation: hero-marquee 20s linear infinite;
+  }
+
+  .hero-marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes hero-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

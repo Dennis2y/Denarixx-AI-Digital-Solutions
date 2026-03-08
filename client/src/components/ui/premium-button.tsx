@@ -13,8 +13,8 @@ const PremiumButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
     
     const variants = {
       primary: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:-translate-y-0.5",
-      outline: "border-gradient-gold text-foreground hover:bg-primary/5",
-      ghost: "text-muted-foreground hover:text-primary hover:bg-primary/5",
+      outline: "border-gradient-gold text-white hover:bg-primary/5",
+      ghost: "text-white/90 hover:text-primary hover:bg-primary/5",
     };
 
     const sizes = {

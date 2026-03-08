@@ -120,3 +120,20 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+
+/* Global readability boost */
+body {
+  color: hsl(var(--foreground));
+  font-weight: 500;
+}
+
+p, li {
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: hsl(var(--foreground));
+  font-weight: 700;
+}

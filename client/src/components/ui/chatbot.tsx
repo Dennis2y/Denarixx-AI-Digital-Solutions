@@ -31,7 +31,7 @@ function renderMarkdown(text: string) {
     let match;
     while ((match = regex.exec(str)) !== null) {
       if (match.index > lastIndex) parts.push(str.slice(lastIndex, match.index));
-      parts.push(<strong key={`b-${match.index}`} className="font-semibold text-foreground">{match[1]}</strong>);
+      parts.push(<strong key={`b-${match.index}`} className="font-semibold text-white">{match[1]}</strong>);
       lastIndex = regex.lastIndex;
     }
     if (lastIndex < str.length) parts.push(str.slice(lastIndex));
@@ -50,7 +50,7 @@ function renderMarkdown(text: string) {
     const headingMatch = trimmed.match(/^#{1,4}\s+(.+)$/);
     if (headingMatch) {
       flushList();
-      elements.push(<p key={`h-${i}`} className="font-semibold text-foreground mt-2 mb-1">{inlineFormat(headingMatch[1])}</p>);
+      elements.push(<p key={`h-${i}`} className="font-semibold text-white mt-2 mb-1">{inlineFormat(headingMatch[1])}</p>);
       continue;
     }
 
@@ -253,11 +253,11 @@ export function Chatbot() {
                   <Sparkles size={18} className="text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-foreground">{label("title")}</h3>
+                  <h3 className="text-sm font-bold text-white">{label("title")}</h3>
                   <div className="relative">
                     <button
                       onClick={() => setShowModelSelect(!showModelSelect)}
-                      className="flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors"
+                      className="flex items-center gap-1 text-[11px] text-white/90 hover:text-primary transition-colors"
                       data-testid="button-model-select"
                     >
                       {MODELS.find(m => m.id === model)?.name || model}
@@ -269,7 +269,7 @@ export function Chatbot() {
                           <button
                             key={m.id}
                             onClick={() => { setModel(m.id); setShowModelSelect(false); }}
-                            className={`w-full text-left px-3 py-1.5 text-xs transition-colors ${model === m.id ? "text-primary bg-primary/5" : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"}`}
+                            className={`w-full text-left px-3 py-1.5 text-xs transition-colors ${model === m.id ? "text-primary bg-primary/5" : "text-white/90 hover:text-white hover:bg-secondary/50"}`}
                             data-testid={`button-model-${m.id}`}
                           >
                             {m.name}
@@ -282,7 +282,7 @@ export function Chatbot() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-white/90 hover:text-white hover:bg-secondary/50 transition-colors"
                 data-testid="button-close-chat"
               >
                 <X size={16} />
@@ -294,7 +294,7 @@ export function Chatbot() {
                 <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Bot size={14} className="text-primary" />
                 </div>
-                <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-foreground max-w-[85%]">
+                <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-white max-w-[85%]">
                   {label("greeting")}
                 </div>
               </div>
@@ -310,7 +310,7 @@ export function Chatbot() {
                     className={`rounded-2xl px-4 py-3 text-sm max-w-[85%] ${
                       msg.role === "user"
                         ? "bg-primary text-primary-foreground rounded-tr-sm whitespace-pre-wrap"
-                        : "bg-card border border-border/30 text-foreground rounded-tl-sm"
+                        : "bg-card border border-border/30 text-white rounded-tl-sm"
                     }`}
                     data-testid={`chat-message-${msg.role}-${i}`}
                   >
@@ -318,7 +318,7 @@ export function Chatbot() {
                   </div>
                   {msg.role === "user" && (
                     <div className="w-7 h-7 rounded-lg bg-secondary border border-border/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <User size={14} className="text-muted-foreground" />
+                      <User size={14} className="text-white/90" />
                     </div>
                   )}
                 </div>
@@ -329,7 +329,7 @@ export function Chatbot() {
                   <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Bot size={14} className="text-primary" />
                   </div>
-                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-foreground max-w-[85%]" data-testid="chat-typing">
+                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-white max-w-[85%]" data-testid="chat-typing">
                     {renderMarkdown(typingContent)}
                     <span className="inline-block w-1.5 h-4 bg-primary/70 animate-pulse ml-0.5 align-middle" />
                   </div>
@@ -341,7 +341,7 @@ export function Chatbot() {
                   <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Bot size={14} className="text-primary" />
                   </div>
-                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-muted-foreground">
+                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-white/90">
                     <span className="inline-flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "0ms" }} />
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "150ms" }} />
@@ -362,7 +362,7 @@ export function Chatbot() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder={label("placeholder")}
-                  className="flex-1 bg-secondary/50 border border-border/30 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  className="flex-1 bg-secondary/50 border border-border/30 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/90 focus:outline-none focus:border-primary/50 transition-colors"
                   disabled={isBusy}
                   data-testid="input-chat-message"
                 />
@@ -384,7 +384,7 @@ export function Chatbot() {
         onClick={() => setIsOpen(!isOpen)}
         className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20 transition-all duration-300 ${
           isOpen
-            ? "bg-card border border-border/50 text-muted-foreground hover:text-foreground"
+            ? "bg-card border border-border/50 text-white/90 hover:text-white"
             : "bg-primary text-primary-foreground hover:bg-primary/90"
         }`}
         whileHover={{ scale: 1.05 }}

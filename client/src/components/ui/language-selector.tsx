@@ -24,8 +24,8 @@ export function LanguageSelector() {
         aria-label="Select language"
       >
         <span className="text-base leading-none">{currentOption.flag}</span>
-        <span className="hidden sm:inline text-xs text-muted-foreground font-medium">{currentOption.code.toUpperCase()}</span>
-        <ChevronDown size={12} className={`text-muted-foreground transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+        <span className="hidden sm:inline text-xs text-white/90 font-medium">{currentOption.code.toUpperCase()}</span>
+        <ChevronDown size={12} className={`text-white/90 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
       </button>
 
       {open && (
@@ -39,7 +39,7 @@ export function LanguageSelector() {
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-sm transition-colors duration-150 ${
                   language === lang.code
                     ? "bg-primary/10 text-primary"
-                    : "text-foreground hover:bg-secondary/60"
+                    : "text-white hover:bg-secondary/60"
                 }`}
               >
                 <span className="text-lg leading-none">{lang.flag}</span>
