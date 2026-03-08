@@ -478,6 +478,13 @@ function FounderSection() {
                 <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.bio2")}</p>
                 <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.bio3")}</p>
               </div>
+              <FadeIn delay={0.3}>
+                <div className="relative mt-8 p-6 rounded-2xl bg-primary/5 border border-primary/15">
+                  <div className="absolute -top-3 left-6 text-4xl text-primary/30 font-serif">"</div>
+                  <p className="text-base text-foreground/90 italic leading-relaxed pl-4" data-testid="text-founder-quote">{t("founder.quote")}</p>
+                  <p className="text-xs text-primary/60 mt-3 pl-4 font-semibold uppercase tracking-wider">— Dennis Charles</p>
+                </div>
+              </FadeIn>
               <div className="flex flex-wrap gap-3 pt-4">
                 {["founder.tag1", "founder.tag2", "founder.tag3", "founder.tag4"].map((tagKey, i) => (
                   <span key={tagKey} data-testid={`tag-founder-${i}`} className="text-xs px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary/80 font-medium">{t(tagKey)}</span>
@@ -494,10 +501,10 @@ function FounderSection() {
 function InnovationLabSection() {
   const { t } = useLanguage();
   const products = [
-    { icon: Eye, title: "Denarixx Vision", descKey: "innovation.vision.desc", accent: true },
-    { icon: Mic, title: "Denarixx REMEMO", descKey: "innovation.rememo.desc", accent: false },
-    { icon: Boxes, titleKey: "innovation.aisystems", descKey: "innovation.aisystems.desc", accent: true },
-    { icon: FlaskConical, titleKey: "innovation.future", descKey: "innovation.future.desc", accent: false },
+    { icon: Eye, title: "Denarixx Vision", labelKey: "innovation.vision.label", descKey: "innovation.vision.desc", accent: true },
+    { icon: Mic, title: "Denarixx REMEMO", labelKey: "innovation.rememo.label", descKey: "innovation.rememo.desc", accent: false },
+    { icon: Smartphone, title: "Denarixx Smartphone", labelKey: "innovation.smartphone.label", descKey: "innovation.smartphone.desc", accent: true },
+    { icon: FlaskConical, title: "Denarixx Future Mobility", labelKey: "innovation.mobility.label", descKey: "innovation.mobility.desc", accent: false },
   ];
 
   return (
@@ -522,10 +529,15 @@ function InnovationLabSection() {
               <div data-testid={`card-innovation-${i}`} className={`group p-10 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden h-full ${product.accent ? "hover-glow-cyan" : "hover-glow"}`}>
                 <div className={`absolute top-0 right-0 w-40 h-40 rounded-full blur-[80px] transition-opacity duration-500 opacity-0 group-hover:opacity-100 ${product.accent ? "bg-cyan-500/10" : "bg-primary/10"}`} />
                 <div className="relative z-10">
-                  <div className={`p-3 rounded-xl mb-6 w-fit ${product.accent ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
-                    <product.icon size={28} className={product.accent ? "text-cyan-400" : "text-amber-400"} />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className={`p-3 rounded-xl w-fit ${product.accent ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
+                      <product.icon size={28} className={product.accent ? "text-cyan-400" : "text-amber-400"} />
+                    </div>
+                    <span className={`text-[10px] px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider border ${product.accent ? "text-cyan-400/70 border-cyan-500/20 bg-cyan-500/5" : "text-amber-400/70 border-amber-500/20 bg-amber-500/5"}`}>
+                      {t(product.labelKey)}
+                    </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">{product.titleKey ? t(product.titleKey) : product.title}</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">{product.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{t(product.descKey)}</p>
                   <div className={`mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider ${product.accent ? "text-cyan-400/60" : "text-amber-400/60"}`}>
                     {t("innovation.status")}
@@ -958,8 +970,8 @@ export default function Home() {
         <VisionSection />
         <ProjectsSection />
         <SelectedWorkSection />
-        <FounderSection />
         <InnovationLabSection />
+        <FounderSection />
         <WhoWeWorkWithSection />
         <WhyUsSection />
         <CTABannerSection />
