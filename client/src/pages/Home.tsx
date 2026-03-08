@@ -56,6 +56,17 @@ function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
+      >
+        <source src="/media/hero_video.mp4" type="video/mp4" />
+      </video>
+
       {/* Background Effects */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
@@ -99,15 +110,22 @@ function HeroSection() {
 
 function AboutSection() {
   return (
-    <section id="about" className="py-24 md:py-32 relative">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10 z-0">
+        <img 
+          src="/media/tech-abstract-bg.png" 
+          alt="Background" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <FadeIn>
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl blur-xl transition-all duration-500 group-hover:blur-2xl" />
               {/* elegant architecture structure black and gold lighting abstract */}
               <img 
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
+                src="/media/tech-abstract-bg.png" 
                 alt="Abstract Architecture" 
                 className="relative rounded-2xl border border-border/50 object-cover aspect-[4/5] shadow-2xl filter grayscale-[50%] contrast-[1.2]"
               />
@@ -157,7 +175,14 @@ function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-secondary/20 border-y border-border/30">
+    <section id="services" className="py-24 md:py-32 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-5 z-0">
+        <img 
+          src="/media/innovation-bg.png" 
+          alt="Background" 
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
@@ -198,11 +223,11 @@ function VisionSection() {
         <FadeIn>
           <div className="relative rounded-3xl overflow-hidden bg-card border border-border">
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent z-10" />
-            {/* dark minimal technology setup futuristic */}
+            {/* AI Network Background */}
             <img 
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop" 
+              src="/media/ai-network-bg.png" 
               alt="Vision Background" 
-              className="absolute inset-0 w-full h-full object-cover object-right opacity-40 filter grayscale"
+              className="absolute inset-0 w-full h-full object-cover object-right opacity-30 filter grayscale-[30%]"
             />
             
             <div className="relative z-20 p-8 md:p-16 lg:p-24 max-w-3xl">
