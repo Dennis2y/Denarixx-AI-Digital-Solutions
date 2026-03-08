@@ -121,11 +121,11 @@ function AboutSection() {
           <FadeIn>
             <div className="space-y-8">
               <div>
-                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
+                <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
                   About Denarixx
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Engineering the <span className="text-gradient-gold">Unimaginable</span>.
+                  Engineering the <span className="text-gradient-cyan">Unimaginable</span>.
                 </h2>
               </div>
               
@@ -141,8 +141,8 @@ function AboutSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Rocket className="text-primary" size={24} />
+                    <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                      <Rocket className="text-cyan-400" size={24} />
                     </div>
                   </div>
                   <div>
@@ -152,8 +152,8 @@ function AboutSection() {
                 </div>
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Award className="text-primary" size={24} />
+                    <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                      <Award className="text-amber-400" size={24} />
                     </div>
                   </div>
                   <div>
@@ -191,31 +191,36 @@ function ServicesSection() {
       icon: Bot, 
       title: "AI Integration", 
       desc: "Embed intelligent models into your digital infrastructure to automate complex workflows, generate insights, and unlock new revenue streams.",
-      color: "from-blue-500/20 to-cyan-500/10"
+      color: "from-cyan-500/10 to-blue-500/5",
+      accent: true
     },
     { 
       icon: Layers, 
       title: "Premium Web Design", 
       desc: "Award-winning, conversion-optimized interfaces crafted with obsessive attention to typography, interaction design, and visual hierarchy.",
-      color: "from-purple-500/20 to-pink-500/10"
+      color: "from-amber-500/10 to-orange-500/5",
+      accent: false
     },
     { 
       icon: Cpu, 
       title: "System Automation", 
       desc: "Transform disparate tools and processes into seamless, intelligent systems that reduce friction and multiply operational efficiency.",
-      color: "from-emerald-500/20 to-teal-500/10"
+      color: "from-cyan-500/10 to-teal-500/5",
+      accent: true
     },
     { 
       icon: Sparkles, 
       title: "Brand Identity", 
       desc: "Establish market dominance through cohesive, luxury-tier identity systems that command respect and resonate with premium audiences.",
-      color: "from-amber-500/20 to-orange-500/10"
+      color: "from-amber-500/10 to-yellow-500/5",
+      accent: false
     },
     { 
       icon: TrendingUp, 
       title: "Digital Strategy", 
       desc: "Data-driven roadmaps engineered to scale operations, maximize ROI, and position your brand as an industry innovator.",
-      color: "from-rose-500/20 to-red-500/10"
+      color: "from-cyan-500/10 to-blue-500/5",
+      accent: true
     },
   ];
 
@@ -231,7 +236,7 @@ function ServicesSection() {
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-24">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
+            <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">
               Core Capabilities
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -246,17 +251,19 @@ function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover-glow flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+              <div className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${service.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0`} />
                 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="p-3 bg-secondary rounded-xl mb-6 group-hover:bg-primary/20 transition-colors w-fit">
-                    <service.icon size={28} className="text-primary" />
+                  <div className={`p-3 rounded-xl mb-6 w-fit transition-colors ${service.accent ? "bg-cyan-500/10 group-hover:bg-cyan-500/20" : "bg-amber-500/10 group-hover:bg-amber-500/20"}`}>
+                    <service.icon size={28} className={service.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-gradient-gold transition-colors">{service.title}</h3>
+                  <h3 className={`text-xl font-bold mb-4 text-foreground group-hover:transition-all ${service.accent ? "group-hover:text-gradient-cyan" : "group-hover:text-gradient-gold"}`}>
+                    {service.title}
+                  </h3>
                   <p className="text-muted-foreground leading-relaxed flex-grow text-sm">{service.desc}</p>
                   
-                  <div className="mt-8 flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                  <div className={`mt-8 flex items-center text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 ${service.accent ? "text-cyan-400" : "text-amber-400"}`}>
                     Learn more <ChevronRight size={16} className="ml-1" />
                   </div>
                 </div>

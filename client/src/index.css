@@ -61,6 +61,7 @@
 }
 
 @layer utilities {
+  /* Gold gradient - Primary accent */
   .text-gradient-gold {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728];
   }
@@ -72,6 +73,19 @@
     border: 1px solid transparent;
   }
 
+  /* Cyan gradient - Secondary accent */
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00D9FF] via-[#0099FF] to-[#00CCFF];
+  }
+
+  .border-gradient-cyan {
+    position: relative;
+    background: linear-gradient(to right, #1a1a1a, #1a1a1a) padding-box,
+                linear-gradient(135deg, rgba(0, 217, 255, 0.5), rgba(0, 153, 255, 0.2), rgba(0, 204, 255, 0.5)) border-box;
+    border: 1px solid transparent;
+  }
+
+  /* Glow effects for both colors */
   .hover-glow {
     transition: all 0.3s ease;
   }
@@ -79,5 +93,14 @@
   .hover-glow:hover {
     box-shadow: 0 0 20px rgba(191, 149, 63, 0.15);
     border-color: rgba(191, 149, 63, 0.4);
+  }
+
+  .hover-glow-cyan {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow-cyan:hover {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+    border-color: rgba(0, 217, 255, 0.4);
   }
 }
