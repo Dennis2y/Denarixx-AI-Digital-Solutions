@@ -76,7 +76,7 @@ function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover z-0 opacity-25">
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover z-0 opacity-40">
         <source src="/media/hero_video.mp4" type="video/mp4" />
       </video>
 
@@ -84,7 +84,7 @@ function HeroSection() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[150px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-cyan-500/5 rounded-full blur-[180px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background" />
       </motion.div>
 
       <div className="container relative z-10 mx-auto px-4 text-center max-w-5xl">
@@ -329,7 +329,7 @@ function VisionSection() {
         <FadeIn>
           <div className="relative rounded-3xl overflow-hidden bg-card border border-border/50 group mb-16">
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10 group-hover:via-background/70 transition-all duration-500" />
-            <img src="/media/ai-network-bg.png" alt="Technology network visualization" className="absolute inset-0 w-full h-full object-cover object-right opacity-30 filter grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-500" />
+            <img src="/media/ai-network-bg.png" alt="Technology network visualization" className="absolute inset-0 w-full h-full object-cover object-right opacity-45 filter grayscale-[30%] group-hover:grayscale-0 group-hover:opacity-55 transition-all duration-500" />
             <div className="relative z-20 p-12 md:p-20 lg:p-24 max-w-3xl">
               <div className="inline-flex items-center gap-2 mb-8">
                 <div className="w-8 h-[2px] bg-primary" />
@@ -545,7 +545,7 @@ function InnovationLabSection() {
           <source src="/media/innovation_lab_bg.mp4" type="video/mp4" />
         </video>
       </div>
-      <div className="absolute inset-0 bg-background/70 z-[1]" />
+      <div className="absolute inset-0 bg-background/50 z-[1]" />
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
