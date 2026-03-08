@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { PremiumButton } from "@/components/ui/premium-button";
+import { useTheme } from "@/hooks/use-theme";
 import logoUrl from "@assets/Denarixx_1772975867904.png";
 
 const NAV_LINKS = [
@@ -13,6 +14,7 @@ const NAV_LINKS = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -65,8 +67,15 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden md:block">
+          {/* Theme Toggle & CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
             <PremiumButton onClick={() => scrollTo("#contact")} size="sm">
               Start Project
             </PremiumButton>
@@ -86,7 +95,7 @@ export function Navbar() {
       <div className={`
         md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border/50
         transition-all duration-300 ease-in-out overflow-hidden
-        ${mobileMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"}
+        ${mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
       `}>
         <div className="flex flex-col px-4 py-6 gap-6">
           {NAV_LINKS.map((link) => (
@@ -98,6 +107,16 @@ export function Navbar() {
               {link.label}
             </button>
           ))}
+          <div className="flex items-center gap-3 pt-2 border-t border-border">
+            <button
+              onClick={toggleTheme}
+              className="flex-1 p-3 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground flex items-center justify-center gap-2"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              <span className="text-sm font-medium">{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+            </button>
+          </div>
           <PremiumButton onClick={() => scrollTo("#contact")} className="w-full">
             Start Project
           </PremiumButton>
