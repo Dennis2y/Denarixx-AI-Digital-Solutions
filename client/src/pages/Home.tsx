@@ -20,6 +20,7 @@ import { useSubmitContact } from "@/hooks/use-contact";
 import { useLanguage } from "@/hooks/use-language";
 import { insertContactSchema } from "@shared/schema";
 import logoUrl from "@assets/Denarixx_1772975867904.png";
+import founderPhotoUrl from "@assets/dennis2_1772985309786.png";
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -436,53 +437,50 @@ function FounderSection() {
   return (
     <section id="behind" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <FadeIn>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("founder.badge")}</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("founder.heading1")} <span className="text-gradient-gold">{t("founder.heading2")}</span></h2>
+          </FadeIn>
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <FadeIn>
-            <div className="space-y-8">
-              <div>
-                <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("founder.badge")}</div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("founder.heading1")} <span className="text-gradient-gold">{t("founder.heading2")}</span></h2>
-              </div>
-              <div className="space-y-5">
-                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.p1")}</p>
-                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.p2")}</p>
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-cyan-500/10 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl" />
+              <div className="relative rounded-3xl overflow-hidden border border-border/50 shadow-2xl">
+                <img
+                  src={founderPhotoUrl}
+                  alt="Dennis Charles — Founder & CEO"
+                  className="w-full object-cover aspect-[3/4] filter group-hover:scale-[1.02] transition-transform duration-700"
+                  data-testid="img-founder"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <h3 className="text-2xl font-bold text-foreground" data-testid="text-founder-name">Dennis Charles</h3>
+                  <p className="text-primary font-semibold text-sm mt-1" data-testid="text-founder-title">{t("founder.role")}</p>
+                </div>
               </div>
             </div>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/15 to-cyan-500/10 rounded-3xl blur-2xl" />
-              <div className="relative p-10 rounded-3xl bg-card border border-border/50 space-y-8">
-                <div className="flex items-center gap-4 mb-2">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                    <User size={28} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground">{t("founder.led")}</h3>
-                    <p className="text-sm text-muted-foreground">{t("founder.led.desc")}</p>
-                  </div>
+            <div className="space-y-8">
+              <div>
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <div className="w-8 h-[2px] bg-primary" />
+                  <span className="text-primary text-xs uppercase tracking-widest font-semibold">{t("founder.badge")}</span>
                 </div>
-                <div className="h-[1px] w-full bg-border/50" />
-                <div className="flex flex-wrap gap-3">
-                  {["founder.tag1", "founder.tag2", "founder.tag3", "founder.tag4"].map((tagKey) => (
-                    <span key={tagKey} className="text-xs px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary/80 font-medium">{t(tagKey)}</span>
-                  ))}
-                </div>
-                <div className="space-y-4 pt-2">
-                  {[
-                    { labelKey: "founder.point1", descKey: "founder.point1.desc" },
-                    { labelKey: "founder.point2", descKey: "founder.point2.desc" },
-                    { labelKey: "founder.point3", descKey: "founder.point3.desc" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-3 items-start">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <div>
-                        <p className="text-sm font-semibold text-foreground">{t(item.labelKey)}</p>
-                        <p className="text-xs text-muted-foreground">{t(item.descKey)}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-2" data-testid="text-founder-heading">Dennis Charles</h3>
+                <p className="text-primary font-semibold mb-6">{t("founder.role")} — Denarixx AI & Digital Solutions</p>
+              </div>
+              <div className="space-y-5">
+                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.bio1")}</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.bio2")}</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">{t("founder.bio3")}</p>
+              </div>
+              <div className="flex flex-wrap gap-3 pt-4">
+                {["founder.tag1", "founder.tag2", "founder.tag3", "founder.tag4"].map((tagKey, i) => (
+                  <span key={tagKey} data-testid={`tag-founder-${i}`} className="text-xs px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary/80 font-medium">{t(tagKey)}</span>
+                ))}
               </div>
             </div>
           </FadeIn>
