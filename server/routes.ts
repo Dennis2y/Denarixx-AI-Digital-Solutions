@@ -32,12 +32,35 @@ export async function registerRoutes(
       const response = await fetch(CHAT_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ model, messages }),
+        body: JSON.stringify({ model, messages, stream: true }),
       });
-      const data = await response.json();
-      res.json(data);
+
+      if (!response.ok || !response.body) {
+        res.status(502).json({ error: "Chat request failed" });
+        return;
+      }
+
+      res.setHeader("Content-Type", "text/event-stream");
+      res.setHeader("Cache-Control", "no-cache");
+      res.setHeader("Connection", "keep-alive");
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value, { stream: true });
+        res.write(chunk);
+      }
+
+      res.end();
     } catch {
-      res.status(500).json({ error: "Chat request failed" });
+      if (!res.headersSent) {
+        res.status(500).json({ error: "Chat request failed" });
+      } else {
+        res.end();
+      }
     }
   });
 

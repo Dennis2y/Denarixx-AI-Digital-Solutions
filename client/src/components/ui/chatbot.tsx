@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, Sparkles, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
@@ -31,17 +31,23 @@ export function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [streamingContent, setStreamingContent] = useState("");
   const [model, setModel] = useState(DEFAULT_MODEL);
   const [showModelSelect, setShowModelSelect] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
   const { language } = useLanguage();
 
   const label = (key: string) => chatLabels[key]?.[language] || chatLabels[key]?.en || key;
 
-  useEffect(() => {
+  const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isLoading]);
+  }, []);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, streamingContent, isLoading, scrollToBottom]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -58,6 +64,9 @@ export function Chatbot() {
     setMessages(updatedMessages);
     setInput("");
     setIsLoading(true);
+    setStreamingContent("");
+
+    abortRef.current = new AbortController();
 
     try {
       const systemPrompt = `You are the AI assistant for Denarixx AI & Digital Solutions, a premium AI and digital agency founded by Dennis Charles. You help visitors learn about Denarixx's services (AI systems, web development, automation, branding, consulting) and answer questions. Be helpful, professional, and concise. Respond in the same language the user writes in.`;
@@ -72,15 +81,56 @@ export function Chatbot() {
             ...updatedMessages,
           ],
         }),
+        signal: abortRef.current.signal,
       });
 
-      const data = await res.json();
-      const reply = data?.choices?.[0]?.message?.content || label("error");
-      setMessages([...updatedMessages, { role: "assistant", content: reply }]);
-    } catch {
+      if (!res.ok || !res.body) {
+        throw new Error("Stream failed");
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let fullContent = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split("\n");
+
+        for (const line of lines) {
+          const trimmedLine = line.trim();
+          if (!trimmedLine || !trimmedLine.startsWith("data: ")) continue;
+
+          const data = trimmedLine.slice(6);
+          if (data === "[DONE]") continue;
+
+          try {
+            const parsed = JSON.parse(data);
+            const content = parsed?.choices?.[0]?.delta?.content;
+            if (content) {
+              fullContent += content;
+              setStreamingContent(fullContent);
+            }
+          } catch {
+            // skip malformed chunks
+          }
+        }
+      }
+
+      if (fullContent) {
+        setMessages([...updatedMessages, { role: "assistant", content: fullContent }]);
+      } else {
+        setMessages([...updatedMessages, { role: "assistant", content: label("error") }]);
+      }
+    } catch (err: unknown) {
+      if (err instanceof Error && err.name === "AbortError") return;
       setMessages([...updatedMessages, { role: "assistant", content: label("error") }]);
     } finally {
+      setStreamingContent("");
       setIsLoading(false);
+      abortRef.current = null;
     }
   };
 
@@ -90,6 +140,9 @@ export function Chatbot() {
       sendMessage();
     }
   };
+
+  const isStreaming = isLoading && streamingContent.length > 0;
+  const isWaiting = isLoading && streamingContent.length === 0;
 
   return (
     <>
@@ -180,7 +233,19 @@ export function Chatbot() {
                 </div>
               ))}
 
-              {isLoading && (
+              {isStreaming && (
+                <div className="flex gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Bot size={14} className="text-primary" />
+                  </div>
+                  <div className="bg-card border border-border/30 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-foreground max-w-[85%] whitespace-pre-wrap" data-testid="chat-streaming">
+                    {streamingContent}
+                    <span className="inline-block w-1.5 h-4 bg-primary/70 animate-pulse ml-0.5 align-middle" />
+                  </div>
+                </div>
+              )}
+
+              {isWaiting && (
                 <div className="flex gap-3">
                   <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Bot size={14} className="text-primary" />
