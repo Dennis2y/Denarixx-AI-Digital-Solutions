@@ -76,7 +76,7 @@ function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover z-0 opacity-25 dark:opacity-25 opacity-20">
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover z-0 dark:opacity-25 opacity-40">
         <source src="/media/hero_video.mp4" type="video/mp4" />
       </video>
 
@@ -545,7 +545,7 @@ function InnovationLabSection() {
           <source src="/media/innovation_lab_bg.mp4" type="video/mp4" />
         </video>
       </div>
-      <div className="absolute inset-0 bg-background/90 dark:bg-background/70 z-[1]" />
+      <div className="absolute inset-0 bg-background/60 dark:bg-background/70 z-[1]" />
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
