@@ -25,7 +25,7 @@ This is the official company website for **Denarixx AI & Digital Solutions**, a 
 - **Language selector** — 10 languages with flag emojis (EN, DE, FR, ES, IT, PT, NL, TR, AR, ZH) in navbar dropdown. Translations stored in `client/src/lib/translations.ts`, managed via `LanguageProvider` context. Selection persists in localStorage.
 - **Scroll progress bar** — Gold gradient line at bottom of fixed navbar
 - **Scroll-to-top button** — Appears after scrolling 600px
-- **Dark luxury theme** — Black-and-gold design system with cyan accents
+- **Light/Dark theme toggle** — Sun/Moon button in navbar. Dark mode: luxury black-and-gold with cyan accents. Light mode: warm off-white with darker gold/cyan/purple gradients for readability. Stored in localStorage. Default: dark.
 - **Smooth scroll** — All navigation uses smooth anchor scrolling
 - **AI Chatbot** — Floating chat widget (bottom-right) with model selection (GPT-4o Mini, Deepseek, Gemini). Uses backend proxy at `/api/chat` to forward requests to external AI API. All labels translated for 10 languages.
 

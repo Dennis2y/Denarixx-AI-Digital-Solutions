@@ -168,7 +168,7 @@ function AboutSection() {
           <FadeIn>
             <div className="space-y-8">
               <div>
-                <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
+                <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-700 dark:text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
                   {t("about.badge")}
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -183,7 +183,7 @@ function AboutSection() {
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
-                      <BrainCircuit className="text-cyan-400" size={24} />
+                      <BrainCircuit className="text-cyan-700 dark:text-cyan-400" size={24} />
                     </div>
                   </div>
                   <div>
@@ -194,7 +194,7 @@ function AboutSection() {
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
-                      <Palette className="text-amber-400" size={24} />
+                      <Palette className="text-amber-700 dark:text-amber-400" size={24} />
                     </div>
                   </div>
                   <div>
@@ -239,7 +239,7 @@ function ServicesSection() {
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("services.badge")}</div>
+            <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("services.badge")}</div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               {t("services.heading1")} <span className="text-gradient-gold">{t("services.heading2")}</span>
             </h2>
@@ -253,13 +253,13 @@ function ServicesSection() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0`} />
                 <div className="relative z-10 flex flex-col h-full">
                   <div className={`p-3 rounded-xl mb-6 w-fit transition-colors ${service.accent ? "bg-cyan-500/10 group-hover:bg-cyan-500/20" : "bg-amber-500/10 group-hover:bg-amber-500/20"}`}>
-                    <service.icon size={28} className={service.accent ? "text-cyan-400" : "text-amber-400"} />
+                    <service.icon size={28} className={service.accent ? "text-cyan-700 dark:text-cyan-400" : "text-amber-700 dark:text-amber-400"} />
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-foreground">{t(service.titleKey)}</h3>
                   <p className="text-muted-foreground leading-relaxed flex-grow text-sm">{t(service.descKey)}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {service.tagKeys.map((tagKey) => (
-                      <span key={tagKey} className={`text-xs px-2.5 py-1 rounded-full border font-medium ${service.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/70" : "border-amber-500/20 bg-amber-500/5 text-amber-400/70"}`}>{t(tagKey)}</span>
+                      <span key={tagKey} className={`text-xs px-2.5 py-1 rounded-full border font-medium ${service.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-700/70 dark:text-cyan-400/70" : "border-amber-500/20 bg-amber-500/5 text-amber-700/70 dark:text-amber-400/70"}`}>{t(tagKey)}</span>
                     ))}
                   </div>
                 </div>
@@ -275,11 +275,11 @@ function ServicesSection() {
 function ProcessSection() {
   const { t } = useLanguage();
   const steps = [
-    { number: "01", icon: Search, titleKey: "process.discover", descKey: "process.discover.desc", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
-    { number: "02", icon: Lightbulb, titleKey: "process.design", descKey: "process.design.desc", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-    { number: "03", icon: Code2, titleKey: "process.build", descKey: "process.build.desc", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
-    { number: "04", icon: Rocket, titleKey: "process.launch", descKey: "process.launch.desc", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-    { number: "05", icon: BarChart3, titleKey: "process.scale", descKey: "process.scale.desc", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "01", icon: Search, titleKey: "process.discover", descKey: "process.discover.desc", color: "text-cyan-700 dark:text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "02", icon: Lightbulb, titleKey: "process.design", descKey: "process.design.desc", color: "text-amber-700 dark:text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { number: "03", icon: Code2, titleKey: "process.build", descKey: "process.build.desc", color: "text-cyan-700 dark:text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+    { number: "04", icon: Rocket, titleKey: "process.launch", descKey: "process.launch.desc", color: "text-amber-700 dark:text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+    { number: "05", icon: BarChart3, titleKey: "process.scale", descKey: "process.scale.desc", color: "text-cyan-700 dark:text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
   ];
 
   return (
@@ -288,7 +288,7 @@ function ProcessSection() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
-            <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("process.badge")}</div>
+            <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-700 dark:text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("process.badge")}</div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("process.heading1")} <span className="text-gradient-cyan">{t("process.heading2")}</span></h2>
             <p className="text-lg text-muted-foreground">{t("process.subtitle")}</p>
           </FadeIn>
@@ -356,7 +356,7 @@ function VisionSection() {
             <FadeIn key={i} delay={i * 0.08}>
               <div data-testid={`card-vision-${i}`} className={`p-6 rounded-2xl bg-card border border-border/50 group hover:-translate-y-2 transition-all duration-300 h-full ${card.accent ? "hover-glow-cyan" : "hover-glow"}`}>
                 <div className={`p-3 rounded-xl mb-4 w-fit ${card.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
-                  <card.icon size={24} className={card.accent ? "text-cyan-400" : "text-amber-400"} />
+                  <card.icon size={24} className={card.accent ? "text-cyan-700 dark:text-cyan-400" : "text-amber-700 dark:text-amber-400"} />
                 </div>
                 <h3 className="text-base font-bold text-foreground mb-2">{t(card.titleKey)}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{t(card.descKey)}</p>
@@ -396,7 +396,7 @@ function ProjectsSection() {
               <div data-testid={`card-project-${i}`} className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${project.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}>
                 <div className="relative z-10 flex flex-col h-full">
                   <div className={`p-3 rounded-xl mb-6 w-fit ${project.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
-                    <project.icon size={28} className={project.accent ? "text-cyan-400" : "text-amber-400"} />
+                    <project.icon size={28} className={project.accent ? "text-cyan-700 dark:text-cyan-400" : "text-amber-700 dark:text-amber-400"} />
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-foreground">{t(project.titleKey)}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed flex-grow">{t(project.descKey)}</p>
@@ -438,7 +438,7 @@ function SelectedWorkSection() {
                   <div className="flex items-center justify-between mb-6">
                     <span className={`text-xs px-3 py-1 rounded-full border font-medium ${item.accent ? "border-cyan-500/20 bg-cyan-500/5 text-cyan-400/80" : "border-amber-500/20 bg-amber-500/5 text-amber-400/80"}`}>{t(item.catKey)}</span>
                     <div className={`p-2.5 rounded-xl ${item.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
-                      <item.icon size={22} className={item.accent ? "text-cyan-400" : "text-amber-400"} />
+                      <item.icon size={22} className={item.accent ? "text-cyan-700 dark:text-cyan-400" : "text-amber-700 dark:text-amber-400"} />
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-3">{t(item.titleKey)}</h3>
@@ -549,7 +549,7 @@ function InnovationLabSection() {
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-700 dark:text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
               <FlaskConical size={12} />
               {t("innovation.badge")}
             </div>
@@ -568,15 +568,15 @@ function InnovationLabSection() {
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
                     <div className={`p-3 rounded-xl w-fit ${product.accent ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
-                      <product.icon size={28} className={product.accent ? "text-cyan-400" : "text-amber-400"} />
+                      <product.icon size={28} className={product.accent ? "text-cyan-700 dark:text-cyan-400" : "text-amber-700 dark:text-amber-400"} />
                     </div>
-                    <span className={`text-[10px] px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider border ${product.accent ? "text-cyan-400/70 border-cyan-500/20 bg-cyan-500/5" : "text-amber-400/70 border-amber-500/20 bg-amber-500/5"}`}>
+                    <span className={`text-[10px] px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider border ${product.accent ? "text-cyan-700/70 dark:text-cyan-400/70 border-cyan-500/20 bg-cyan-500/5" : "text-amber-700/70 dark:text-amber-400/70 border-amber-500/20 bg-amber-500/5"}`}>
                       {t(product.labelKey)}
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-3">{product.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{t(product.descKey)}</p>
-                  <div className={`mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider ${product.accent ? "text-cyan-400/60" : "text-amber-400/60"}`}>
+                  <div className={`mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider ${product.accent ? "text-cyan-700/60 dark:text-cyan-400/60" : "text-amber-700/60 dark:text-amber-400/60"}`}>
                     {t("innovation.status")}
                   </div>
                 </div>
@@ -649,7 +649,7 @@ function WhoWeWorkWithSection() {
             <FadeIn key={i} delay={i * 0.08}>
               <div data-testid={`card-audience-${i}`} className={`group h-full p-8 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 ${aud.accent ? "hover-glow-cyan" : "hover-glow"}`}>
                 <div className={`p-3 rounded-xl mb-6 w-fit ${aud.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
-                  <aud.icon size={26} className={aud.accent ? "text-cyan-400" : "text-amber-400"} />
+                  <aud.icon size={26} className={aud.accent ? "text-cyan-700 dark:text-cyan-400" : "text-amber-700 dark:text-amber-400"} />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-3">{t(aud.titleKey)}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{t(aud.descKey)}</p>
@@ -665,12 +665,12 @@ function WhoWeWorkWithSection() {
 function WhyUsSection() {
   const { t } = useLanguage();
   const highlights = [
-    { icon: BrainCircuit, textKey: "whyus.h1", color: "text-cyan-400" },
-    { icon: Palette, textKey: "whyus.h2", color: "text-amber-400" },
-    { icon: Server, textKey: "whyus.h3", color: "text-cyan-400" },
-    { icon: Target, textKey: "whyus.h4", color: "text-amber-400" },
-    { icon: Code2, textKey: "whyus.h5", color: "text-cyan-400" },
-    { icon: Shield, textKey: "whyus.h6", color: "text-amber-400" },
+    { icon: BrainCircuit, textKey: "whyus.h1", color: "text-cyan-700 dark:text-cyan-400" },
+    { icon: Palette, textKey: "whyus.h2", color: "text-amber-700 dark:text-amber-400" },
+    { icon: Server, textKey: "whyus.h3", color: "text-cyan-700 dark:text-cyan-400" },
+    { icon: Target, textKey: "whyus.h4", color: "text-amber-700 dark:text-amber-400" },
+    { icon: Code2, textKey: "whyus.h5", color: "text-cyan-700 dark:text-cyan-400" },
+    { icon: Shield, textKey: "whyus.h6", color: "text-amber-700 dark:text-amber-400" },
   ];
 
   return (
@@ -687,7 +687,7 @@ function WhyUsSection() {
               <div className="space-y-4">
                 {highlights.map((item, i) => (
                   <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: i * 0.08 }} viewport={{ once: true }} className="flex items-center gap-4">
-                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${item.color === "text-cyan-400" ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${item.color === "text-cyan-700 dark:text-cyan-400" ? "bg-cyan-500/10 border border-cyan-500/20" : "bg-amber-500/10 border border-amber-500/20"}`}>
                       <item.icon size={20} className={`${item.color} flex-shrink-0`} />
                     </div>
                     <p className="text-foreground font-medium">{t(item.textKey)}</p>

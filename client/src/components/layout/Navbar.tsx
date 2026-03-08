@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { LanguageSelector } from "@/components/ui/language-selector";
 import { useLanguage } from "@/hooks/use-language";
+import { useTheme } from "@/hooks/use-theme";
 import logoUrl from "@assets/Denarixx_1772975867904.png";
 
 const NAV_KEYS = [
@@ -18,6 +19,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const { t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,6 +85,14 @@ export function Navbar() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              data-testid="button-theme-toggle"
+              className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             <LanguageSelector />
             <PremiumButton onClick={() => scrollTo("#contact")} size="sm" data-testid="button-nav-cta">
               {t("nav.cta")}
@@ -90,6 +100,14 @@ export function Navbar() {
           </div>
 
           <div className="flex md:hidden items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              data-testid="button-theme-toggle-mobile"
+              className="p-2 rounded-lg text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             <LanguageSelector />
             <button 
               className="text-foreground p-2"
