@@ -514,9 +514,18 @@ function InnovationLabSection() {
   return (
     <section id="innovation-lab" className="py-28 md:py-36 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src="/media/ai-network-bg.png" alt="" className="w-full h-full object-cover opacity-[0.07]" aria-hidden="true" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          aria-hidden="true"
+        >
+          <source src="/media/innovation_lab_bg.mp4" type="video/mp4" />
+        </video>
       </div>
-      <div className="absolute inset-0 bg-background/80 z-[1]" />
+      <div className="absolute inset-0 bg-background/70 z-[1]" />
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
