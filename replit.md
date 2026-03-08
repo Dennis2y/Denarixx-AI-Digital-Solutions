@@ -12,7 +12,7 @@ This is the official company website for **Denarixx AI & Digital Solutions**, a 
 5. **Vision** — Full-bleed banner + 5 innovation cards (AI Systems, Smart Platforms, Intelligent Automation, Future Products, Scalable Infrastructure)
 6. **Projects / Focus Areas** — 6 project type cards showing what Denarixx builds
 7. **Selected Work** — 4 premium project direction cards (AI Business Systems, Premium Company Websites, Startup Technology Ecosystems, Intelligent Automation Platforms)
-8. **Behind Denarixx** — Founder/company story with founder-led innovation positioning
+8. **Founder** — Dennis Charles profile with photo, bio, role, and skill tags
 9. **Denarixx Innovation Lab** — 4 product concepts (Denarixx Vision, Denarixx REMEMO, AI Automation Systems, Future Platforms)
 10. **Who We Work With** — 5 audience cards (Startups, SMBs, Premium Brands, Founders & Innovators, Digital-First Companies)
 11. **Why Choose Denarixx** — 6 credibility points + side panel with differentiators
@@ -27,6 +27,7 @@ This is the official company website for **Denarixx AI & Digital Solutions**, a 
 - **Scroll-to-top button** — Appears after scrolling 600px
 - **Dark luxury theme** — Black-and-gold design system with cyan accents
 - **Smooth scroll** — All navigation uses smooth anchor scrolling
+- **AI Chatbot** — Floating chat widget (bottom-right) with model selection (GPT-4o Mini, Deepseek, Gemini). Uses backend proxy at `/api/chat` to forward requests to external AI API. All labels translated for 10 languages.
 
 The app is a full-stack TypeScript monorepo:
 - **Frontend**: React + Vite served from `client/`
@@ -59,7 +60,7 @@ Preferred communication style: Simple, everyday language.
 
 - **Framework**: Express.js v5 (TypeScript) running as an HTTP server
 - **Entry point**: `server/index.ts` creates the Express app and HTTP server, registers routes, and in development serves via Vite middleware; in production serves the built static files.
-- **Routes**: Defined in `server/routes.ts`. Currently one endpoint: `POST /api/contact` — validates input with Zod, stores to the database, and returns the created contact.
+- **Routes**: Defined in `server/routes.ts`. Endpoints: `POST /api/contact` (validates input with Zod, stores to database) and `POST /api/chat` (proxies chat messages to external AI API at `firebase-ai-models.matrixzat99.workers.dev`).
 - **Storage layer**: `server/storage.ts` exposes an `IStorage` interface and `DatabaseStorage` implementation using Drizzle ORM.
 - **Static serving**: `server/static.ts` serves the Vite-built frontend with SPA fallback for client-side routing.
 
@@ -112,6 +113,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Assets
 - Company logo: `attached_assets/Denarixx_1772975867904.png` (imported directly in React via `@assets/` alias)
+- Founder photo: `attached_assets/dennis2_1772985309786.png` (imported via `@assets/` alias)
 - Media files in `client/public/media/`: `hero_video.mp4`, `tech-abstract-bg.png`, `ai-network-bg.png`, `innovation-bg.png`
 
 ### Placeholders to Update

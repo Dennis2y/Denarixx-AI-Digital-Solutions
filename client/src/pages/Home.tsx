@@ -13,6 +13,7 @@ import {
 import { SiLinkedin, SiX, SiInstagram, SiGithub } from "react-icons/si";
 
 import { Navbar } from "@/components/layout/Navbar";
+import { Chatbot } from "@/components/ui/chatbot";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { Input } from "@/components/ui/premium-input";
 import { Textarea } from "@/components/ui/premium-textarea";
@@ -966,6 +967,7 @@ export default function Home() {
       </main>
       <NewsletterSection />
       <Footer />
+      <Chatbot />
     </div>
   );
 }

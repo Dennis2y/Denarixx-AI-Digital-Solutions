@@ -4,11 +4,12 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
 
+const CHAT_API_URL = "https://firebase-ai-models.matrixzat99.workers.dev/chat/completions";
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Handle contact form submission
   app.post(api.contacts.create.path, async (req, res) => {
     try {
       const input = api.contacts.create.input.parse(req.body);
@@ -22,6 +23,21 @@ export async function registerRoutes(
         });
       }
       throw err;
+    }
+  });
+
+  app.post("/api/chat", async (req, res) => {
+    try {
+      const { model, messages } = req.body;
+      const response = await fetch(CHAT_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ model, messages }),
+      });
+      const data = await response.json();
+      res.json(data);
+    } catch {
+      res.status(500).json({ error: "Chat request failed" });
     }
   });
 
