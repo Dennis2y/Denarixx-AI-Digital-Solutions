@@ -118,6 +118,6 @@ Preferred communication style: Simple, everyday language.
 
 ### Placeholders to Update
 - **Social media links**: All currently `#` in Footer (LinkedIn, X, Instagram, GitHub)
-- **Legal pages**: Privacy Policy (`/privacy`), Terms & Conditions (`/terms`), Impressum (`/impressum`), Cookie Policy (`/cookies`) — all live with full content
+- **Legal pages**: Privacy Policy (`/privacy`), Terms & Conditions (`/terms`), Impressum (`/impressum`), Cookie Policy (`/cookies`) — all live with full content, fully translated into all 10 languages via `t()` function keys in `translations.ts`
 - **Contact email**: `hello@denarixxai.com` (update if different)
 - **Newsletter**: Client-side only (no backend persistence)
