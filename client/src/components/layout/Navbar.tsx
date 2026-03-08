@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { PremiumButton } from "@/components/ui/premium-button";
-import { useTheme } from "@/hooks/use-theme";
+import { useTheme } from "@/hooks/use-theme.tsx";
 import logoUrl from "@assets/Denarixx_1772975867904.png";
 
 const NAV_LINKS = [
