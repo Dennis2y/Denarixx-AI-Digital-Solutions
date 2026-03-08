@@ -95,32 +95,11 @@ function HeroSection() {
             <span>{t("hero.eyebrow")}</span>
           </motion.div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.1]">
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-              className="inline-block"
-            >
-              {t("hero.headline1")}{" "}
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
-              className="inline-block text-gradient-gold"
-            >
-              {t("hero.headline2")}
-            </motion.span>{" "}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.1] hero-shimmer-text">
+            {t("hero.headline1")}{" "}
+            <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
             <br className="hidden md:block"/>
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.9, ease: "easeOut" }}
-              className="inline-block"
-            >
-              {t("hero.headline3")}
-            </motion.span>
+            {t("hero.headline3")}
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed">
