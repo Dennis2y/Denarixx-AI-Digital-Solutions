@@ -103,4 +103,8 @@
     box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
     border-color: rgba(0, 217, 255, 0.4);
   }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
 }
