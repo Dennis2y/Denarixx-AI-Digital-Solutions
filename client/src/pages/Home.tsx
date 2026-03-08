@@ -504,8 +504,8 @@ function InnovationLabSection() {
   const products = [
     { icon: Eye, title: "Denarixx Vision", labelKey: "innovation.vision.label", descKey: "innovation.vision.desc", accent: true },
     { icon: Mic, title: "Denarixx REMEMO", labelKey: "innovation.rememo.label", descKey: "innovation.rememo.desc", accent: false },
-    { icon: Smartphone, title: "Denarixx Smartphone", labelKey: "innovation.smartphone.label", descKey: "innovation.smartphone.desc", accent: true },
-    { icon: FlaskConical, title: "Denarixx Future Mobility", labelKey: "innovation.mobility.label", descKey: "innovation.mobility.desc", accent: false },
+    { icon: Workflow, title: "AI Automation Platforms", labelKey: "innovation.autoplatform.label", descKey: "innovation.autoplatform.desc", accent: true },
+    { icon: MonitorSmartphone, title: "Future Smart Devices", labelKey: "innovation.smartdevices.label", descKey: "innovation.smartdevices.desc", accent: false },
   ];
 
   const scrollToContact = () => {
