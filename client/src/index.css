@@ -109,7 +109,7 @@
   .hero-marquee-track {
     display: inline-flex;
     gap: 2rem;
-    animation: hero-marquee 20s linear infinite;
+    animation: hero-marquee 12s linear infinite;
     will-change: transform;
   }
 
