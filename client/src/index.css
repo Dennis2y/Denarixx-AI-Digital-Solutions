@@ -213,3 +213,31 @@ img, video {
     animation: denarixx-marquee-mobile 8s linear infinite;
   }
 }
+
+/* Mobile fix for language selector */
+@media (max-width: 768px) {
+  .language-selector-dropdown {
+    right: 0 !important;
+    left: auto !important;
+    width: 10rem !important;
+    max-width: calc(100vw - 2rem) !important;
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 300;
+  }
+
+  .language-selector-dropdown button,
+  .language-selector-dropdown div[role="button"],
+  .language-selector-dropdown a {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .language-selector-dropdown {
+    margin-top: 0.75rem !important;
+    border-radius: 1rem;
+  }
+}

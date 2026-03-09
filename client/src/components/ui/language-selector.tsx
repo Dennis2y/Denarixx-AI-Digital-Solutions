@@ -29,7 +29,7 @@ export function LanguageSelector() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-border/60 bg-card shadow-2xl backdrop-blur-xl overflow-hidden z-[100] animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="absolute right-0 top-full mt-2 w-40 sm:w-48 max-w-[calc(100vw-2rem)] rounded-xl border border-border/60 bg-card shadow-2xl backdrop-blur-xl overflow-hidden language-selector-dropdown z-[200] animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="p-1.5">
             {LANGUAGES.map((lang) => (
               <button
