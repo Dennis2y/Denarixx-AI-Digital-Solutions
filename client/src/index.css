@@ -210,6 +210,6 @@ img, video {
 
 @media (max-width: 768px) {
   .denarixx-marquee {
-    animation: denarixx-marquee-mobile 10s linear infinite;
+    animation: denarixx-marquee-mobile 8s linear infinite;
   }
 }
