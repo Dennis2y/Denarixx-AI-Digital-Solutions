@@ -153,7 +153,7 @@ function HeroSection() {
 function AboutSection() {
   const { t } = useLanguage();
   return (
-    <section id="about" className="py-28 md:py-36 relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-20 md:py-36 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 z-0">
         <img src="/media/tech-abstract-bg.png" alt="" className="w-full h-full object-cover" aria-hidden="true" />
       </div>
@@ -165,13 +165,13 @@ function AboutSection() {
                 <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
                   {t("about.badge")}
                 </div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">
                   {t("about.heading1")} <span className="text-gradient-cyan">{t("about.heading2")}</span> {t("about.heading3")}
                 </h2>
               </div>
-              <div className="space-y-5">
-                <p className="text-xl text-gray-100 leading-relaxed font-semibold">{t("about.p1")}</p>
-                <p className="text-xl text-gray-100 leading-relaxed font-semibold">{t("about.p2")}</p>
+              <div className="space-y-4 sm:space-y-5">
+                <p className="text-[15px] sm:text-lg md:text-xl text-gray-100 leading-7 sm:leading-relaxed font-medium">{t("about.p1")}</p>
+                <p className="text-[15px] sm:text-lg md:text-xl text-gray-100 leading-7 sm:leading-relaxed font-medium">{t("about.p2")}</p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
                 <div className="flex gap-4">
@@ -182,7 +182,7 @@ function AboutSection() {
                   </div>
                   <div>
                     <h4 className="text-base font-bold text-white mb-1">{t("about.aifirst")}</h4>
-                    <p className="text-base text-gray-100 leading-relaxed font-medium">{t("about.aifirst.desc")}</p>
+                    <p className="text-sm sm:text-base text-gray-100 leading-7 sm:leading-relaxed font-medium">{t("about.aifirst.desc")}</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -193,7 +193,7 @@ function AboutSection() {
                   </div>
                   <div>
                     <h4 className="text-base font-bold text-white mb-1">{t("about.premium")}</h4>
-                    <p className="text-base text-gray-100 leading-relaxed font-medium">{t("about.premium.desc")}</p>
+                    <p className="text-sm sm:text-base text-gray-100 leading-7 sm:leading-relaxed font-medium">{t("about.premium.desc")}</p>
                   </div>
                 </div>
               </div>
@@ -234,7 +234,7 @@ function ServicesSection() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("services.badge")}</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">
               {t("services.heading1")} <span className="text-gradient-gold">{t("services.heading2")}</span>
             </h2>
             <p className="text-lg text-white/90">{t("services.subtitle")}</p>
@@ -283,7 +283,7 @@ function ProcessSection() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("process.badge")}</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("process.heading1")} <span className="text-gradient-cyan">{t("process.heading2")}</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("process.heading1")} <span className="text-gradient-cyan">{t("process.heading2")}</span></h2>
             <p className="text-lg text-white/90">{t("process.subtitle")}</p>
           </FadeIn>
         </div>
@@ -380,7 +380,7 @@ function ProjectsSection() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("projects.badge")}</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("projects.heading1")} <span className="text-gradient-gold">{t("projects.heading2")}</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("projects.heading1")} <span className="text-gradient-gold">{t("projects.heading2")}</span></h2>
             <p className="text-lg text-white/90">{t("projects.subtitle")}</p>
           </FadeIn>
         </div>
@@ -419,7 +419,7 @@ function SelectedWorkSection() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("selectedwork.badge")}</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("selectedwork.heading1")} <span className="text-gradient-gold">{t("selectedwork.heading2")}</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("selectedwork.heading1")} <span className="text-gradient-gold">{t("selectedwork.heading2")}</span></h2>
             <p className="text-lg text-white/90">{t("selectedwork.subtitle")}</p>
           </FadeIn>
         </div>
@@ -455,7 +455,7 @@ function FounderSection() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("founder.badge")}</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("founder.heading1")} <span className="text-gradient-gold">{t("founder.heading2")}</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("founder.heading1")} <span className="text-gradient-gold">{t("founder.heading2")}</span></h2>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
@@ -487,7 +487,7 @@ function FounderSection() {
                 <h3 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="text-founder-heading">Dennis Charles</h3>
                 <p className="text-primary font-semibold mb-6">{t("founder.role")} — Denarixx AI & Digital Solutions</p>
               </div>
-              <div className="space-y-5">
+              <div className="space-y-4 sm:space-y-5">
                 <p className="text-lg text-white/90 leading-relaxed">{t("founder.bio1")}</p>
                 <p className="text-lg text-white/90 leading-relaxed">{t("founder.bio2")}</p>
                 <p className="text-lg text-white/90 leading-relaxed">{t("founder.bio3")}</p>
@@ -547,7 +547,7 @@ function InnovationLabSection() {
               <FlaskConical size={12} />
               {t("innovation.badge")}
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("innovation.heading1")} <span className="text-gradient-cyan">{t("innovation.heading2")}</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("innovation.heading1")} <span className="text-gradient-cyan">{t("innovation.heading2")}</span></h2>
             <p className="text-lg text-white/90">{t("innovation.subtitle")}</p>
           </FadeIn>
         </div>
@@ -634,7 +634,7 @@ function WhoWeWorkWithSection() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("clients.badge")}</div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("clients.heading1")} <span className="text-gradient-gold">{t("clients.heading2")}</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("clients.heading1")} <span className="text-gradient-gold">{t("clients.heading2")}</span></h2>
             <p className="text-lg text-white/90">{t("clients.subtitle")}</p>
           </FadeIn>
         </div>
@@ -675,7 +675,7 @@ function WhyUsSection() {
             <div className="space-y-8">
               <div>
                 <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("whyus.badge")}</div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("whyus.heading1")} <span className="text-gradient-gold">{t("whyus.heading2")}</span></h2>
+                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("whyus.heading1")} <span className="text-gradient-gold">{t("whyus.heading2")}</span></h2>
               </div>
               <p className="text-lg text-white/90 leading-relaxed">{t("whyus.desc")}</p>
               <div className="space-y-4">
@@ -738,7 +738,7 @@ function CTABannerSection() {
             <Sparkles size={14} />
             <span>{t("cta.badge")}</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("cta.heading1")} <span className="text-gradient-gold">{t("cta.heading2")}</span></h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("cta.heading1")} <span className="text-gradient-gold">{t("cta.heading2")}</span></h2>
           <p className="text-lg text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">{t("cta.subtitle")}</p>
           <PremiumButton size="lg" onClick={() => scrollTo("#contact")} data-testid="button-cta-banner">
             {t("cta.button")}
@@ -790,7 +790,7 @@ function ContactSection() {
             <div className="space-y-8">
               <div>
                 <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("contact.badge")}</div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{t("contact.heading1")} <span className="text-gradient-gold">{t("contact.heading2")}</span></h2>
+                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.1] sm:leading-tight">{t("contact.heading1")} <span className="text-gradient-gold">{t("contact.heading2")}</span></h2>
               </div>
               <p className="text-lg text-white/90 leading-relaxed">{t("contact.subtitle")}</p>
               <div data-testid="text-response-time" className="p-6 rounded-2xl border border-primary/20 bg-primary/5 relative overflow-hidden">
