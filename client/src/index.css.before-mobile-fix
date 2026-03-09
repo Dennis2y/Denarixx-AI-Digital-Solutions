@@ -147,39 +147,3 @@ html, body, #root {
 body {
   position: relative;
 }
-
-/* Mobile overflow fix */
-html, body, #root {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-body {
-  position: relative;
-}
-
-/* Prevent sections and media from pushing layout wider than screen */
-section, div, img, video, canvas {
-  max-width: 100%;
-}
-
-img, video {
-  height: auto;
-  display: block;
-}
-
-/* Extra mobile safety */
-@media (max-width: 640px) {
-  * {
-    box-sizing: border-box;
-  }
-
-  .container,
-  [class*="max-w-7xl"],
-  [class*="max-w-6xl"],
-  [class*="max-w-5xl"] {
-    width: 100%;
-    max-width: 100%;
-  }
-}
