@@ -183,3 +183,33 @@ img, video {
     max-width: 100%;
   }
 }
+
+/* Hero moving headline: desktop + mobile speeds */
+@keyframes denarixx-marquee-desktop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes denarixx-marquee-mobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.denarixx-marquee {
+  animation: denarixx-marquee-desktop 18s linear infinite;
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .denarixx-marquee {
+    animation: denarixx-marquee-mobile 10s linear infinite;
+  }
+}

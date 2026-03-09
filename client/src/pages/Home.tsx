@@ -96,7 +96,7 @@ function HeroSection() {
           </motion.div>
           
           <div className="overflow-hidden mb-8 w-full" data-testid="hero-marquee">
-            <div className="hero-marquee-track text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] whitespace-nowrap">
+            <div className="hero-marquee-track denarixx-marquee text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] whitespace-nowrap">
               <span className="inline-block px-6 md:px-10">
                 <span className="text-gradient-cyan">{t("hero.headline1")}</span>{" "}
                 <span className="text-gradient-gold">{t("hero.headline2")}</span>{" "}
