@@ -1270,8 +1270,10 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
+        <WhatIsSection />
         <ServicesSection />
         <ProcessSection />
+        <UseCasesSection />
         <VisionSection />
         <ProjectsSection />
         <SelectedWorkSection />
@@ -1279,6 +1281,7 @@ export default function Home() {
         <FounderSection />
         <WhoWeWorkWithSection />
         <WhyUsSection />
+        <BlogSection />
         <CTABannerSection />
         <ContactSection />
       </main>
