@@ -504,6 +504,18 @@ function FounderSection() {
                   <span key={tagKey} data-testid={`tag-founder-${i}`} className="text-xs px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary/80 font-medium">{t(tagKey)}</span>
                 ))}
               </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                {[
+                  "Founder-led execution",
+                  "AI + web + automation",
+                  "Built for real business use",
+                ].map((item, i) => (
+                  <div key={i} className="rounded-xl border border-primary/15 bg-primary/5 px-4 py-3 text-sm text-white/90">
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </FadeIn>
         </div>
@@ -723,6 +735,159 @@ function WhyUsSection() {
     </section>
   );
 }
+
+function WhatIsSection() {
+  const { t } = useLanguage();
+
+  const points = [
+    "Modern websites",
+    "AI workflows",
+    "Automation systems",
+    "Scalable digital products",
+  ];
+
+  return (
+    <section id="what-is" className="py-24 md:py-32 relative">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <FadeIn>
+            <div className="space-y-6 min-w-0">
+              <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest">
+                {t("whatis.badge")}
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.15] break-words">
+                {t("whatis.heading1")} <span className="text-gradient-gold">{t("whatis.heading2")}</span>
+              </h2>
+              <p className="text-lg text-white/90 leading-relaxed break-words">{t("whatis.p1")}</p>
+              <p className="text-lg text-white/90 leading-relaxed break-words">{t("whatis.p2")}</p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <div className="rounded-3xl border border-border/50 bg-card p-8 sm:p-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {points.map((point, i) => (
+                  <div key={i} className="rounded-2xl border border-primary/15 bg-primary/5 p-5 text-white font-medium">
+                    {point}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function UseCasesSection() {
+  const cases = [
+    {
+      title: "Business Website + Lead System",
+      desc: "A modern website connected to contact capture, email workflows, and business automation.",
+    },
+    {
+      title: "AI Workflow for Teams",
+      desc: "Internal AI tools that help teams save time, organize tasks, and improve operations.",
+    },
+    {
+      title: "Startup MVP Platform",
+      desc: "Fast product design and development for founders who want to launch and validate quickly.",
+    },
+    {
+      title: "Brand + Digital Presence",
+      desc: "Premium design, strong positioning, and a digital presence that builds trust and credibility.",
+    },
+  ];
+
+  return (
+    <section id="use-cases" className="py-24 md:py-32 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <FadeIn>
+            <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
+              Use Cases
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">
+              Real <span className="text-gradient-cyan">Use Cases</span>
+            </h2>
+            <p className="text-lg text-white/90">
+              Practical examples of what Denarixx can help businesses build.
+            </p>
+          </FadeIn>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {cases.map((item, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover:-translate-y-1 transition-all duration-300 min-w-0">
+                <h3 className="text-xl font-bold mb-3 text-white break-words">{item.title}</h3>
+                <p className="text-white/90 leading-relaxed break-words">{item.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BlogSection() {
+  const { t } = useLanguage();
+
+  const posts = [
+    {
+      title: "What is Denarixx AI & Digital Solutions?",
+      desc: "A short introduction to what Denarixx builds, who it serves, and why it matters.",
+      tag: "Company",
+    },
+    {
+      title: "How AI and Automation Help Businesses Save Time",
+      desc: "Simple ways companies can reduce manual work and improve efficiency.",
+      tag: "AI & Automation",
+    },
+    {
+      title: "From Idea to Product: How We Build Digital Solutions",
+      desc: "A practical look at the Denarixx workflow from discovery to launch.",
+      tag: "Workflow",
+    },
+  ];
+
+  return (
+    <section id="blog" className="py-24 md:py-32 relative">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <FadeIn>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
+              {t("blog.badge")}
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">
+              {t("blog.heading1")} <span className="text-gradient-gold">{t("blog.heading2")}</span>
+            </h2>
+            <p className="text-lg text-white/90">
+              Thoughts, product updates, and practical insights from Denarixx.
+            </p>
+          </FadeIn>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {posts.map((post, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div className="h-full p-8 rounded-2xl bg-card border border-border/50 min-w-0">
+                <div className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-4">
+                  {post.tag}
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white break-words">{post.title}</h3>
+                <p className="text-white/90 leading-relaxed break-words">{post.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 function CTABannerSection() {
   const { t } = useLanguage();
