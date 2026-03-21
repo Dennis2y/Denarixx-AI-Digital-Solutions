@@ -759,10 +759,10 @@ function WhatIsSection() {
   const { t } = useLanguage();
 
   const points = [
-    "Modern websites",
-    "AI workflows",
-    "Automation systems",
-    "Scalable digital products",
+    "whatis.point1",
+    "whatis.point2",
+    "whatis.point3",
+    "whatis.point4",
   ];
 
   return (
@@ -787,7 +787,7 @@ function WhatIsSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {points.map((point, i) => (
                   <div key={i} className="rounded-2xl border border-primary/15 bg-primary/5 p-5 text-white font-medium">
-                    {point}
+                    {t(point)}
                   </div>
                 ))}
               </div>
@@ -800,22 +800,23 @@ function WhatIsSection() {
 }
 
 function UseCasesSection() {
+  const { t } = useLanguage();
   const cases = [
     {
-      title: "Business Website + Lead System",
-      desc: "A modern website connected to contact capture, email workflows, and business automation.",
+      titleKey: "usecases.card1.title",
+      descKey: "usecases.card1.desc",
     },
     {
-      title: "AI Workflow for Teams",
-      desc: "Internal AI tools that help teams save time, organize tasks, and improve operations.",
+      titleKey: "usecases.card2.title",
+      descKey: "usecases.card2.desc",
     },
     {
-      title: "Startup MVP Platform",
-      desc: "Fast product design and development for founders who want to launch and validate quickly.",
+      titleKey: "usecases.card3.title",
+      descKey: "usecases.card3.desc",
     },
     {
-      title: "Brand + Digital Presence",
-      desc: "Premium design, strong positioning, and a digital presence that builds trust and credibility.",
+      titleKey: "usecases.card4.title",
+      descKey: "usecases.card4.desc",
     },
   ];
 
@@ -825,13 +826,13 @@ function UseCasesSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
-              Use Cases
+              {t("usecases.badge")}
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">
-              Real <span className="text-gradient-cyan">Use Cases</span>
+              {t("usecases.heading")}
             </h2>
             <p className="text-base sm:text-lg text-white/90">
-              Practical examples of what Denarixx can help businesses build.
+              {t("usecases.subtitle")}
             </p>
           </FadeIn>
         </div>
@@ -840,8 +841,8 @@ function UseCasesSection() {
           {cases.map((item, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover:-translate-y-1 transition-all duration-300 min-w-0">
-                <h3 className="text-xl font-bold mb-3 text-white break-words">{item.title}</h3>
-                <p className="text-white/90 leading-relaxed break-words">{item.desc}</p>
+                <h3 className="text-xl font-bold mb-3 text-white break-words">{t(item.titleKey)}</h3>
+                <p className="text-white/90 leading-relaxed break-words">{t(item.descKey)}</p>
               </div>
             </FadeIn>
           ))}
@@ -884,7 +885,7 @@ function BlogSection() {
               {t("blog.heading1")} <span className="text-gradient-gold">{t("blog.heading2")}</span>
             </h2>
             <p className="text-base sm:text-lg text-white/90">
-              Thoughts, product updates, and practical insights from Denarixx.
+              {t("blog.subtitle")}
             </p>
           </FadeIn>
         </div>
@@ -894,10 +895,10 @@ function BlogSection() {
             <FadeIn key={i} delay={i * 0.08}>
               <div className="h-full p-8 rounded-2xl bg-card border border-border/50 min-w-0">
                 <div className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-4">
-                  {post.tag}
+                  {t(post.tagKey)}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-white break-words">{post.title}</h3>
-                <p className="text-white/90 leading-relaxed break-words">{post.desc}</p>
+                <h3 className="text-xl font-bold mb-3 text-white break-words">{t(post.titleKey)}</h3>
+                <p className="text-white/90 leading-relaxed break-words">{t(post.descKey)}</p>
               </div>
             </FadeIn>
           ))}
@@ -958,8 +959,8 @@ function ProductsSystemsSection() {
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover:-translate-y-1 transition-all duration-300 min-w-0">
-                <h3 className="text-xl font-bold mb-3 text-white break-words">{item.title}</h3>
-                <p className="text-white/90 leading-relaxed break-words">{item.desc}</p>
+                <h3 className="text-xl font-bold mb-3 text-white break-words">{t(item.titleKey)}</h3>
+                <p className="text-white/90 leading-relaxed break-words">{t(item.descKey)}</p>
               </div>
             </FadeIn>
           ))}
