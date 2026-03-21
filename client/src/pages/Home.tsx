@@ -857,19 +857,19 @@ function BlogSection() {
 
   const posts = [
     {
-      title: "What is Denarixx AI & Digital Solutions?",
-      desc: "A short introduction to what Denarixx builds, who it serves, and why it matters.",
-      tag: "Company",
+      titleKey: "blog.card1.title",
+      descKey: "blog.card1.desc",
+      tagKey: "blog.card1.tag",
     },
     {
-      title: "How AI and Automation Help Businesses Save Time",
-      desc: "Simple ways companies can reduce manual work and improve efficiency.",
-      tag: "AI & Automation",
+      titleKey: "blog.card2.title",
+      descKey: "blog.card2.desc",
+      tagKey: "blog.card2.tag",
     },
     {
-      title: "From Idea to Product: How We Build Digital Solutions",
-      desc: "A practical look at the Denarixx workflow from discovery to launch.",
-      tag: "Workflow",
+      titleKey: "blog.card3.title",
+      descKey: "blog.card3.desc",
+      tagKey: "blog.card3.tag",
     },
   ];
 
