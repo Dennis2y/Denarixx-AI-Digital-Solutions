@@ -390,7 +390,7 @@ function ProjectsSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center rounded-full border border-[#D4AF37] bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
               >
-                My Personal Website
+                {t("projects.personalWebsite")}
               </a>
               <a
                 href="https://www.denarixxoneearth.com"
@@ -398,7 +398,7 @@ function ProjectsSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                Denarixx OneEarth
+                {t("projects.oneEarth")}
               </a>
             </div>
           </FadeIn>
