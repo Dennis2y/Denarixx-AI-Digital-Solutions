@@ -382,18 +382,37 @@ function ProjectsSection() {
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("projects.badge")}</div>
             <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("projects.heading1")} <span className="text-gradient-gold">{t("projects.heading2")}</span></h2>
             <p className="text-lg text-white/90">{t("projects.subtitle")}</p>
+
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href="https://denarixx.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full border border-[#D4AF37] bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
+              >
+                Main Denarixx Website
+              </a>
+              <a
+                href="https://www.denarixxoneearth.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Denarixx OneEarth
+              </a>
+            </div>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <div data-testid={`card-project-${i}`} className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${project.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}>
+              <div data-testid={`card-project-${i}`} className={`group h-full p-6 sm:p-8 rounded-2xl bg-card border border-border/50 ${project.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}>
                 <div className="relative z-10 flex flex-col h-full min-w-0">
                   <div className={`p-3 rounded-xl mb-6 w-fit ${project.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                     <project.icon size={28} className={project.accent ? "text-cyan-400" : "text-amber-400"} />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-white break-words">{t(project.titleKey)}</h3>
-                  <p className="text-sm text-white/90 leading-relaxed flex-grow">{t(project.descKey)}</p>
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 text-white leading-tight break-words [overflow-wrap:anywhere] [hyphens:auto]">{t(project.titleKey)}</h3>
+                  <p className="text-sm sm:text-base text-white/90 leading-relaxed break-words [overflow-wrap:anywhere] flex-grow">{t(project.descKey)}</p>
                 </div>
               </div>
             </FadeIn>
@@ -435,7 +454,7 @@ function SelectedWorkSection() {
                       <item.icon size={22} className={item.accent ? "text-cyan-400" : "text-amber-400"} />
                     </div>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">{t(item.titleKey)}</h3>
+                  <h3 className="text-lg sm:text-2xl font-bold text-white mb-3 leading-tight break-words [overflow-wrap:anywhere] [hyphens:auto]">{t(item.titleKey)}</h3>
                   <p className="text-white/90 leading-relaxed">{t(item.descKey)}</p>
                 </div>
               </div>
@@ -879,6 +898,68 @@ function BlogSection() {
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white break-words">{post.title}</h3>
                 <p className="text-white/90 leading-relaxed break-words">{post.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
+function ProductsSystemsSection() {
+  const items = [
+    {
+      title: "Denarixx Fraud Alert",
+      desc: "An intelligent fraud detection and risk-alert system designed to help businesses and institutions identify suspicious activity faster.",
+    },
+    {
+      title: "Denarixx Child Safety",
+      desc: "A smart safety concept focused on child monitoring, alerts, and protection tools for modern families and institutions.",
+    },
+    {
+      title: "Denarixx REMEMO",
+      desc: "An AI memory system concept designed to capture important conversations and organize information intelligently.",
+    },
+    {
+      title: "Denarixx Aura & Terra",
+      desc: "Future mobility and intelligent product concepts representing Denarixx’s broader innovation vision beyond digital services.",
+    },
+    {
+      title: "Denarixx Energy MicroGrid AI",
+      desc: "A long-term intelligent energy management vision focused on smart infrastructure, decentralized systems, and scalable impact.",
+    },
+    {
+      title: "Denarixx Automation Platforms",
+      desc: "Workflow systems that connect operations, reduce manual effort, and help businesses scale with more efficiency.",
+    },
+  ];
+
+  return (
+    <section id="products-systems" className="py-24 md:py-32 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <FadeIn>
+            <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
+              Products & Systems
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">
+              What We’re <span className="text-gradient-gold">Building</span>
+            </h2>
+            <p className="text-lg text-white/90 leading-relaxed">
+              Denarixx is not only a digital solutions company. It is also building future-focused systems, products, and intelligent technology concepts.
+            </p>
+          </FadeIn>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {items.map((item, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover:-translate-y-1 transition-all duration-300 min-w-0">
+                <h3 className="text-xl font-bold mb-3 text-white break-words">{item.title}</h3>
+                <p className="text-white/90 leading-relaxed break-words">{item.desc}</p>
               </div>
             </FadeIn>
           ))}
