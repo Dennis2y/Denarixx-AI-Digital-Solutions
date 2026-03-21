@@ -165,7 +165,7 @@ function AboutSection() {
                 <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
                   {t("about.badge")}
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">
                   {t("about.heading1")} <span className="text-gradient-cyan">{t("about.heading2")}</span> {t("about.heading3")}
                 </h2>
               </div>
@@ -226,21 +226,21 @@ function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+    <section id="services" className="py-16 sm:py-20 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 z-0">
         <img src="/media/innovation-bg.png" alt="" className="w-full h-full object-cover" aria-hidden="true" />
       </div>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("services.badge")}</div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">
               {t("services.heading1")} <span className="text-gradient-gold">{t("services.heading2")}</span>
             </h2>
-            <p className="text-lg text-white/90">{t("services.subtitle")}</p>
+            <p className="text-base sm:text-lg text-white/90">{t("services.subtitle")}</p>
           </FadeIn>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div data-testid={`card-service-${i}`} className={`group h-full p-8 rounded-2xl bg-card border border-border/50 ${service.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden min-w-0`}>
@@ -277,14 +277,14 @@ function ProcessSection() {
   ];
 
   return (
-    <section id="process" className="py-28 md:py-36 relative overflow-hidden">
+    <section id="process" className="py-16 sm:py-20 md:py-36 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">{t("process.badge")}</div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("process.heading1")} <span className="text-gradient-cyan">{t("process.heading2")}</span></h2>
-            <p className="text-lg text-white/90">{t("process.subtitle")}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("process.heading1")} <span className="text-gradient-cyan">{t("process.heading2")}</span></h2>
+            <p className="text-base sm:text-lg text-white/90">{t("process.subtitle")}</p>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative">
@@ -318,7 +318,7 @@ function VisionSection() {
   ];
 
   return (
-    <section id="vision" className="py-28 md:py-36 relative overflow-hidden">
+    <section id="vision" className="py-16 sm:py-20 md:py-36 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <FadeIn>
           <div className="relative rounded-3xl overflow-hidden bg-card border border-border/50 group mb-16">
@@ -375,13 +375,13 @@ function ProjectsSection() {
   ];
 
   return (
-    <section id="projects" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+    <section id="projects" className="py-16 sm:py-20 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("projects.badge")}</div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("projects.heading1")} <span className="text-gradient-gold">{t("projects.heading2")}</span></h2>
-            <p className="text-lg text-white/90">{t("projects.subtitle")}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("projects.heading1")} <span className="text-gradient-gold">{t("projects.heading2")}</span></h2>
+            <p className="text-base sm:text-lg text-white/90">{t("projects.subtitle")}</p>
 
             <div className="mt-6 flex flex-wrap gap-4">
               <a
@@ -403,10 +403,10 @@ function ProjectsSection() {
             </div>
           </FadeIn>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {projects.map((project, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <div data-testid={`card-project-${i}`} className={`group h-full p-6 sm:p-8 rounded-2xl bg-card border border-border/50 ${project.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}>
+              <div data-testid={`card-project-${i}`} className={`group h-full p-5 sm:p-8 rounded-2xl bg-card border border-border/50 ${project.accent ? "hover-glow-cyan" : "hover-glow"} flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden`}>
                 <div className="relative z-10 flex flex-col h-full min-w-0">
                   <div className={`p-3 rounded-xl mb-6 w-fit ${project.accent ? "bg-cyan-500/10" : "bg-amber-500/10"}`}>
                     <project.icon size={28} className={project.accent ? "text-cyan-400" : "text-amber-400"} />
@@ -433,19 +433,19 @@ function SelectedWorkSection() {
   ];
 
   return (
-    <section id="selected-work" className="py-28 md:py-36 relative overflow-hidden">
+    <section id="selected-work" className="py-16 sm:py-20 md:py-36 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("selectedwork.badge")}</div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("selectedwork.heading1")} <span className="text-gradient-gold">{t("selectedwork.heading2")}</span></h2>
-            <p className="text-lg text-white/90">{t("selectedwork.subtitle")}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("selectedwork.heading1")} <span className="text-gradient-gold">{t("selectedwork.heading2")}</span></h2>
+            <p className="text-base sm:text-lg text-white/90">{t("selectedwork.subtitle")}</p>
           </FadeIn>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {work.map((item, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div data-testid={`card-selected-work-${i}`} className={`group p-10 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden ${item.accent ? "hover-glow-cyan" : "hover-glow"}`}>
+              <div data-testid={`card-selected-work-${i}`} className={`group p-6 sm:p-10 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden ${item.accent ? "hover-glow-cyan" : "hover-glow"}`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.accent ? "from-cyan-500/5 to-transparent" : "from-primary/5 to-transparent"} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
@@ -469,12 +469,12 @@ function SelectedWorkSection() {
 function FounderSection() {
   const { t } = useLanguage();
   return (
-    <section id="behind" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+    <section id="behind" className="py-16 sm:py-20 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("founder.badge")}</div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("founder.heading1")} <span className="text-gradient-gold">{t("founder.heading2")}</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("founder.heading1")} <span className="text-gradient-gold">{t("founder.heading2")}</span></h2>
           </FadeIn>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
@@ -557,7 +557,7 @@ function InnovationLabSection() {
   };
 
   return (
-    <section id="innovation-lab" className="py-28 md:py-36 relative overflow-hidden">
+    <section id="innovation-lab" className="py-16 sm:py-20 md:py-36 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -578,14 +578,14 @@ function InnovationLabSection() {
               <FlaskConical size={12} />
               {t("innovation.badge")}
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("innovation.heading1")} <span className="text-gradient-cyan">{t("innovation.heading2")}</span></h2>
-            <p className="text-lg text-white/90">{t("innovation.subtitle")}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("innovation.heading1")} <span className="text-gradient-cyan">{t("innovation.heading2")}</span></h2>
+            <p className="text-base sm:text-lg text-white/90">{t("innovation.subtitle")}</p>
           </FadeIn>
         </div>
         <FadeIn delay={0.1}>
           <p className="text-base text-white/90/80 leading-relaxed text-center max-w-4xl mx-auto mb-16 break-words px-1 sm:px-0" data-testid="text-innovation-intro">{t("innovation.intro")}</p>
         </FadeIn>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {products.map((product, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <div data-testid={`card-innovation-${i}`} className={`group p-8 sm:p-10 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden h-full min-w-0 ${product.accent ? "hover-glow-cyan" : "hover-glow"}`}>
@@ -660,16 +660,16 @@ function WhoWeWorkWithSection() {
   ];
 
   return (
-    <section id="who-we-work-with" className="py-28 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+    <section id="who-we-work-with" className="py-16 sm:py-20 md:py-36 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("clients.badge")}</div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("clients.heading1")} <span className="text-gradient-gold">{t("clients.heading2")}</span></h2>
-            <p className="text-lg text-white/90">{t("clients.subtitle")}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("clients.heading1")} <span className="text-gradient-gold">{t("clients.heading2")}</span></h2>
+            <p className="text-base sm:text-lg text-white/90">{t("clients.subtitle")}</p>
           </FadeIn>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {audiences.map((aud, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div data-testid={`card-audience-${i}`} className={`group h-full p-8 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-2 ${aud.accent ? "hover-glow-cyan" : "hover-glow"} min-w-0`}>
@@ -699,14 +699,14 @@ function WhyUsSection() {
   ];
 
   return (
-    <section id="why-us" className="py-28 md:py-36 relative">
+    <section id="why-us" className="py-16 sm:py-20 md:py-36 relative">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <FadeIn>
             <div className="space-y-8 min-w-0">
               <div>
                 <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("whyus.badge")}</div>
-                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("whyus.heading1")} <span className="text-gradient-gold">{t("whyus.heading2")}</span></h2>
+                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("whyus.heading1")} <span className="text-gradient-gold">{t("whyus.heading2")}</span></h2>
               </div>
               <p className="text-lg text-white/90 leading-relaxed break-words">{t("whyus.desc")}</p>
               <div className="space-y-4">
@@ -766,7 +766,7 @@ function WhatIsSection() {
   ];
 
   return (
-    <section id="what-is" className="py-24 md:py-32 relative">
+    <section id="what-is" className="py-14 sm:py-18 md:py-32 relative">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <FadeIn>
@@ -820,23 +820,23 @@ function UseCasesSection() {
   ];
 
   return (
-    <section id="use-cases" className="py-24 md:py-32 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+    <section id="use-cases" className="py-14 sm:py-18 md:py-32 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 text-xs font-semibold mb-4 uppercase tracking-widest">
               Use Cases
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">
               Real <span className="text-gradient-cyan">Use Cases</span>
             </h2>
-            <p className="text-lg text-white/90">
+            <p className="text-base sm:text-lg text-white/90">
               Practical examples of what Denarixx can help businesses build.
             </p>
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {cases.map((item, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover:-translate-y-1 transition-all duration-300 min-w-0">
@@ -873,17 +873,17 @@ function BlogSection() {
   ];
 
   return (
-    <section id="blog" className="py-24 md:py-32 relative">
+    <section id="blog" className="py-14 sm:py-18 md:py-32 relative">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
               {t("blog.badge")}
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">
               {t("blog.heading1")} <span className="text-gradient-gold">{t("blog.heading2")}</span>
             </h2>
-            <p className="text-lg text-white/90">
+            <p className="text-base sm:text-lg text-white/90">
               Thoughts, product updates, and practical insights from Denarixx.
             </p>
           </FadeIn>
@@ -938,14 +938,14 @@ function ProductsSystemsSection() {
   ];
 
   return (
-    <section id="products-systems" className="py-24 md:py-32 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
+    <section id="products-systems" className="py-14 sm:py-18 md:py-32 bg-secondary/20 border-y border-border/30 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
             <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">
               Products & Systems
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">
               What We’re <span className="text-gradient-gold">Building</span>
             </h2>
             <p className="text-lg text-white/90 leading-relaxed">
@@ -954,7 +954,7 @@ function ProductsSystemsSection() {
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover:-translate-y-1 transition-all duration-300 min-w-0">
@@ -984,7 +984,7 @@ function CTABannerSection() {
             <Sparkles size={14} />
             <span>{t("cta.badge")}</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("cta.heading1")} <span className="text-gradient-gold">{t("cta.heading2")}</span></h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("cta.heading1")} <span className="text-gradient-gold">{t("cta.heading2")}</span></h2>
           <p className="text-lg text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">{t("cta.subtitle")}</p>
           <PremiumButton size="lg" onClick={() => scrollTo("#contact")} data-testid="button-cta-banner">
             {t("cta.button")}
@@ -1028,7 +1028,7 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-28 md:py-36 bg-secondary/30 border-t border-border/50 relative">
+    <section id="contact" className="py-16 sm:py-20 md:py-36 bg-secondary/30 border-t border-border/50 relative">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
@@ -1036,7 +1036,7 @@ function ContactSection() {
             <div className="space-y-8 min-w-0">
               <div>
                 <div className="inline-block px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4 uppercase tracking-widest">{t("contact.badge")}</div>
-                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-5 md:mb-6 leading-[1.15] break-words">{t("contact.heading1")} <span className="text-gradient-gold">{t("contact.heading2")}</span></h2>
+                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] break-words">{t("contact.heading1")} <span className="text-gradient-gold">{t("contact.heading2")}</span></h2>
               </div>
               <p className="text-lg text-white/90 leading-relaxed break-words">{t("contact.subtitle")}</p>
               <div data-testid="text-response-time" className="p-6 rounded-2xl border border-primary/20 bg-primary/5 relative overflow-hidden">
