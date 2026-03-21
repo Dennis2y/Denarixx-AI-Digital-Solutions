@@ -526,12 +526,12 @@ function FounderSection() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
                 {[
-                  "Founder-led execution",
-                  "AI + web + automation",
-                  "Built for real business use",
+                  "founder.pillar1",
+                  "founder.pillar2",
+                  "founder.pillar3",
                 ].map((item, i) => (
                   <div key={i} className="rounded-xl border border-primary/15 bg-primary/5 px-4 py-3 text-sm text-white/90">
-                    {item}
+                    {t(item)}
                   </div>
                 ))}
               </div>
