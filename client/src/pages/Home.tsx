@@ -390,7 +390,7 @@ function ProjectsSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center rounded-full border border-[#D4AF37] bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
               >
-                Main Denarixx Website
+                My Personal Website
               </a>
               <a
                 href="https://www.denarixxoneearth.com"
