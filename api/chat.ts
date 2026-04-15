@@ -24,21 +24,18 @@ function messagesToPrompt(messages: ChatMessage[]): string {
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
     const { messages } = req.body as { model?: string; messages?: ChatMessage[] };
 
     if (!process.env.GEMINI_API_KEY) {
-      res.status(500).json({ error: "Missing GEMINI_API_KEY" });
-      return;
+      return res.status(500).json({ error: "Missing GEMINI_API_KEY" });
     }
 
     if (!Array.isArray(messages) || messages.length === 0) {
-      res.status(400).json({ error: "Missing messages" });
-      return;
+      return res.status(400).json({ error: "Missing messages" });
     }
 
     const prompt = messagesToPrompt(messages);
@@ -61,20 +58,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const data = await response.json().catch(() => null);
 
     if (!response.ok) {
-      res.status(502).json({
+      return res.status(502).json({
         error: "Gemini request failed",
         details: data,
       });
-      return;
     }
 
     const text =
       data?.candidates?.[0]?.content?.parts
         ?.map((part: { text?: string }) => part?.text ?? "")
-        .join("") ?? "";
+        .join("")
+        .trim() || "Sorry, I could not generate a reply.";
 
     res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Cache-Control", "no-cache, no-transform");
     res.setHeader("Connection", "keep-alive");
 
     res.write(
@@ -110,11 +107,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.write("data: [DONE]\n\n");
     res.end();
   } catch (error) {
-    console.error("api/chat error:", error);
+    console.error("Chat route error:", error);
     if (!res.headersSent) {
-      res.status(500).json({ error: "Chat request failed" });
-    } else {
-      res.end();
+      return res.status(500).json({ error: "Chat request failed" });
     }
+    res.end();
   }
 }
