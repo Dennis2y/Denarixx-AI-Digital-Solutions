@@ -9,8 +9,9 @@ import {
   BarChart3, Globe, Palette, Rocket, Shield, Target, Building2,
   Smartphone, BrainCircuit, Workflow, Server, PenTool, Eye, Mic,
   Boxes, FlaskConical, Crown, User, MonitorSmartphone, MapPin, Send,
-  Download
-} from "lucide-react";
+  Download,
+  MessageCircle
+}  from "lucide-react";
 import { Linkedin, Instagram, Github } from "lucide-react";
 
 import { Navbar } from "@/components/layout/Navbar";
