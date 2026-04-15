@@ -11,7 +11,7 @@ import {
   Boxes, FlaskConical, Crown, User, MonitorSmartphone, MapPin, Send,
   Download
 } from "lucide-react";
-import { SiLinkedin, SiX, SiInstagram, SiGithub } from "react-icons/si";
+import { Linkedin, Instagram, Github } from "lucide-react";
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Chatbot } from "@/components/ui/chatbot";
@@ -1282,10 +1282,10 @@ function Footer() {
             <p className="text-xs text-primary/70 font-medium mb-6">{t("footer.innovation")}</p>
             <div className="flex gap-3">
               {[
-                { Icon: SiLinkedin, href: "#", label: "LinkedIn" },
-                { Icon: SiX, href: "#", label: "X (Twitter)" },
-                { Icon: SiInstagram, href: "#", label: "Instagram" },
-                { Icon: SiGithub, href: "#", label: "GitHub" },
+                { Icon: Linkedin, href: "#", label: "LinkedIn" },
+                { Icon: MessageCircle, href: "#", label: "X (Twitter)" },
+                { Icon: Instagram, href: "#", label: "Instagram" },
+                { Icon: Github, href: "#", label: "GitHub" },
               ].map(({ Icon, href, label }) => (
                 <a key={label} href={href} aria-label={label} data-testid={`link-social-${label.toLowerCase().replace(/[^a-z]/g, "")}`} className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-white/90 hover:text-primary hover:border-primary/40 transition-all duration-300 hover:-translate-y-0.5">
                   <Icon size={15} />

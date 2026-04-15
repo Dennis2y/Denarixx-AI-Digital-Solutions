@@ -90,7 +90,8 @@ export async function registerRoutes(
       const text =
         data?.candidates?.[0]?.content?.parts
           ?.map((part: { text?: string }) => part?.text ?? "")
-          .join("") ?? "";
+          .join("")
+          .trim() || "Sorry, I could not generate a reply.";
 
       res.setHeader("Content-Type", "text/event-stream");
       res.setHeader("Cache-Control", "no-cache");
