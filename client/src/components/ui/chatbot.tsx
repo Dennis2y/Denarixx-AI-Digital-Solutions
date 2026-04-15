@@ -195,7 +195,6 @@ Important behavior rules:
 - Keep answers concise but informative.
 - Respond in the same language the user writes in.`;
 
-
       const res = await fetch(CHAT_API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -208,49 +207,78 @@ Important behavior rules:
         }),
       });
 
-      if (!res.ok || !res.body) {
+      if (!res.ok) {
         throw new Error("Request failed");
       }
 
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
+      const contentType = res.headers.get("content-type") || "";
       let fullContent = "";
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split("\n");
-        for (const line of lines) {
-          const tl = line.trim();
-          if (!tl || !tl.startsWith("data: ")) continue;
-          const data = tl.slice(6);
-          if (data === "[DONE]") continue;
-          try {
-            const parsed = JSON.parse(data);
-            const content = parsed?.choices?.[0]?.delta?.content;
-            if (content) fullContent += content;
-          } catch { /* skip */ }
+      if (contentType.includes("text/event-stream") && res.body) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split("\n");
+
+          for (const line of lines) {
+            const tl = line.trim();
+            if (!tl || !tl.startsWith("data: ")) continue;
+
+            const data = tl.slice(6);
+            if (data === "[DONE]") continue;
+
+            try {
+              const parsed = JSON.parse(data);
+              const deltaContent = parsed?.choices?.[0]?.delta?.content;
+              const messageContent = parsed?.choices?.[0]?.message?.content;
+              const replyContent = parsed?.reply;
+
+              if (typeof deltaContent === "string" && deltaContent) fullContent += deltaContent;
+              else if (typeof messageContent === "string" && messageContent) fullContent += messageContent;
+              else if (typeof replyContent === "string" && replyContent) fullContent += replyContent;
+            } catch {
+              if (data && data !== "[DONE]") fullContent += data;
+            }
+          }
+        }
+      } else {
+        const rawText = await res.text();
+
+        try {
+          const parsed = JSON.parse(rawText);
+          fullContent =
+            parsed?.reply?.trim?.() ||
+            parsed?.choices?.[0]?.message?.content?.trim?.() ||
+            parsed?.choices?.[0]?.delta?.content?.trim?.() ||
+            "";
+        } catch {
+          fullContent = rawText.trim();
         }
       }
 
       setIsWaiting(false);
 
-      if (fullContent) {
-        setIsTyping(true);
-        cancelTypingRef.current = typeOutText(
-          fullContent,
-          (partial) => setTypingContent(partial),
-          () => {
-            setMessages(prev => [...prev, { role: "assistant", content: fullContent }]);
-            setTypingContent("");
-            setIsTyping(false);
-            cancelTypingRef.current = null;
-          }
-        );
-      } else {
-        setMessages([...updatedMessages, { role: "assistant", content: label("error") }]);
-      }
+      const safeContent =
+        fullContent && fullContent.trim()
+          ? fullContent.trim()
+          : label("error");
+
+      setIsTyping(true);
+      cancelTypingRef.current = typeOutText(
+        safeContent,
+        (partial) => setTypingContent(partial),
+        () => {
+          setMessages(prev => [...prev, { role: "assistant", content: safeContent }]);
+          setTypingContent("");
+          setIsTyping(false);
+          cancelTypingRef.current = null;
+        }
+      );
     } catch {
       setIsWaiting(false);
       setMessages(prev => [...prev, { role: "assistant", content: label("error") }]);
