@@ -69,8 +69,6 @@ function renderMarkdown(text: string) {
 }
 
 const MODELS = [
-  { id: "gpt-4o-mini", name: "GPT-4o Mini" },
-  { id: "deepseek", name: "Deepseek" },
   { id: "gemini", name: "Gemini" },
 ];
 
