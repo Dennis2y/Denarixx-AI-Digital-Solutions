@@ -857,19 +857,19 @@ function BlogSection() {
 
   const posts = [
     {
-      titleKey: "blog.card1.title",
-      descKey: "blog.card1.desc",
-      tagKey: "blog.card1.tag",
+      titleKey: "blog.post1.title",
+      descKey: "blog.post1.desc",
+      tagKey: "blog.post1.tag",
     },
     {
-      titleKey: "blog.card2.title",
-      descKey: "blog.card2.desc",
-      tagKey: "blog.card2.tag",
+      titleKey: "blog.post2.title",
+      descKey: "blog.post2.desc",
+      tagKey: "blog.post2.tag",
     },
     {
-      titleKey: "blog.card3.title",
-      descKey: "blog.card3.desc",
-      tagKey: "blog.card3.tag",
+      titleKey: "blog.post3.title",
+      descKey: "blog.post3.desc",
+      tagKey: "blog.post3.tag",
     },
   ];
 
