@@ -70,8 +70,8 @@ function renderMarkdown(text: string) {
 
 const MODELS = [
   { id: "gpt-4o-mini", name: "GPT-4o Mini" },
-  { id: "deepseek-chat", name: "Deepseek" },
-  { id: "gemini-2.0-flash", name: "Gemini" },
+  { id: "deepseek", name: "Deepseek" },
+  { id: "gemini", name: "Gemini" },
 ];
 
 const chatLabels: Record<string, Record<string, string>> = {
