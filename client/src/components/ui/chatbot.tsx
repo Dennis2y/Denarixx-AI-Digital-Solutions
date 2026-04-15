@@ -186,7 +186,7 @@ Important behavior rules:
 - When a user asks about Dennis Charles, assume they mean the Founder and CEO of Denarixx AI & Digital Solutions unless they clearly specify another person.
 - When a user asks about Denarixx, answer from the company context above.
 - Never invent unrelated public biographies for Dennis Charles.
-- If a user asks how to contact Dennis Charles, provide the official Denarixx company contact methods instead of refusing.
+- If a user asks how to contact Dennis Charles, provide the official Denarixx company contact methods.
 - Users can contact Denarixx through:
   • The contact form on the Denarixx website (denarixxai.com)
   • The official company email: hello@denarixxai.com
@@ -217,56 +217,45 @@ Important behavior rules:
       if (contentType.includes("text/event-stream") && res.body) {
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
+        let buffer = "";
 
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
 
-          const chunk = decoder.decode(value, { stream: true });
-          const lines = chunk.split("\n");
+          buffer += decoder.decode(value, { stream: true });
+          const chunks = buffer.split("\n");
+          buffer = chunks.pop() || "";
 
-          for (const line of lines) {
-            const tl = line.trim();
-            if (!tl || !tl.startsWith("data: ")) continue;
+          for (const line of chunks) {
+            const trimmedLine = line.trim();
+            if (!trimmedLine.startsWith("data: ")) continue;
 
-            const data = tl.slice(6);
-            if (data === "[DONE]") continue;
+            const payload = trimmedLine.slice(6).trim();
+            if (!payload || payload === "[DONE]") continue;
 
             try {
-              const parsed = JSON.parse(data);
+              const parsed = JSON.parse(payload);
               const deltaContent = parsed?.choices?.[0]?.delta?.content;
-              const messageContent = parsed?.choices?.[0]?.message?.content;
-              const replyContent = parsed?.reply;
-
-              if (typeof deltaContent === "string" && deltaContent) fullContent += deltaContent;
-              else if (typeof messageContent === "string" && messageContent) fullContent += messageContent;
-              else if (typeof replyContent === "string" && replyContent) fullContent += replyContent;
+              if (typeof deltaContent === "string" && deltaContent) {
+                fullContent += deltaContent;
+              }
             } catch {
-              if (data && data !== "[DONE]") fullContent += data;
+              // ignore malformed stream chunks
             }
           }
         }
       } else {
-        const rawText = await res.text();
-
-        try {
-          const parsed = JSON.parse(rawText);
-          fullContent =
-            parsed?.reply?.trim?.() ||
-            parsed?.choices?.[0]?.message?.content?.trim?.() ||
-            parsed?.choices?.[0]?.delta?.content?.trim?.() ||
-            "";
-        } catch {
-          fullContent = rawText.trim();
-        }
+        const data = await res.json().catch(() => null);
+        fullContent =
+          data?.reply?.trim?.() ||
+          data?.choices?.[0]?.message?.content?.trim?.() ||
+          "";
       }
 
       setIsWaiting(false);
 
-      const safeContent =
-        fullContent && fullContent.trim()
-          ? fullContent.trim()
-          : label("error");
+      const safeContent = fullContent.trim() || label("error");
 
       setIsTyping(true);
       cancelTypingRef.current = typeOutText(
@@ -279,7 +268,8 @@ Important behavior rules:
           cancelTypingRef.current = null;
         }
       );
-    } catch {
+    } catch (error) {
+      console.error("Chatbot sendMessage error:", error);
       setIsWaiting(false);
       setMessages(prev => [...prev, { role: "assistant", content: label("error") }]);
     }
