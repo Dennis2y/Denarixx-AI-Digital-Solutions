@@ -505,7 +505,7 @@ function FounderSection() {
                   <span className="text-primary text-xs uppercase tracking-widest font-semibold">{t("founder.badge")}</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="text-founder-heading">Dennis Charles</h3>
-                <p className="text-primary font-semibold mb-6">{t("founder.role")} — Denarixx AI & Digital Solutions</p>
+                <p className="text-primary font-semibold mb-6">{t("founder.role")} — Denarixx Digital Solutions</p>
               </div>
               <div className="space-y-4 sm:space-y-5">
                 <p className="text-lg text-white/90 leading-relaxed break-words">{t("founder.bio1")}</p>
@@ -1068,7 +1068,7 @@ function ContactSection() {
                 </div>
               </div>
               <div className="p-6 rounded-2xl border border-border/50 bg-card">
-                <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-8 mb-4 opacity-80" />
+                <img src={logoUrl} alt="Denarixx Digital Solutions" className="h-8 mb-4 opacity-80" />
                 <p className="text-sm text-white/90 leading-relaxed break-words">{t("contact.companydesc")}</p>
               </div>
             </div>
@@ -1278,7 +1278,7 @@ function Footer() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 pb-16 border-b border-border/30">
           <div className="lg:col-span-1">
-            <img src={logoUrl} alt="Denarixx AI & Digital Solutions" className="h-9 mb-6 opacity-90 hover:opacity-100 transition-opacity cursor-pointer" onClick={scrollToTop} />
+            <img src={logoUrl} alt="Denarixx Digital Solutions" className="h-9 mb-6 opacity-90 hover:opacity-100 transition-opacity cursor-pointer" onClick={scrollToTop} />
             <p className="text-sm text-white/90 leading-relaxed mb-6">{t("footer.desc")}</p>
             <p className="text-xs text-primary/70 font-medium mb-6">{t("footer.innovation")}</p>
             <div className="flex gap-3">

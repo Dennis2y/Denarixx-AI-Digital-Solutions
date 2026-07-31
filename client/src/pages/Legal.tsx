@@ -23,7 +23,7 @@ function LegalLayout({ title, children }: { title: string; children: React.React
       </main>
       <footer className="border-t border-border/30 py-8">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-xs text-white/90/40">&copy; {new Date().getFullYear()} Denarixx AI & Digital Solutions. All rights reserved.</p>
+          <p className="text-xs text-white/90/40">&copy; {new Date().getFullYear()} Denarixx Digital Solutions. All rights reserved.</p>
         </div>
       </footer>
     </div>
@@ -119,7 +119,7 @@ export function PrivacyPolicy() {
       <Section title={t("privacy.s11.title")}>
         <p>{t("privacy.s11.p1")}</p>
         <p className="pl-4 border-l-2 border-primary/30">
-          Denarixx AI & Digital Solutions<br />
+          Denarixx Digital Solutions<br />
           Email: hello@denarixxai.com
         </p>
       </Section>
@@ -191,7 +191,7 @@ export function TermsConditions() {
       <Section title={t("terms.s11.title")}>
         <p>{t("terms.s11.p1")}</p>
         <p className="pl-4 border-l-2 border-primary/30">
-          Denarixx AI & Digital Solutions<br />
+          Denarixx Digital Solutions<br />
           Email: hello@denarixxai.com
         </p>
       </Section>
@@ -311,7 +311,7 @@ export function CookiePolicy() {
       <Section title={t("cookies.s7.title")}>
         <p>{t("cookies.s7.p1")}</p>
         <p className="pl-4 border-l-2 border-primary/30">
-          Denarixx AI & Digital Solutions<br />
+          Denarixx Digital Solutions<br />
           Email: hello@denarixxai.com
         </p>
       </Section>

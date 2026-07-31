@@ -63,7 +63,7 @@ export function Navbar() {
           >
             <img 
               src={logoUrl} 
-              alt="Denarixx AI & Digital Solutions" 
+              alt="Denarixx Digital Solutions" 
               className="h-8 md:h-10 object-contain transition-transform duration-500 group-hover:scale-105" 
             />
           </div>
