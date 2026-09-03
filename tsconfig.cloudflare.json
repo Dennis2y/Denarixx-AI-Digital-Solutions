@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "client/src/**/*",
+    "shared/**/*",
+    "functions/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "server/**/*",
+    "**/*.test.ts"
+  ],
+  "compilerOptions": {
+    "types": [
+      "node",
+      "vite/client"
+    ]
+  }
+}

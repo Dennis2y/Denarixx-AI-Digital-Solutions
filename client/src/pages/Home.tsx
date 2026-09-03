@@ -96,7 +96,8 @@ function HeroSection() {
             <span>{t("hero.eyebrow")}</span>
           </motion.div>
           
-          <div className="overflow-hidden mb-8 w-full" data-testid="hero-marquee">
+          <h1 className="overflow-hidden mb-8 w-full" data-testid="hero-marquee">
+            <span className="sr-only">Denarixx Digital Solutions — AI, Software, Automation and Digital Solutions</span>
             <div className="hero-marquee-track text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] whitespace-nowrap">
               <span className="inline-block px-6 md:px-10">
                 <span className="text-gradient-cyan">{t("hero.headline1")}</span>{" "}
@@ -119,7 +120,7 @@ function HeroSection() {
                 <span className="text-gradient-purple">{t("hero.headline3")}</span>
               </span>
             </div>
-          </div>
+          </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto font-light leading-relaxed px-2 text-center">
             {t("hero.subtitle")}
@@ -960,8 +961,8 @@ function ProductsSystemsSection() {
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover:-translate-y-1 transition-all duration-300 min-w-0">
-                <h3 className="text-xl font-bold mb-3 text-white break-words">{t(item.titleKey)}</h3>
-                <p className="text-white/90 leading-relaxed break-words">{t(item.descKey)}</p>
+                <h3 className="text-xl font-bold mb-3 text-white break-words">{item.title}</h3>
+                <p className="text-white/90 leading-relaxed break-words">{item.desc}</p>
               </div>
             </FadeIn>
           ))}
