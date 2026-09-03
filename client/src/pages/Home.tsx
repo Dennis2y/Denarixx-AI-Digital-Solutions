@@ -1054,7 +1054,7 @@ function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-white font-bold mb-1 text-sm">Email</h4>
-                    <p className="text-white/90 text-sm">hello@denarixxai.com</p>
+                    <p className="text-white/90 text-sm">info@denarixx.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

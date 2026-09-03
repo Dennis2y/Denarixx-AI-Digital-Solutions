@@ -120,8 +120,7 @@ export function PrivacyPolicy() {
         <p>{t("privacy.s11.p1")}</p>
         <p className="pl-4 border-l-2 border-primary/30">
           Denarixx Digital Solutions<br />
-          Email: hello@denarixxai.com
-        </p>
+          Email: info@denarixx.com        </p>
       </Section>
     </LegalLayout>
   );
@@ -192,8 +191,7 @@ export function TermsConditions() {
         <p>{t("terms.s11.p1")}</p>
         <p className="pl-4 border-l-2 border-primary/30">
           Denarixx Digital Solutions<br />
-          Email: hello@denarixxai.com
-        </p>
+          Email: info@denarixx.com        </p>
       </Section>
     </LegalLayout>
   );
@@ -210,7 +208,7 @@ export function ImpressumPage() {
       </Section>
 
       <Section title={t("impressum.s2.title")}>
-        <p>{t("impressum.s2.p1")}</p>
+        <p className="whitespace-pre-line">{t("impressum.s2.p1")}</p>
       </Section>
 
       <Section title={t("impressum.s3.title")}>
@@ -312,8 +310,7 @@ export function CookiePolicy() {
         <p>{t("cookies.s7.p1")}</p>
         <p className="pl-4 border-l-2 border-primary/30">
           Denarixx Digital Solutions<br />
-          Email: hello@denarixxai.com
-        </p>
+          Email: info@denarixx.com        </p>
       </Section>
     </LegalLayout>
   );
