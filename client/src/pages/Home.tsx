@@ -10,8 +10,8 @@ import {
   Smartphone, BrainCircuit, Workflow, Server, PenTool, Eye, Mic,
   Boxes, FlaskConical, Crown, User, MonitorSmartphone, MapPin, Send,
   Download,
-  MessageCircle
-}  from "lucide-react";
+  MessageCircle, Phone
+} from "lucide-react";
 import { Linkedin, Instagram, Github } from "lucide-react";
 
 import { Navbar } from "@/components/layout/Navbar";
@@ -1055,16 +1055,42 @@ function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-white font-bold mb-1 text-sm">Email</h4>
-                    <p className="text-white/90 text-sm">info@denarixx.com</p>
+                    <a
+                      href="mailto:info@denarixx.com"
+                      className="text-white/90 text-sm hover:text-primary transition-colors"
+                    >
+                      info@denarixx.com
+                    </a>
                   </div>
                 </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-card border border-border rounded-xl flex-shrink-0">
+                    <Phone className="text-primary" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold mb-1 text-sm">Phone</h4>
+                    <a
+                      href="tel:+4917660467839"
+                      className="text-white/90 text-sm hover:text-primary transition-colors"
+                    >
+                      +49 176 60467839
+                    </a>
+                  </div>
+                </div>
+
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-card border border-border rounded-xl flex-shrink-0">
                     <MapPin className="text-primary" size={20} />
                   </div>
                   <div>
                     <h4 className="text-white font-bold mb-1 text-sm">{t("contact.location")}</h4>
-                    <p className="text-white/90 text-sm">{t("contact.location.value")}</p>
+                    <p className="text-white/90 text-sm leading-relaxed">
+                      Soltauer Straße 66A<br />
+                      21244 Buchholz in der Nordheide<br />
+                      Germany
+                    </p>
+                    <p className="text-white/70 text-xs mt-1">{t("contact.location.value")}</p>
                   </div>
                 </div>
               </div>
